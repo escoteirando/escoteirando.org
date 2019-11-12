@@ -21,3 +21,8 @@ Dessa forma, surgiu a ideia de um portal, onde poderíamos planejar as atividade
 * Os itens de atividades
   * Comentários e pontuação atribuída por todos os usuários colaboradores.
   * Mídias associadas (links para páginas externas, vídeos de youtube/vimeo, fotos enviadas pelos usuários da aplicação em atividade, etc)
+
+
+## Links
+
+* https://lucassimon.com.br/2018/06/serie-api-em-flask---parte-1---introducao-configuracao-e-hello-world/
