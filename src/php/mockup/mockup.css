@@ -1,0 +1,62 @@
+body {
+    font-family: 'Slabo 27px', serif;
+    display: flex;
+    flex-direction: column;
+}
+
+header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #663366;
+    color: white;
+    height: 3em;
+    padding: 0.2em;
+}
+
+nav {
+    height: 100%;
+    float: right;
+}
+
+img.logo_scouts {
+    height: 100%;
+    float: left;
+}
+
+span.logo_title {
+    vertical-align: middle;
+    font-size: 2.5em;
+    text-shadow: 0.1em 0.1em #442244;
+    font-weight: bold;
+}
+
+nav a {
+    text-decoration: none;
+    font-size: 1.7em;
+    color: lightgray;
+    margin-right: 1em;
+}
+
+nav a:hover {
+    color: lightgray;
+    text-shadow: 0.1em 0.1em #442244;
+}
+
+#content {
+    margin-top: 3em;
+    margin-bottom: 3em;
+    padding: 0.2em;
+}
+
+footer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: #442244;
+    color: lightgray;
+    height: 3em;
+    padding: 0.2em;
+}

@@ -1,0 +1,13 @@
+{
+    "require": {
+        "bcosca/fatfree-core": ">=3.6"
+    },
+    "autoload": {
+        "psr-4": {
+            "Controllers\\": "app/controllers/",
+            "Models\\": "app/models/",
+            "Views\\": "app/views/",
+            "":"app/"
+        }
+    }
+}
