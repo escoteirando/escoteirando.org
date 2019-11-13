@@ -1,0 +1,9 @@
+GET /api/escotistas/50442?filter[fields][codigoFoto]=true HTTP/1.1
+accept: application/json
+cache-control: no-cache
+authorization: q9yAbpHAjAsqsf7J8U9dhmuva8p7asafG3nqygYF9PBWi2d3B2OCLMoCXds2wgfg
+Host: mappa.escoteiros.org.br
+Connection: Keep-Alive
+Accept-Encoding: gzip
+User-Agent: okhttp/3.4.1
+

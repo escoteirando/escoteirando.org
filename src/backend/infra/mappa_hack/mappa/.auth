@@ -1,0 +1,34 @@
+{
+    "guionardo_": {
+        "authentication": "904QVxCGR0mLG6uDqWt7EOZLZZyfbaBRatKnoMefohwfkpPjc5jeuyUNAWED5t7H",
+        "userId": 50442,
+        "created": "2019-10-26T02:19:09.146Z",
+        "valid": "2019-11-09 02:19:09",
+        "escotista": {
+            "codigo": 50442,
+            "codigoAssociado": 850829,
+            "username": "Guionardo",
+            "nomeCompleto": "GuionardoFurlan",
+            "ativo": "S",
+            "codigoGrupo": 32,
+            "codigoRegiao": "SC",
+            "codigoFoto": null
+        }
+    },
+    "guionardo": {
+        "authentication": "WIi6s3ACcEedEKYo3XM9AXY8Ka2IqlINZYhNbqyMjnisGkBeQQ1GjqRzLAendd6B",
+        "userId": 50442,
+        "created": "2019-10-26T02:19:09.146Z",
+        "valid": "2019-12-09 02:19:09",
+        "escotista": {
+            "codigo": 50442,
+            "codigoAssociado": 850829,
+            "username": "Guionardo",
+            "nomeCompleto": "GuionardoFurlan",
+            "ativo": "S",
+            "codigoGrupo": 32,
+            "codigoRegiao": "SC",
+            "codigoFoto": null
+        }
+    }
+}

@@ -1,0 +1,22 @@
+GET /api/associados-assessores/850829?filter={%22include%22:%20%22assessor%22} HTTP/1.1
+accept: application/json
+cache-control: no-cache
+authorization: q9yAbpHAjAsqsf7J8U9dhmuva8p7asafG3nqygYF9PBWi2d3B2OCLMoCXds2wgfg
+Host: mappa.escoteiros.org.br
+Connection: Keep-Alive
+Accept-Encoding: gzip
+User-Agent: okhttp/3.4.1
+
+HTTP/1.1 200 OK
+Vary: Origin, Accept-Encoding
+Access-Control-Allow-Credentials: true
+X-XSS-Protection: 1; mode=block
+X-Frame-Options: DENY
+X-Download-Options: noopen
+X-Content-Type-Options: nosniff
+Content-Type: application/json; charset=utf-8
+Content-Length: 537
+ETag: W/"219-VXqjEL4LLZCwilQ9plHP8i0pwy8"
+Date: Sat, 26 Oct 2019 02:19:10 GMT
+
+{"codigoAssociado":850829,"codigoAssessor":618647,"aprovado":1,"dataAlteracao":"2019-08-14T00:00:00.000Z","assessor":{"codigo":618647,"nome":"CARLOS FABRICIO ZIEGLER","codigoFoto":null,"codigoEquipe":null,"username":651207,"numeroDigito":0,"dataNascimento":"Wed Jan 12 1977 00:00:00 GMT+0000 (UTC)","dataValidade":"2019-01-01T00:00:00.000Z","nomeAbreviado":"","sexo":"M","codigoRamo":2,"codigoCategoria":5,"codigoSegundaCategoria":0,"codigoTerceiraCategoria":0,"linhaFormacao":"Escotista","codigoRamoAdulto":2,"dataAcompanhamento":null}}

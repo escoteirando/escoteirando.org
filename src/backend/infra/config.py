@@ -11,6 +11,7 @@ class Config:
     DEBUG = eval(getenv('DEBUG').title())
     MONGODB_HOST = getenv('MONGODB_HOST')
     MONGODB_DB = getenv("MONGODB_DB")
+    CACHE = getenv("CACHE_REPOSITORY")
 
 
 class DevelopmentConfig(Config):

@@ -4,10 +4,16 @@ url = "https://pypi.org/simple"
 verify_ssl = true
 
 [dev-packages]
-setuptools = "*"
+pylint = "*"
 autopep8 = "*"
+rope = "*"
 
 [packages]
-flask = "*"
+requests = "*"
+progress = "*"
 pymongo = "*"
-python-dotenv = "*"
+json-datetime = "*"
+python-dateutil = "*"
+
+[requires]
+python_version = "3.6"

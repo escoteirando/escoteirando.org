@@ -1,0 +1,22 @@
+GET /api/grupos?filter={%22where%22:%20{%22codigo%22:%2032,%20%22codigoRegiao%22:%20%22SC%22}} HTTP/1.1
+accept: application/json
+cache-control: no-cache
+authorization: q9yAbpHAjAsqsf7J8U9dhmuva8p7asafG3nqygYF9PBWi2d3B2OCLMoCXds2wgfg
+Host: mappa.escoteiros.org.br
+Connection: Keep-Alive
+Accept-Encoding: gzip
+User-Agent: okhttp/3.4.1
+
+HTTP/1.1 200 OK
+Vary: Origin, Accept-Encoding
+Access-Control-Allow-Credentials: true
+X-XSS-Protection: 1; mode=block
+X-Frame-Options: DENY
+X-Download-Options: noopen
+X-Content-Type-Options: nosniff
+Content-Type: application/json; charset=utf-8
+Content-Length: 84
+ETag: W/"54-aWQn4djk3N5KQAOqWOqMF6qdqYc"
+Date: Sat, 26 Oct 2019 02:19:10 GMT
+
+[{"codigo":32,"codigoRegiao":"SC","nome":"LEÕES DE BLUMENAU","codigoModalidade":1}]
