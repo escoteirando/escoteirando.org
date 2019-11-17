@@ -6,13 +6,19 @@ from hashlib import md5
 from os import path
 
 import simplejson as json
+from dateutil.tz import tzutc
+from infra.log import getLogger
 from pymongo import MongoClient
 
-from dateutil.tz import tzutc
 UTC = tzutc()
+logger = getLogger("CachedRepository")
 
 
 class CacheRepository:
+    """ Cache persistence """
+
+    CACHE_FILE = 1
+    CACHE_MONGO = 2
 
     D0 = time.mktime(datetime(2019, 1, 1).timetuple())
 
@@ -24,15 +30,12 @@ class CacheRepository:
         self.source = source
         self.time_to_live = time_to_live
         self.ok = False
+        self.cache_type = 0
+
         if path.isdir(source):
-            self.readCache = self._fileReadCache
-            self.writeCache = self._fileWriteCache
-            self.purgeCache = self._filePurgeCache
+            self.cache_type = self.CACHE_FILE
             self.ok = True
-        else:
-            self.readCache = self._mongoReadCache
-            self.writeCache = self._mongoWriteCache
-            self.purgeCache = self._mongoPurgeCache
+        else:            
 
             regex = r"mongodb:\/\/(.*):(\d{4,5})\/(.*)\/(.*)"
             matches = re.finditer(regex, source, re.MULTILINE)
@@ -48,26 +51,40 @@ class CacheRepository:
                         self.client = MongoClient(mongouri)
                         self.collection = self.client[mongodb][mongocol]
                         self.ok = True
+                        self.cache_type = self.CACHE_MONGO
                         self.purgeCache()
                     except:
                         self.ok = False
 
-        if not self.ok:
-            self.purgeCache = self._errorMethod
-            self.readCache = self._errorMethod
-            self.writeCache = self._errorMethod
+        if self.ok:
+            logger.info(f"CachedRepository: {source}")
+        else:
+            logger.error(f"CachedRepository: {source} UNIDENTIFIED")
 
-    def _errorMethod(self):
-        pass
+    def _errorMethod(self):        
+        return None
 
     def readCache(self, key):
-        pass
+        """Reads contents from cache. Returns None if not exists or expired"""
+        if self.cache_type==self.CACHE_FILE:
+            return self._fileReadCache(key)
+        elif self.cache_type==self.CACHE_MONGO:
+            return self._mongoReadCache(key)
+        return self._errorMethod()
 
     def writeCache(self, key, content):
-        pass
+        if self.cache_type==self.CACHE_FILE:
+            return self._fileWriteCache(key,content)
+        elif self.cache_type==self.CACHE_MONGO:
+            return self._mongoWriteCache(key,content)
+        return self._errorMethod()
 
     def purgeCache(self):
-        pass
+        if self.cache_type==self.CACHE_FILE:
+            return self._filePurgeCache()
+        elif self.cache_type==self.CACHE_MONGO:
+            return self._mongoPurgeCache()
+        return self._errorMethod()
 
     def parseKey(self, key):
         if isinstance(key, dict):

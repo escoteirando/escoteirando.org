@@ -6,7 +6,7 @@ import urllib.parse
 from datetime import datetime, timedelta
 from io import BytesIO, StringIO
 from time import sleep
-from .services import Cache, get,
+from .services import Cache, get
 
 import requests
 from progress.spinner import PixelSpinner

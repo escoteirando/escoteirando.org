@@ -6,8 +6,11 @@ verify_ssl = true
 [dev-packages]
 setuptools = "*"
 autopep8 = "*"
+pylint = "*"
 
 [packages]
 flask = "*"
 pymongo = "*"
 python-dotenv = "*"
+simplejson = "*"
+python-dateutil = "*"

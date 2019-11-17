@@ -9,9 +9,10 @@ class Config:
         'SECRET_KEY') or 'au0dj0ajsd0j30d9j0a9sjd0219jd0a9sjd0931jd09ajd09'
     APP_PORT = int(getenv('APP_PORT'))
     DEBUG = eval(getenv('DEBUG').title())
-    MONGODB_HOST = getenv('MONGODB_HOST')
+    MONGODB_URL = getenv('MONGODB_URL')    
     MONGODB_DB = getenv("MONGODB_DB")
-    CACHE = getenv("CACHE_REPOSITORY")
+    CACHE = getenv("CACHE_REPOSITORY","")
+    MAPPA_BASE_URL = "http://mappa.escoteiros.org.br"
 
 
 class DevelopmentConfig(Config):
