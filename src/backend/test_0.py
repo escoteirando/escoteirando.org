@@ -1,10 +1,4 @@
-from domain.models.user import User
+import app
+from tests.domains.users import Test01
 
-ud = {
-    "id": 0,
-    "user_name": "Guionardo"
-}
-
-user = User(ud)
-
-print(user)
+Test01()

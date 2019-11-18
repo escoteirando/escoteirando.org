@@ -9,9 +9,9 @@ class Config:
         'SECRET_KEY') or 'au0dj0ajsd0j30d9j0a9sjd0219jd0a9sjd0931jd09ajd09'
     APP_PORT = int(getenv('APP_PORT'))
     DEBUG = eval(getenv('DEBUG').title())
-    MONGODB_URL = getenv('MONGODB_URL')    
+    MONGODB_URL = getenv('MONGODB_URL')
     MONGODB_DB = getenv("MONGODB_DB")
-    CACHE = getenv("CACHE_REPOSITORY","")
+    CACHE_REPOSITORY = getenv("CACHE_REPOSITORY")
     MAPPA_BASE_URL = "http://mappa.escoteiros.org.br"
 
 
@@ -24,10 +24,14 @@ class DefaultConfig(Config):
     FLASK_ENV = 'production'
 
 
+class TestConfig(Config):
+    FLASK_ENV = 'testing'
+
+
 configs = {
     'development': DevelopmentConfig,
     'default': DefaultConfig,
-    'testing': DevelopmentConfig
+    'testing': TestConfig
 }
 
 config = configs[getenv('FLASK_ENV', 'development')]
