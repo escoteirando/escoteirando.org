@@ -1,15 +1,12 @@
 from . import BaseModel
-from infra.login import login_manager
-from flask_login import UserMixin
-from domain.repositories import UsersRepository
-class User(BaseModel,UserMixin):
+
+
+class User(BaseModel):
 
     def __init__(self, fromDict=None):
-        self.id = None
         self.user_name = None
+        self.user_name_mappa = None
+        self.password = None
+        self.full_name = None
+        self.codigo_associado = None
         super().__init__(fromDict)
-        
-
-@login_manager.user_loader
-def load_user(user_id):
-    return UsersRepository().get(user_id)

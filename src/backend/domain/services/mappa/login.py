@@ -7,7 +7,7 @@ from infra.config import config
 from infra.log import getLogger
 
 logger = getLogger("login")
-_cache = CacheRepository(config.CACHE)
+_cache = CacheRepository(config.CACHE_REPOSITORY)
 
 
 def login(username, password):
@@ -17,7 +17,7 @@ def login(username, password):
         auth = Authentication(cachedLogin)
         if auth.valid > datetime.now():
             logger.info(f"login({username}) FROM CACHE")
-            setAuth(auth.id, auth.valid)
+            setAuth(auth.id, auth.valid, auth.userId)
 
     if authIsValid():
         logger.info(f"login({username}) PRE-AUTHORIZED OK")
@@ -31,7 +31,7 @@ def login(username, password):
 
     if login_response:
         auth = Authentication(login_response)
-        setAuth(auth.id, auth.valid)
+        setAuth(auth.id, auth.valid, auth.userId)
         _cache.writeCache(keylogin, auth.__dict__)
         logger.info(f'login({username}) POST-AUTHORIZED OK')
         return True

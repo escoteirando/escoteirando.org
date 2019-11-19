@@ -11,18 +11,25 @@ from infra.log import getLogger
 
 _authorization = None
 _validUntil = None
+_userId = None
 _baseURL = config.MAPPA_BASE_URL
-_cache = CacheRepository(config.CACHE)
+_cache = CacheRepository(config.CACHE_REPOSITORY)
 logger = getLogger('request')
 
 
-
-def setAuth(authorization: str, validUntil: datetime):
+def setAuth(authorization: str, validUntil: datetime, userId):
     """ Defines authorization for queries """
-    global _authorization, _validUntil
+    global _authorization, _validUntil, _userId
     _authorization = authorization
-    _validUntil = validUntil    
-    logger.info(f"setAuth({authorization},{validUntil})")
+    _validUntil = validUntil
+    _userId = userId
+    logger.info(f"setAuth({authorization},{validUntil},{userId})")
+
+
+def getAuth():
+    global _userId, _authorization
+    return {"authorization": _authorization,
+            "userid": _userId}
 
 
 def authIsValid():
@@ -42,10 +49,10 @@ def query(url: str, params: dict = None, ignoreCache: bool = False) -> dict:
     }
 
     response = None
-    urlkey = md5(url+str(params)).hexdigest()
+    urlkey = md5(f"{url}:{params}".encode('utf-8')).hexdigest()
 
     if not ignoreCache:
-        cache = CacheRepository(config.CACHE)
+        cache = CacheRepository(config.CACHE_REPOSITORY)
         response = cache.readCache(urlkey)
         if response is not None:
             logger.info(f"query({url},{params}) -> [cached] {response}")

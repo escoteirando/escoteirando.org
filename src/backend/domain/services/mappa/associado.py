@@ -1,4 +1,4 @@
-from models.mappa.associado_response import Associado
+from domain.models.mappa.associado_response import Associado
 
 from .request import query
 
@@ -7,7 +7,7 @@ def associado(codigoAssociado):
     response = query(f'/api/associados/{codigoAssociado}')
     if response is None:
         return None
-    return Associado(response)
+    return Associado(response.content)
 
 '''
 GET /api/associados/850829 HTTP/1.1

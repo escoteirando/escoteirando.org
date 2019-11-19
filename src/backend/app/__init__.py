@@ -5,12 +5,12 @@ import dotenv
 from flask import Flask
 
 from app.api.controllers import api
+from app.auth.controllers import auth
 from app.main.controllers import main
 from app.mappa.controllers import mappa
 from infra.config import configs
 from infra.log import logging
 from infra.tools.networking import test_tcp_port
-from infra.login import login_manager
 
 logging.info("app init")
 
@@ -22,6 +22,7 @@ def create_app(config_name):
     app.register_blueprint(main, url_prefix='/')
     app.register_blueprint(mappa, url_prefix='/mappa')
     app.register_blueprint(api, url_prefix='/api')
+    app.register_blueprint(auth, url_prefix='/auth')    
     return app
 
 
@@ -38,4 +39,3 @@ if isfile(_ENV_FILE):
 
 # instancia nossa função factory criada anteriormente
 app = create_app(getenv('FLASK_ENV') or 'default')
-login_manager.init_app(app,)

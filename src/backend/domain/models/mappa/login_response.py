@@ -19,7 +19,7 @@ class Authentication(BaseModel):
         self.created = ''
         self.userId = None
 
-        super().__init__(fromDict)
+        super().__init__(fromDict.content)
 
         self.valid = datetime.strptime(
             self.created[0:19], '%Y-%m-%dT%H:%M:%S')+timedelta(seconds=self.ttl)

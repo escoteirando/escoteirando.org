@@ -1,12 +1,14 @@
 from .request import query
-from models.mappa.escotista_response import Escotista
+from domain.models.mappa.escotista_response import Escotista
 
-def escotista(userId):
+
+def escotista(userId) -> Escotista:
     response = query(f'/api/escotistas/{userId}')
     if response is None:
         return None
-    
-    return Escotista(response)
+
+    return Escotista(response.content)
+
 
 '''
 GET /api/escotistas/50442 HTTP/1.1
