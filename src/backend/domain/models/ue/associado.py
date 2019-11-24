@@ -3,8 +3,10 @@ from mongoengine import (DateField, Document, IntField, ReferenceField,
 
 from .equipe import Equipe
 
+from ..document_base_model import DocumentBaseModel
 
-class Associado(Document):
+
+class Associado(Document, DocumentBaseModel):
     '''
     Associado
     {
@@ -43,3 +45,6 @@ class Associado(Document):
             "tp_sexo": self.tp_sexo,
             "equipe": None if self.equipe is None else self.equipe.__dict__()
         }
+    
+    def _after_from_dict(self):
+        self.equipe = Equipe().from_dict(self.equipe)

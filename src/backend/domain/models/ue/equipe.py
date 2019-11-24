@@ -1,7 +1,9 @@
 from mongoengine import Document, IntField
 
+from ..document_base_model import DocumentBaseModel
 
-class Equipe(Document):
+
+class Equipe(Document, DocumentBaseModel):
     codigo_equipe = IntField()
     # TODO: Itentificar modelagem da equipe
 

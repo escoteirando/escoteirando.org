@@ -51,9 +51,7 @@ class User(db.Document, DocumentBaseModel):
         }
 
     def _after_from_dict(self):
-        associado = Associado().from_dict(user.associado)
-        associado.
-        user.associado = Associado()
+        self.associado = Associado().from_dict(self.associado)
 
     @classmethod
     def from_dict(fromDict: dict) -> User:
