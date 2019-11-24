@@ -22,7 +22,7 @@ def test_tcp_port(host: str, port: int, retries: int = 1) -> bool:
             if retry:
                 logger.info(f"Connection OK on TCP {host}:{port} after retry")
         except Exception as e:
-            logger.error(f"Error connecting TCP {host}:{port} = {str(e)}")
+            logger.exception("Error connecting TCP %s:%s = %s", host, port, e)
             retries = -1
             if retries > 0:
                 logger.warning("Retrying...")
@@ -41,7 +41,7 @@ def test_mongodb(connectionstring: str) -> bool:
         port = uri['nodelist'][0][1]
         return test_tcp_port(host, port)
     except Exception as e:
-        logger.error(
-            f"Error parsing connection string '{connectionstring}: {str(e)}")
+        logger.exception(
+            "Error parsing connection string %s (%s)", connectionstring, e)
 
     return False

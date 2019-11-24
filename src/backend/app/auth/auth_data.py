@@ -1,11 +1,12 @@
 import base64
-from json import loads, dumps
+from json import dumps, loads
 
 from flask import session
 
 from domain.models.user import User
 
-SESSION_USER_DATA = str(base64.b64encode("userdata".encode('utf-8')))
+SESSION_USER_DATA = base64.b64encode(
+    "userdata".encode('utf-8')).decode('utf-8')
 
 
 class LoggedUser:
@@ -13,7 +14,10 @@ class LoggedUser:
 
     @classmethod
     def getUser(cls) -> User:
-        if cls._user is None and session[SESSION_USER_DATA]:
+        print(f"getUser [{SESSION_USER_DATA}]")
+        print(str(cls._user))
+        print(session)
+        if cls._user is None and SESSION_USER_DATA in session:
             cls._user = User(loads(session[SESSION_USER_DATA]))
 
         return cls._user

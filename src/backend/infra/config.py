@@ -2,6 +2,18 @@
 
 # Python
 from os import getenv
+from os.path import join, dirname, isfile, realpath
+import dotenv
+
+# a partir do arquivo atual adicione ao path o arquivo .env
+_ENV_FILE = join(dirname(__file__), '.env')
+
+# existindo o arquivo faça a leitura do arquivo através da função load_dotenv
+if not isfile(_ENV_FILE):
+    _ENV_FILE = realpath(join(dirname(__file__), '..', '.env'))
+
+if isfile(_ENV_FILE):
+    dotenv.load_dotenv(dotenv_path=_ENV_FILE)
 
 
 class Config:
@@ -13,6 +25,7 @@ class Config:
     MONGODB_DB = getenv("MONGODB_DB")
     CACHE_REPOSITORY = getenv("CACHE_REPOSITORY")
     MAPPA_BASE_URL = "http://mappa.escoteiros.org.br"
+    MAPPA_ENABLED = getenv('MAPPA_ENABLED') == 'True'
 
 
 class DevelopmentConfig(Config):

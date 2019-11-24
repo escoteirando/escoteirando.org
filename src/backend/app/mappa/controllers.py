@@ -2,7 +2,7 @@ from flask import Blueprint
 from flask_api import status
 
 from ..auth import SESSION_USER_DATA, LoggedUser
-from ..tools import response, request_values, request_value
+from ..tools import response, request_values
 from domain.services.mappa import login
 from domain.services.mappa.request import authIsValid, post, setAuth, _userId, getAuth
 from domain.services.mappa.escotista import escotista

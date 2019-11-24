@@ -7,6 +7,9 @@ verify_ssl = true
 setuptools = "*"
 autopep8 = "*"
 pylint = "*"
+flake8 = "*"
+rope = "*"
+coverage = "*"
 
 [packages]
 flask = "*"
@@ -16,3 +19,5 @@ simplejson = "*"
 python-dateutil = "*"
 flask-api = "*"
 requests = "*"
+mongoengine = "*"
+flask-mongoengine = "*"

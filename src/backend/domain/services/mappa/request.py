@@ -5,7 +5,7 @@ from time import sleep
 
 import requests
 
-from domain.repositories.cacherepository import CacheRepository
+from domain.repositories.cache_repository import CacheRepository
 from infra.config import config
 from infra.log import getLogger
 

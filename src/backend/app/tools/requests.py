@@ -11,16 +11,14 @@ def response(data: dict, status: int = status.HTTP_200_OK) -> Response:
     return Response(dumps(data), status=status, mimetype="application/json")
 
 
-def request_value(name: str):
-    if name in request.form:
-        return request.form[name]
-    if name in request.values:
-        return request.values[name]
-    return None
-
-
-def request_values(names: list):
+def request_values(*names):
     values = []
     for name in names:
-        values.append(request_value(name))
+        if name in request.form:
+            values.append(request.form[name])
+        elif name in request.values:
+            values.append(request.values[name])
+        else:
+            values.append(None)
+
     return values

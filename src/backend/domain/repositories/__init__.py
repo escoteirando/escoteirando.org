@@ -1,4 +1,4 @@
 # Domain repositories
 
-from .cacherepository import CacheRepository, CachedItem
-from .users_repository import UsersRepository
+from .cache_repository import CacheRepository, CachedItem
+from .user_repository import UserRepository

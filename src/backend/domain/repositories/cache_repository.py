@@ -3,12 +3,13 @@ import re
 import time
 from datetime import datetime, timedelta
 from hashlib import md5
-from os import path
+from os import path, unlink
 
 import simplejson as json
 from dateutil.tz import tzutc
-from infra.log import getLogger
 from pymongo import MongoClient
+
+from infra.log import getLogger
 
 UTC = tzutc()
 logger = getLogger("CachedRepository")
@@ -35,7 +36,7 @@ class CacheRepository:
         if path.isdir(source):
             self.cache_type = self.CACHE_FILE
             self.ok = True
-        else:            
+        else:
 
             regex = r"mongodb:\/\/(.*):(\d{4,5})\/(.*)\/(.*)"
             matches = re.finditer(regex, source, re.MULTILINE)
@@ -61,28 +62,28 @@ class CacheRepository:
         else:
             logger.error(f"CachedRepository: {source} UNIDENTIFIED")
 
-    def _errorMethod(self):        
+    def _errorMethod(self):
         return None
 
     def readCache(self, key):
         """Reads contents from cache. Returns None if not exists or expired"""
-        if self.cache_type==self.CACHE_FILE:
+        if self.cache_type == self.CACHE_FILE:
             return self._fileReadCache(key)
-        elif self.cache_type==self.CACHE_MONGO:
+        elif self.cache_type == self.CACHE_MONGO:
             return self._mongoReadCache(key)
         return self._errorMethod()
 
     def writeCache(self, key, content):
-        if self.cache_type==self.CACHE_FILE:
-            return self._fileWriteCache(key,content)
-        elif self.cache_type==self.CACHE_MONGO:
-            return self._mongoWriteCache(key,content)
+        if self.cache_type == self.CACHE_FILE:
+            return self._fileWriteCache(key, content)
+        elif self.cache_type == self.CACHE_MONGO:
+            return self._mongoWriteCache(key, content)
         return self._errorMethod()
 
     def purgeCache(self):
-        if self.cache_type==self.CACHE_FILE:
+        if self.cache_type == self.CACHE_FILE:
             return self._filePurgeCache()
-        elif self.cache_type==self.CACHE_MONGO:
+        elif self.cache_type == self.CACHE_MONGO:
             return self._mongoPurgeCache()
         return self._errorMethod()
 
@@ -131,7 +132,7 @@ class CacheRepository:
                 life = int((time.mktime(datetime.now().timetuple())-mtime)/60)
                 if life < self.time_to_live:
                     try:
-                        return CachedItem(fcache)                        
+                        return CachedItem(fcache)
                     except:
                         pass
                 else:

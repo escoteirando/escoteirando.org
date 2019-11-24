@@ -1,12 +1,10 @@
 """ app.auth.controllers """
 
-from json import dumps
-
 from flask import Blueprint, Response, request, session
 from flask_api import status
 from werkzeug.security import check_password_hash, generate_password_hash
 
-from app.tools import request_value, request_values, response
+from app.tools import request_values, response
 from domain.models.user import User
 from domain.repositories.users_repository import UsersRepository
 
@@ -14,17 +12,24 @@ from . import SESSION_USER_DATA, LoggedUser
 
 auth = Blueprint('auth', __name__)
 
+
 @auth.route('/')
 def index():
-    return "AUTH"
+    return response("AUTH")
+
+
+@auth.route('/logout', methods=['GET'])
+def logout():
+    LoggedUser.logoutUser()
+    return response('User logout')
 
 
 @auth.route('/login', methods=['POST'])
 def login():
-    [username, password] = request_values(['username', 'password'])
+    [username, password] = request_values('username', 'password')
 
     if not username:
-        return response( "username required", status=status.HTTP_203_NON_AUTHORITATIVE_INFORMATION)
+        return response("username required", status=status.HTTP_203_NON_AUTHORITATIVE_INFORMATION)
     if not password:
         return response("password required", status=status.HTTP_203_NON_AUTHORITATIVE_INFORMATION)
 
@@ -36,20 +41,20 @@ def login():
         user_error = not check_password_hash(user.password, password)
 
     if user_error:
-        return response( "username or password error", status=status.HTTP_203_NON_AUTHORITATIVE_INFORMATION)
+        return response("username or password error", status=status.HTTP_203_NON_AUTHORITATIVE_INFORMATION)
 
-    LoggedUser.setUser(user)    
+    LoggedUser.setUser(user)
     return response("user logged in")
 
 
 @auth.before_request
 def _load_logged_in_user():
-    LoggedUser.getUser()    
+    LoggedUser.getUser()
 
 
 @auth.route('/current_user')
 def current_user():
-    if not LoggedUser.getUser():    
+    if not LoggedUser.getUser():
         return response({"user": None}, status=status.HTTP_200_OK)
 
     return response({"user": LoggedUser.getUser().toDict()}, status=status.HTTP_200_OK)
@@ -58,7 +63,7 @@ def current_user():
 @auth.route('/register', methods=['POST'])
 def register_normal():
     [username, password, username_mappa] = request_values(
-        ['username', 'password', 'username_mappa'])
+        'username', 'password', 'username_mappa')
     if not username:
         return response({"message": "username required"}, status=status.HTTP_203_NON_AUTHORITATIVE_INFORMATION)
     if not password:

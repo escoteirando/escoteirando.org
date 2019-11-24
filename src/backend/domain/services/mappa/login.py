@@ -1,7 +1,7 @@
 from datetime import datetime
 
 from domain.models.mappa.login_response import Authentication
-from domain.repositories.cacherepository import CacheRepository
+from domain.repositories.cache_repository import CacheRepository
 from domain.services.mappa.request import authIsValid, post, setAuth
 from infra.config import config
 from infra.log import getLogger
