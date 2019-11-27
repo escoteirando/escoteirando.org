@@ -1,14 +1,25 @@
-from mongoengine import (DateField, Document, IntField, ReferenceField,
-                         StringField)
-
-from .equipe import Equipe
-
+from mongoengine import DateField, IntField, ReferenceField, StringField
+from flask_mongoengine import Document
 from ..document_base_model import DocumentBaseModel
+from .equipe import Equipe
 
 
 class Associado(Document, DocumentBaseModel):
     '''
     Associado
+
+    codigo: int (*)
+
+    ds_nome: str (*)
+
+    nr_registro: int (*)
+
+    dt_nascimento: datetime
+
+    tp_sexo: str
+
+    equipe: Equipe
+
     {
     "codigo":850829,
     "nome":"GUIONARDO FURLAN",
@@ -45,6 +56,6 @@ class Associado(Document, DocumentBaseModel):
             "tp_sexo": self.tp_sexo,
             "equipe": None if self.equipe is None else self.equipe.__dict__()
         }
-    
+
     def _after_from_dict(self):
         self.equipe = Equipe().from_dict(self.equipe)

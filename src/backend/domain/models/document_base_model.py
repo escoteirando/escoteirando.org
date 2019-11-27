@@ -1,3 +1,8 @@
+from flask_mongoengine import MongoEngine
+
+db = MongoEngine()
+
+
 class DocumentBaseModel:
 
     def validate_dict(self, dict_value: dict, fields: list) -> bool:
@@ -12,7 +17,13 @@ class DocumentBaseModel:
             return True
         return False
 
-    def from_dict(self, dict_value: dict, fields: list) -> DocumentBaseModel:
+    def getDict(self, value):
+        """
+        Get dict from value or None if empty or not iterable
+        """
+        return None if value is None else dict(value)
+
+    def from_dict(self, dict_value: dict, fields: list):
         for k, v in dict_value:
             setattr(self, k, v)
         self._after_from_dict()

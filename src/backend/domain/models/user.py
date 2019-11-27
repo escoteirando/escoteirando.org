@@ -1,12 +1,11 @@
-from flask_mongoengine import MongoEngine
 from mongoengine import IntField, LazyReferenceField, StringField
+from flask_mongoengine import Document
 from werkzeug.security import generate_password_hash
 
 from domain.enums import USER_LEVELS
 from domain.models.ue.associado import Associado
-from .document_base_model import DocumentBaseModel
 
-db = MongoEngine()
+from .document_base_model import DocumentBaseModel
 
 
 def check_admin():
@@ -21,8 +20,12 @@ def check_admin():
     for ass in Associado.objects(codigo=850829):
         assoc = ass
     if not assoc:
-        assoc = Associado(codigo=850829, ds_nome="GUIONARDO FURLAN",
-                          nr_registro=1, dt_nascimento="1977-02-05", tp_sexo="M")
+        assoc = Associado(
+            codigo=850829,
+            ds_nome="GUIONARDO FURLAN",
+            nr_registro=1,
+            dt_nascimento="1977-02-05",
+            tp_sexo="M")
         assoc.save()
 
     _admin.update(set__associado=assoc)
@@ -30,11 +33,17 @@ def check_admin():
     del(_admin)
 
 
-class User(db.Document, DocumentBaseModel):
+class User(Document, DocumentBaseModel):
     """
     User class
 
-    user_name = mappa 
+    user_name = mappa
+
+    associado (Associado)
+
+    password
+
+    level
     """
 
     user_name = StringField(unique=True)
@@ -45,25 +54,10 @@ class User(db.Document, DocumentBaseModel):
     def __dict__(self):
         return{
             "user_name": self.user_name,
-            "associado": None if self.associado is None else dict(self.associado),
+            "associado": self.getDict(self.associado),
             "password": self.password,
             "level": self.level
         }
 
     def _after_from_dict(self):
         self.associado = Associado().from_dict(self.associado)
-
-    @classmethod
-    def from_dict(fromDict: dict) -> User:
-
-        if not isinstance(fromDict, dict):
-            return None
-
-        user = User()
-        if not user.validate_dict(fromDict):
-            return None
-        user.user_name = fromDict['user_name']
-        user.password = fromDict['password']
-        user.level = fromDict['level']
-        user.associado = Associado.from_dict(fromDict['associado'])
-        return user

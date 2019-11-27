@@ -6,7 +6,7 @@ from werkzeug.security import check_password_hash, generate_password_hash
 
 from app.tools import request_values, response
 from domain.models.user import User
-from domain.repositories.users_repository import UsersRepository
+from domain.repositories import UsersRepository
 
 from . import SESSION_USER_DATA, LoggedUser
 

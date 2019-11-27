@@ -113,7 +113,7 @@ class CacheRepository:
             if life > self.time_to_live:
                 try:
                     unlink(f)
-                except:
+                except OSError:
                     pass
 
     def _mongoPurgeCache(self):
@@ -131,14 +131,12 @@ class CacheRepository:
                 mtime = path.getmtime(fcache)
                 life = int((time.mktime(datetime.now().timetuple())-mtime)/60)
                 if life < self.time_to_live:
-                    try:
-                        return CachedItem(fcache)
-                    except:
-                        pass
+                    return CachedItem(file=fcache)
+
                 else:
                     try:
                         unlink(fcache)
-                    except:
+                    except OSError:
                         pass
         return None
 
@@ -146,7 +144,7 @@ class CacheRepository:
         try:
             cached = self.collection.find_one({'_id': self.parseKey(key)})
             if cached:
-                cached = CachedItem(cached)
+                cached = CachedItem(fromObject=cached)
                 return cached
 
         except Exception as e:
@@ -169,51 +167,43 @@ class CacheRepository:
 
     def _mongoWriteCache(self, key, content):
         try:
-            cached = CachedItem(self.parseKey(key), content)
-            self.collection.update(spec={"_id": cached.key},
-                                   document={
+            cached = CachedItem(key=self.parseKey(key), content=content)
+            ret = self.collection.update(spec={"_id": cached.key},
+                                         document={
                 "_id": cached.key,
                 "content": cached.content,
                 "creationTime": cached.creationTime
             }, upsert=True)
+            return ret['nModified'] > 0 or ret['upserted']
         except Exception as e:
             print(str(e))
+        return False
 
 
 class CachedItem:
 
-    def __init__(self, key_or_file, content=None, creationTime=None):
-        if isinstance(key_or_file, str):
-            if path.isfile(key_or_file):
-                # CachedItem from file
-                self.key = path.basename(key_or_file)
-                with open(key_or_file, 'r') as f:
-                    self.content = f.read()
-                    try:
-                        j = json.loads(self.content)
-                        self.content = j
-                    except:
-                        pass
+    key: str = None
+    content: object = None
+    creationTime: float = None
 
-                self.creationTime = path.getmtime(key_or_file)
-                return
-            elif content:
-                # CachedItem from content
-                self.key = key_or_file
-                self.content = content
-                if not isinstance(creationTime, float):
-                    creationTime = time.mktime(datetime.now().timetuple())
-                self.creationTime = creationTime
-                return
-            else:
-                # Try parse json string
-                pass
-        elif isinstance(key_or_file, dict):
+    def __init__(self, **kvargs):
+        """ file (str)= File name
+
+        content (serializable object)
+
+        creationTime (DateTime or float timestamp)
+
+        fromObject (from another CacheItem or dict)
+        """
+
+        if 'fromObject' in kvargs:
             # Get data from mongo
-            if '_id' in key_or_file and 'content' in key_or_file and 'creationTime' in key_or_file:
-                self.key = key_or_file['_id']
-                self.content = key_or_file['content']
-                self.creationTime = key_or_file['creationTime']
+            keys = ['_id', 'content', 'creationTime']
+            obj = kvargs['fromObject']
+            if len([k for k in obj if k in keys]) == 3:
+                self.key = obj['_id']
+                self.content = obj['content']
+                self.creationTime = obj['creationTime']
                 try:
                     j = json.loads(self.content)
                     self.content = j
@@ -221,12 +211,49 @@ class CachedItem:
                     pass
                 return
 
-        self.key = key_or_file
-        self.content = content
-        self.creationTime = creationTime
+        if 'file' in kvargs and isinstance(kvargs['file'], str):
+            # CachedItem from file
+            file = kvargs['file']
+            if path.isfile(file):
+                self.key = path.basename(file)
+                with open(file, 'r') as f:
+                    self.content = f.read()
+                    try:
+                        j = json.loads(self.content)
+                        self.content = j
+                    except:
+                        pass
+                self.creationTime = path.getmtime(file)
+                return
+
+        if 'key' in kvargs and kvargs['key']:
+            self.key = str(kvargs['key'])
+
+        if 'content' in kvargs and kvargs['content']:
+            self.content = kvargs['content']
+
+        if 'creationTime' in kvargs:
+            creationTime = kvargs['creationTime']
+            if isinstance(creationTime, datetime):
+                self.creationTime = time.mktime(creationTime.timetuple())
+            elif isinstance(creationTime, float):
+                self.creationTime = creationTime
+
+        else:
+            self.creationTime = time.mktime(datetime.now().timetuple())
+
+    def __dict__(self):
+        return {
+            'key': self.key,
+            'content': self.content,
+            'creationTime': self.creationTime
+        }
 
     def __repr__(self):
         return str(self.__class__)+" "+str(self.__dict__)
+
+    def __str__(self):
+        return repr(self)
 
 
 def serialize_date(dt):

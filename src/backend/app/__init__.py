@@ -1,17 +1,16 @@
 from os import getenv
-from os.path import dirname, isfile, join, realpath
 
-
-from flask import Flask, request
+from flask import Flask
 from flask_mongoengine import MongoEngine
 from pymongo import uri_parser
+
 from app.api.controllers import api
 from app.auth.controllers import auth
 from app.main.controllers import main
 from app.mappa.controllers import mappa
 from infra.config import config
 from infra.log import getLogger
-from infra.tools.networking import test_mongodb, test_tcp_port
+from infra.tools.networking import test_mongodb
 
 logger = getLogger("app")
 
@@ -54,8 +53,3 @@ def create_app(config_name):
 
 # instancia nossa função factory criada anteriormente
 app = create_app(getenv('FLASK_ENV') or 'development')
-
-
-# @app.before_request
-# def global_before_request():
-#app.logger.info("Global before request")
