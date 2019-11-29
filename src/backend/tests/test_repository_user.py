@@ -1,9 +1,8 @@
 import unittest
-from datetime import datetime
 
 from domain.models import User
 from domain.models.ue.associado import Associado
-from domain.repositories import UserRepository, UERepository
+from domain.repositories import UERepository, UserRepository
 
 
 class TestUserRepository(unittest.TestCase):

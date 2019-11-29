@@ -4,7 +4,7 @@ from .request import query
 
 
 def progressoes():
-    #TODO: Verificar o parâmetro de codigoCaminho para outras seções além de lobinho
+    # TODO: Verificar o parâmetro de codigoCaminho para outras seções além de lobinho
     filter = {
         "filter": {
             "where": {

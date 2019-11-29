@@ -9,6 +9,8 @@ from domain.services.mappa.escotista import escotista
 from domain.services.mappa.associado import associado
 from domain.repositories.users_repository import UsersRepository
 
+# TODO: REMOVE REPOSITORY FROM CONTROLLER
+
 mappa = Blueprint('mappa', __name__)
 
 

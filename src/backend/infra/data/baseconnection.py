@@ -1,7 +1,13 @@
-from flask_mongoengine import MongoEngine, create_connections
-from mongoengine.connection import get_connection, _connections
+from logging import Logger
+
+from flask_mongoengine import create_connections
+from mongoengine.connection import _connections
 from pymongo.uri_parser import parse_uri
+
 from infra.config import config
+from infra.log import getLogger
+
+logger = getLogger('mongodb')
 
 
 class BaseConnection:
@@ -15,3 +21,7 @@ class BaseConnection:
                 "port": ms['nodelist'][0][1]
             }
             create_connections(mongo_settings)
+
+    @property
+    def logger(self) -> Logger:
+        return logger

@@ -1,16 +1,14 @@
 """ app.auth.controllers """
 
-from flask import Blueprint, Response, request, session
+from flask import Blueprint
 from flask_api import status
-from werkzeug.security import check_password_hash, generate_password_hash
+from werkzeug.security import check_password_hash
 
 from app.tools import request_values, response
-from domain.models.user import User
-from domain.repositories import UsersRepository
-
-from . import SESSION_USER_DATA, LoggedUser
+from domain.services.user_service import UserService
 
 auth = Blueprint('auth', __name__)
+service = UserService()
 
 
 @auth.route('/')
@@ -20,7 +18,7 @@ def index():
 
 @auth.route('/logout', methods=['GET'])
 def logout():
-    LoggedUser.logoutUser()
+    service.logout()
     return response('User logout')
 
 
@@ -29,35 +27,39 @@ def login():
     [username, password] = request_values('username', 'password')
 
     if not username:
-        return response("username required", status=status.HTTP_203_NON_AUTHORITATIVE_INFORMATION)
+        return response("username required",
+                        status=status.HTTP_203_NON_AUTHORITATIVE_INFORMATION)
     if not password:
-        return response("password required", status=status.HTTP_203_NON_AUTHORITATIVE_INFORMATION)
+        return response("password required",
+                        status=status.HTTP_203_NON_AUTHORITATIVE_INFORMATION)
 
-    user_repository = UsersRepository()
-    user = user_repository.get(username)
+    user = service.get_user(username)
 
     user_error = user is None
     if not user_error:
         user_error = not check_password_hash(user.password, password)
 
     if user_error:
-        return response("username or password error", status=status.HTTP_203_NON_AUTHORITATIVE_INFORMATION)
+        return response("username or password error",
+                        status=status.HTTP_203_NON_AUTHORITATIVE_INFORMATION)
 
-    LoggedUser.setUser(user)
+    service.set_logged_user(user)
     return response("user logged in")
 
 
 @auth.before_request
 def _load_logged_in_user():
-    LoggedUser.getUser()
+    service.get_logged_user()
 
 
 @auth.route('/current_user')
 def current_user():
-    if not LoggedUser.getUser():
-        return response({"user": None}, status=status.HTTP_200_OK)
+    cur_user = service.get_logged_user()
+    if cur_user:
+        cur_user = cur_user.user_name
 
-    return response({"user": LoggedUser.getUser().toDict()}, status=status.HTTP_200_OK)
+    return response({"user": cur_user},
+                    status=status.HTTP_200_OK)
 
 
 @auth.route('/register', methods=['POST'])
@@ -65,22 +67,24 @@ def register_normal():
     [username, password, username_mappa] = request_values(
         'username', 'password', 'username_mappa')
     if not username:
-        return response({"message": "username required"}, status=status.HTTP_203_NON_AUTHORITATIVE_INFORMATION)
+        return response("username required",
+                        status=status.HTTP_203_NON_AUTHORITATIVE_INFORMATION)
     if not password:
-        return response({"message": "password required"}, status=status.HTTP_203_NON_AUTHORITATIVE_INFORMATION)
+        return response("password required",
+                        status=status.HTTP_203_NON_AUTHORITATIVE_INFORMATION)
     if not username_mappa:
-        return response({'message': 'username_mappa required'}, status=status.HTTP_203_NON_AUTHORITATIVE_INFORMATION)
+        return response('username_mappa required',
+                        status=status.HTTP_203_NON_AUTHORITATIVE_INFORMATION)
 
-    user_repository = UsersRepository()
-    user = user_repository.get(username) or user_repository.get(
-        username_mappa, 'user_name_mappa')
+    user = service.get_user(username)
+
     if user:
-        return response({"message": "user preexistent"}, status=status.HTTP_406_NOT_ACCEPTABLE)
+        return response("user preexistent",
+                        status=status.HTTP_406_NOT_ACCEPTABLE)
 
-    user = User({'user_name': username,
-                 'user_name_mappa': username_mappa,
-                 'password': generate_password_hash(password)})
-    if user_repository.put(user):
-        return response({'message': 'user created'}, status=status.HTTP_201_CREATED)
+    success, message = service.create_user(username, password)
 
-    return response({'message': 'error on create user'}, status=status.HTTP_409_CONFLICT)
+    if success:
+        return response(message, status.HTTP_201_CREATED)
+
+    return response(message, status.HTTP_409_CONFLICT)

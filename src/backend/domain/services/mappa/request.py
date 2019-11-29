@@ -86,7 +86,7 @@ def query(url: str, params: dict = None, ignoreCache: bool = False) -> dict:
 
         except json.JSONDecodeError as e:
             # Invalid JSON content
-            logger.warning(f"Invalid JSON content: {ret.content}")
+            logger.warning(f"Invalid JSON content: {ret.content} : {str(e)}")
             try_again = False
 
         if not success:

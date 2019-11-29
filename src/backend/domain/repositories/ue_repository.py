@@ -24,3 +24,12 @@ class UERepository(BaseConnection):
         except Exception as e:
             print(str(e))
             return False
+
+    def delete_associado(self, associado: Associado) -> bool:
+        if associado is None:
+            return False
+        try:
+            associado.delete()
+            return True
+        except Exception as e:
+            return False

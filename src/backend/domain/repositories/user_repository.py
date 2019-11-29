@@ -10,23 +10,34 @@ class UserRepository(BaseConnection):
     def get(self, user_name) -> User:
         dbu = User.objects(user_name=user_name)
         dbu = None if len(dbu) == 0 else dbu[0]
-        print(f'User.get({user_name}) = {str(dbu)}')
+        self.logger.info(f'User.get({user_name}) = {str(dbu)}')
         return dbu
-
-    def update(self, user: User) -> bool:
-        if user is None:
-            return False
 
     def delete(self, user: User) -> bool:
         if user is None:
             return False
+        if user.associado is not None and \
+                (isinstance(user.associado, Associado) or
+                 user.associado.document_type == Associado):
+            self.ue_repo.delete_associado(user.associado)
+        try:
+            user.delete()
+            return True
+        except Exception as del_exception:
+            self.logger.exception("EXCEPTION DELETING USER: %s", del_exception)
+        return False
 
     def post(self, user: User) -> bool:
         if user is None:
             return False
-        if isinstance(user.associado, Associado) or\
-                user.associado.document_type == Associado:
+        if user.associado is not None and \
+                (isinstance(user.associado, Associado) or
+                 user.associado.document_type == Associado):
             if user.associado.id is None:
                 self.ue_repo.post_associado(user.associado)
-
-        return user.save()
+        try:
+            user = user.save()
+            return True
+        except Exception as post_exception:
+            self.logger.exception("EXCEPTION POSTING USER: %s", post_exception)
+            return False
