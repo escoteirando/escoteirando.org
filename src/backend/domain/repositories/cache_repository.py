@@ -120,8 +120,8 @@ class CacheRepository:
         try:
             self.collection.delete_many(
                 {"creationTime": {"$lt": self.ttl_limit()}})
-        except Exception as e:
-            print(str(e))
+        except Exception as purge_exception:
+            logger.exception('PURGE CACHE MONGO: %s', purge_exception)
 
     def _fileReadCache(self, key):
         if path.isdir(self.source):
@@ -147,8 +147,8 @@ class CacheRepository:
                 cached = CachedItem(fromObject=cached)
                 return cached
 
-        except Exception as e:
-            print(str(e))
+        except Exception as read_exception:
+            logger.exception('READ CACHE MONGO: %s', read_exception)
 
         return None
 
@@ -161,8 +161,9 @@ class CacheRepository:
                             else json.dumps(content, default=serialize_date))
 
                 return True
-            except Exception as e:
-                print(str(e))
+            except Exception as write_exception:
+                logger.exception('WRITE CACHE FILE: %s', write_exception)
+
         return False
 
     def _mongoWriteCache(self, key, content):
@@ -175,8 +176,9 @@ class CacheRepository:
                 "creationTime": cached.creationTime
             }, upsert=True)
             return ret['nModified'] > 0 or ret['upserted']
-        except Exception as e:
-            print(str(e))
+        except Exception as write_exception:
+            logger.exception('WRITE CACHE MONGO: %s', write_exception)
+
         return False
 
 

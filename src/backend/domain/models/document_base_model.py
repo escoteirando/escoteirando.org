@@ -1,9 +1,14 @@
+from datetime import datetime
+
 from flask_mongoengine import MongoEngine
+from mongoengine import DateTimeField
 
 db = MongoEngine()
 
 
 class DocumentBaseModel:
+
+    creation_date = DateTimeField(default=datetime.now)
 
     def validate_dict(self, dict_value: dict, fields: list) -> bool:
         """

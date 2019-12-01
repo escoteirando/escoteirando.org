@@ -1,5 +1,27 @@
-from mongoengine import DateField, IntField, ReferenceField, StringField
+""" MAPPA MODEL: Associado
+{
+    "codigo":850829,
+    "nome":"GUIONARDO FURLAN",
+    "codigoFoto":null,
+    "codigoEquipe":null,
+    "username":1247937,
+    "numeroDigito":3,
+    "dataNascimento":"Sat Feb 05 1977 00:00:00 GMT+0000 (UTC)",
+    "dataValidade":"2019-01-01T00:00:00.000Z",
+    "nomeAbreviado":"",
+    "sexo":"M",
+    "codigoRamo":2,
+    "codigoCategoria":5,
+    "codigoSegundaCategoria":0,
+    "codigoTerceiraCategoria":0,
+    "linhaFormacao":"Escotista",
+    "codigoRamoAdulto":2,
+    "dataAcompanhamento":null
+}
+"""
 from flask_mongoengine import Document
+from mongoengine import DateField, IntField, ReferenceField, StringField
+
 from ..document_base_model import DocumentBaseModel
 from .equipe import Equipe
 
@@ -20,25 +42,6 @@ class Associado(Document, DocumentBaseModel):
 
     equipe: Equipe
 
-    {
-    "codigo":850829,
-    "nome":"GUIONARDO FURLAN",
-    "codigoFoto":null,
-    "codigoEquipe":null,
-    "username":1247937,
-    "numeroDigito":3,
-    "dataNascimento":"Sat Feb 05 1977 00:00:00 GMT+0000 (UTC)",
-    "dataValidade":"2019-01-01T00:00:00.000Z",
-    "nomeAbreviado":"",
-    "sexo":"M",
-    "codigoRamo":2,
-    "codigoCategoria":5,
-    "codigoSegundaCategoria":0,
-    "codigoTerceiraCategoria":0,
-    "linhaFormacao":"Escotista",
-    "codigoRamoAdulto":2,
-    "dataAcompanhamento":null
-    }
     '''
     codigo = IntField(unique=True)
     ds_nome = StringField(required=True)

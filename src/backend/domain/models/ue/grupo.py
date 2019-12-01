@@ -1,4 +1,14 @@
-from mongoengine import Document, IntField, StringField, ReferenceField, ListField
+""" MAPPA MODEL: Grupo
+{
+    "codigo":32,
+    "codigoRegiao":"SC",
+    "nome":"LEÕES DE BLUMENAU",
+    "codigoModalidade":1
+}
+"""
+from mongoengine import (Document, IntField, ListField, ReferenceField,
+                         StringField)
+
 from .sessao import Sessao
 
 

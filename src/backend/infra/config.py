@@ -2,30 +2,35 @@
 
 # Python
 from os import getenv
-from os.path import join, dirname, isfile, realpath
+
 import dotenv
 
-# a partir do arquivo atual adicione ao path o arquivo .env
-_ENV_FILE = join(dirname(__file__), '.env')
+dotenv.load_dotenv(verbose=True)
 
-# existindo o arquivo faça a leitura do arquivo através da função load_dotenv
-if not isfile(_ENV_FILE):
-    _ENV_FILE = realpath(join(dirname(__file__), '..', '.env'))
 
-if isfile(_ENV_FILE):
-    dotenv.load_dotenv(dotenv_path=_ENV_FILE)
+def _getenv(key: str, default: str = ""):
+    value = getenv(key, None)
+    if isinstance(default, bool):
+        value = value.upper() == 'TRUE'
+    elif isinstance(default, int):
+        value = int(value)
+
+    return value
+
+
+DEFAULT_SECRET_KEY = 'Escoteirando_Secret_Key'
 
 
 class Config:
-    SECRET_KEY = getenv(
-        'SECRET_KEY') or 'au0dj0ajsd0j30d9j0a9sjd0219jd0a9sjd0931jd09ajd09'
-    APP_PORT = int(getenv('APP_PORT'))
-    DEBUG = eval(getenv('DEBUG').title())
-    MONGODB_URL = getenv('MONGODB_URL')
-    MONGODB_DB = getenv("MONGODB_DB")
-    CACHE_REPOSITORY = getenv("CACHE_REPOSITORY")
-    MAPPA_BASE_URL = "http://mappa.escoteiros.org.br"
-    MAPPA_ENABLED = getenv('MAPPA_ENABLED') == 'True'
+    SECRET_KEY = _getenv('SECRET_KEY', DEFAULT_SECRET_KEY)
+    APP_PORT = _getenv('APP_PORT', 5000)
+    DEBUG = _getenv('DEBUG', True)
+    MONGODB_URL = _getenv('MONGODB_URL')
+    MONGODB_DB = _getenv("MONGODB_DB", '')
+    CACHE_REPOSITORY = _getenv("CACHE_REPOSITORY")
+    MAPPA_BASE_URL = _getenv(
+        "MAPPA_BASE_URL", "http://mappa.escoteiros.org.br")
+    MAPPA_ENABLED = _getenv('MAPPA_ENABLED', True)
 
 
 class DevelopmentConfig(Config):
@@ -47,4 +52,4 @@ configs = {
     'testing': TestConfig
 }
 
-config = configs[getenv('FLASK_ENV', 'development')]
+config: Config = configs[getenv('FLASK_ENV', 'development')]

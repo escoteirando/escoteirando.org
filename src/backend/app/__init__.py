@@ -36,8 +36,11 @@ def create_app(config_name):
     if ms['username']:
         mongo_settings['username'] = ms['username']
 
+    # TODO: Revisar conexão Mongo
+    # http://docs.mongoengine.org/projects/flask-mongoengine/en/latest/#configuration
+    
     app = Flask('escoteirando')
-    app.config.from_object(config)
+    app.config['MONGODB_SETTINGS'] = mongo_settings
     app.register_blueprint(main, url_prefix='/')
     app.register_blueprint(mappa, url_prefix='/mappa')
     app.register_blueprint(api, url_prefix='/api')
@@ -46,8 +49,7 @@ def create_app(config_name):
 
     db = MongoEngine()
     db.init_app(app)
-    from domain.models.user import check_admin
-    check_admin()
+
     return app
 
 

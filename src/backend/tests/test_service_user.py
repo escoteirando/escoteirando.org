@@ -31,3 +31,12 @@ class TestUserService(unittest.TestCase):
         service = UserService()
         user = service.get_user('guionardo')
         self.assertEqual(user.user_name, 'guionardo')
+
+    def test_delete_user(self):
+        service = UserService()
+        user = User(
+            user_name="Guionardo",
+            password="1234",
+            level=0
+        )
+        service.delete_user(user)

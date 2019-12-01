@@ -21,8 +21,9 @@ class UERepository(BaseConnection):
         try:
             associado.save()
             return True
-        except Exception as e:
-            print(str(e))
+        except Exception as post_exception:
+            self.logger.exception('POST ASSOCIADO: %s', post_exception)
+
             return False
 
     def delete_associado(self, associado: Associado) -> bool:

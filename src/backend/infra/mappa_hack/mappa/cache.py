@@ -3,6 +3,9 @@ import os
 import time
 from datetime import datetime
 from hashlib import md5
+from app import getLogger
+
+logger = getLogger("Cache")
 
 
 class Cache:
@@ -73,7 +76,7 @@ class Cache:
                 f.write(content)
 
             return cacheFile
-        except Exception as e:
-            print(e)
+        except Exception as write_exception:
+            logger.exception("WRITE CACHE ERROR: %s", write_exception)
 
         return False

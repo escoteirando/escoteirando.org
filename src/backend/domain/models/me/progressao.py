@@ -1,3 +1,17 @@
+''' MAPPA MODEL: Progressao
+{
+    "codigo": 1,
+    "descricao": "Ouvir o episódio \"Irmãos de Mowgli\" do Livro da Selva.",
+    "codigoUeb": "S2",
+    "ordenacao": 2,
+    "codigoCaminho": 1,
+    "codigoDesenvolvimento": 23,
+    "numeroGrupo": null,
+    "codigoRegiao": null,
+    "codigoCompetencia": 38,
+    "segmento": "PROMESSA_ESCOTEIRA_LOBINHO"
+}
+'''
 from mongoengine import Document, IntField, StringField
 
 
@@ -10,19 +24,3 @@ class Progressao(Document):
     codigoDesenvolvimento = IntField()
     codigoCompetencia = IntField()
     segmento = StringField()
-
-
-'''
-     {
-        "codigo": 1,
-        "descricao": "Ouvir o episódio \"Irmãos de Mowgli\" do Livro da Selva.",
-        "codigoUeb": "S2",
-        "ordenacao": 2,
-        "codigoCaminho": 1,
-        "codigoDesenvolvimento": 23,
-        "numeroGrupo": null,
-        "codigoRegiao": null,
-        "codigoCompetencia": 38,
-        "segmento": "PROMESSA_ESCOTEIRA_LOBINHO"
-    }
-'''

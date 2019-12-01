@@ -1,6 +1,7 @@
+from datetime import datetime
+
 from flask_mongoengine import MongoEngine
 from mongoengine import BinaryField, DateTimeField, StringField
-from datetime import datetime
 
 
 class CachedItemModel(MongoEngine().Document):
