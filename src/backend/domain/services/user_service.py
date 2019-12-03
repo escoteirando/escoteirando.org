@@ -9,18 +9,24 @@ from domain.repositories.user_repository import UserRepository
 from domain.models.ue.associado import Associado
 from domain.repositories.ue_repository import UERepository
 from infra.log import logging
+from infra.decorators.singleton import singleton
 
 SESSION_USER_DATA = base64.b64encode(
     "userdata".encode('utf-8')).decode('utf-8')
 
 logger = logging.getLogger(__name__)
 
-ue_repository = UERepository()
+ue_repository: UERepository = None
 
 
+@singleton
 class UserService:
 
     def __init__(self):
+        global ue_repository
+        if not ue_repository:
+            ue_repository = UERepository()
+
         self.repository = UserRepository()
         self.logged_user: User = None
         self.check_admin()
@@ -53,10 +59,13 @@ class UserService:
 
     def login(self, username: str, password: str) -> bool:
         user = self.repository.get(username)
-        if check_password_hash(user.password, password):
+        if self.check_password(user, password):
             self.set_logged_user(user)
             return True
         return False
+
+    def check_password(self, user: User, password: str) -> bool:
+        return check_password_hash(user.password, password)
 
     def logout(self):
         self.logged_user = None

@@ -8,7 +8,7 @@ from infra.config import config
 from ..tools import request_values, response
 
 mappa = Blueprint('mappa', __name__)
-user_service = UserService()
+#user_service = UserService()
 
 if config.MAPPA_ENABLED:
     mappa_service = MappaLoginService()
@@ -24,7 +24,7 @@ def fetch_user():
     """ Obter informações do escotista e associado a partir do mAPPa
     Usuário deve estar logado no sistema
     """
-    user = user_service.get_logged_user()
+    user = UserService().get_logged_user()
     if not user:
         return response(
             {"message": "user is not logged"},
@@ -56,7 +56,7 @@ def fetch_user():
     user.full_name = ass.nome
     user.codigo_associado = ass.codigo
 
-    user_service.update_user(user)
+    UserService().update_user(user)
 
     return response({'message': 'OK', 'user': user.toDict()},
                     status.HTTP_200_OK)
@@ -64,4 +64,4 @@ def fetch_user():
 
 @mappa.before_request
 def _load_logged_in_user():
-    user_service.get_logged_user()
+    UserService().get_logged_user()
