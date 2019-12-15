@@ -4,10 +4,14 @@ from flask import Blueprint
 from flask_api import status
 
 from app.tools import request_values, response
-from domain.services.user_service import UserService
+from domain.services.user_service import userService as UserService
 
 auth = Blueprint('auth', __name__)
 
+S_USERNAME_REQUIRED = 'Usuário não foi informado'
+S_PASSWORD_REQUIRED = 'Senha não foi informada'
+S_INVALID_CREDENTIALS =  'Usuário ou senha inválido(s)'
+S_USER_LOGGED_IN = 'Usuário logado'
 
 @auth.route('/')
 def index():
@@ -25,11 +29,11 @@ def login():
     [username, password] = request_values('username', 'password')
 
     if not username:
-        return response("username required",
-                        status=status.HTTP_203_NON_AUTHORITATIVE_INFORMATION)
+        return response(S_USERNAME_REQUIRED,
+                        status=status.HTTP_401_UNAUTHORIZED)
     if not password:
-        return response("password required",
-                        status=status.HTTP_203_NON_AUTHORITATIVE_INFORMATION)
+        return response(S_PASSWORD_REQUIRED,
+                        status=status.HTTP_401_UNAUTHORIZED)
 
     user = UserService().get_user(username)
 
@@ -38,11 +42,11 @@ def login():
         user_error = not UserService().check_password(user, password)
 
     if user_error:
-        return response("username or password error",
-                        status=status.HTTP_203_NON_AUTHORITATIVE_INFORMATION)
+        return response(S_INVALID_CREDENTIALS,
+                        status=status.HTTP_401_UNAUTHORIZED)
 
     UserService().set_logged_user(user)
-    return response("user logged in")
+    return response(S_USER_LOGGED_IN)
 
 
 @auth.before_request
@@ -65,10 +69,10 @@ def register_normal():
     [username, password, username_mappa] = request_values(
         'username', 'password', 'username_mappa')
     if not username:
-        return response("username required",
+        return response(S_USERNAME_REQUIRED,
                         status=status.HTTP_203_NON_AUTHORITATIVE_INFORMATION)
     if not password:
-        return response("password required",
+        return response(S_PASSWORD_REQUIRED,
                         status=status.HTTP_203_NON_AUTHORITATIVE_INFORMATION)
     if not username_mappa:
         return response('username_mappa required',

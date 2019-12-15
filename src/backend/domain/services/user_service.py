@@ -9,25 +9,18 @@ from domain.repositories.user_repository import UserRepository
 from domain.models.ue.associado import Associado
 from domain.repositories.ue_repository import UERepository
 from infra.log import logging
-from infra.decorators.singleton import singleton
 
 SESSION_USER_DATA = base64.b64encode(
     "userdata".encode('utf-8')).decode('utf-8')
 
 logger = logging.getLogger(__name__)
 
-ue_repository: UERepository = None
 
-
-@singleton
 class UserService:
 
     def __init__(self):
-        global ue_repository
-        if not ue_repository:
-            ue_repository = UERepository()
-
-        self.repository = UserRepository()
+        self.ue_repository: UERepository = UERepository()
+        self.repository: UserRepository = UserRepository()
         self.logged_user: User = None
         self.check_admin()
 
@@ -121,7 +114,7 @@ class UserService:
             raise Exception('ERROR ON CREATE ADMIN USER: '+message)
 
         _admin = self.repository.get('admin')
-        _assoc = ue_repository.get_associado(850829)
+        _assoc = self.ue_repository.get_associado(850829)
         if not _assoc:
             _assoc = Associado(
                 codigo=850829,
@@ -129,9 +122,19 @@ class UserService:
                 nr_registro=1,
                 dt_nascimento="1977-02-05",
                 tp_sexo="M")
-            if not ue_repository.post_associado(_assoc):
+            if not self.ue_repository.post_associado(_assoc):
                 _assoc = None
 
         _admin.level = 2
         _admin.associado = _assoc
         return self.repository.post(_admin)
+
+
+_userService: UserService = None
+
+
+def userService():
+    global _userService
+    if not _userService:
+        _userService = UserService()
+    return _userService

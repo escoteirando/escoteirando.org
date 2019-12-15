@@ -2,13 +2,12 @@ from flask import Blueprint
 from flask_api import status
 
 from domain.services.mappa import MappaLoginService
-from domain.services.user_service import UserService
+from domain.services.user_service import userService as UserService
 from infra.config import config
 
 from ..tools import request_values, response
 
 mappa = Blueprint('mappa', __name__)
-#user_service = UserService()
 
 if config.MAPPA_ENABLED:
     mappa_service = MappaLoginService()

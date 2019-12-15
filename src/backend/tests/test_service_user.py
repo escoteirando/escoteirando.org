@@ -1,5 +1,5 @@
 import unittest
-from domain.services.user_service import UserService
+from domain.services.user_service import userService as UserService
 from domain.models.user import User
 
 

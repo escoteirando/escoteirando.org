@@ -1,0 +1,8 @@
+@startuml User class
+class User {
+    String user_name
+    Associado associado
+    String password
+    int level
+}
+@enduml
