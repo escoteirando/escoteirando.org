@@ -10,8 +10,10 @@ dotenv.load_dotenv(verbose=True)
 
 def _getenv(key: str, default: str = ""):
     value = getenv(key, None)
+    if value is None:
+        value = default
     if isinstance(default, bool):
-        value = value.upper() == 'TRUE'
+        value = str(value).upper() == 'TRUE'
     elif isinstance(default, int):
         value = int(value)
     elif value is None:
