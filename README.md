@@ -37,4 +37,8 @@ O objetivo geral deste trabalho é desenvolver um software web seguindo os padr�
 
 Ideias que devem ser convertidas em casos de uso
 
-* 
+
+## ROADMAP
+
+* [ ] Login
+* [ ] Integração de dados com MAPPA

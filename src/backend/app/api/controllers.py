@@ -1,6 +1,8 @@
-from flask import Blueprint, request, url_for
+from flask import Blueprint, url_for
+
 import app.start
 from app.tools import response
+
 api = Blueprint('api', __name__)
 
 
@@ -9,16 +11,15 @@ def index():
     return "API"
 
 
-@api.route('/sitemap')
+@api.route('/sitemap', methods=["GET"])
 def sitemap():
     links = {}
     _app = app.start.app
     for rule in _app.url_map.iter_rules():
-        # Filter out rules we can't navigate to in a browser
-        # and rules that require parameters
-        if "GET" in rule.methods and has_no_empty_params(rule):
+        if has_no_empty_params(rule):
             url = url_for(rule.endpoint, **(rule.defaults or {}))
-            links[url] = rule.endpoint
+            links[url] = {"endpoint": rule.endpoint,
+                          "methods": [x for x in rule.methods]}
 
     return response(links)
 
