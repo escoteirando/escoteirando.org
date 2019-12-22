@@ -82,9 +82,26 @@ class Cache:
                             continue
                         removed += 1 if CacheItem(cf,
                                                   just_validate=True).valid else 0
+                    self._remove_empty_dir(l2)
+
+                self._remove_empty_dir(l1)
+
         except Exception as exc:
             self.logger.exception('Purge cache exception: %s', exc)
         self.logger.info('Purge cache: removed %s files', removed)
+
+    def _remove_empty_dir(self, path):
+        if not os.path.isdir(path):
+            return True
+
+        has_files = False
+        for f in iglob(os.path.join(path, '*')):
+            has_files = True
+            break
+        if not has_files:
+            os.rmdir(path)
+
+        return not has_files
 
     def _key_file(self, key: str):
         hash = hashlib.md5(key.encode()).hexdigest()
