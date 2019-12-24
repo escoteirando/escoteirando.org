@@ -1,4 +1,5 @@
 import hashlib
+import json
 import logging
 import os
 from glob import glob, iglob
@@ -53,7 +54,17 @@ class Cache:
         if os.path.isfile(filename):
             ci = CacheItem(filename)
             if ci.valid:
-                return ci.payload
+                self.logger.info('get %s from cache', key)
+                if isinstance(ci.payload, str):
+                    try:
+                        res = json.loads(ci.payload)
+                    except Exception as exc:
+                        self.logger.exception(
+                            'error parsing payload from cache (%s): %s', key, exc)
+                        res = None
+                else:
+                    res = ci.payload
+                return res
         return None
 
     def set(self, key: str, value, max_age: int = 0, options=None):

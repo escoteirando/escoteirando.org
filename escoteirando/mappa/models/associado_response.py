@@ -1,4 +1,6 @@
 from .basemodel import BaseModel
+from dateutil.parser import parse
+
 
 class Associado(BaseModel):
     """ Associado Response
@@ -23,27 +25,25 @@ class Associado(BaseModel):
     }
     """
 
-    def __init__(self,fromDict):
+    def __init__(self, fromDict):
         self.codigo = None
-        self.nome=None
-        self.codigoFoto=None
-        self.codigoEquipe=None
-        self.username=None
-        self.numeroDigito=None
+        self.nome = None
+        self.codigoFoto = None
+        self.codigoEquipe = None
+        self.username = None
+        self.numeroDigito = None
         self.dataNascimento = None
-        self.dataValidade=None
-        self.nomeAbreviado=None
-        self.sexo=None
-        self.codigoRamo=None
-        self.codigoCategoria=None
-        self.codigoSegundaCategoria=None
-        self.codigoTerceiraCategoria=None
-        self.linhaFormacao=None
-        self.codigoRamoAdulto=None
-        self.dataAcompanhamento=None
+        self.dataValidade = None
+        self.nomeAbreviado = None
+        self.sexo = None
+        self.codigoRamo = None
+        self.codigoCategoria = None
+        self.codigoSegundaCategoria = None
+        self.codigoTerceiraCategoria = None
+        self.linhaFormacao = None
+        self.codigoRamoAdulto = None
+        self.dataAcompanhamento = None
         super().__init__(fromDict)
 
-
-
-
-      
+    def __repr__(self):
+        return "Associado {0}-{1}".format(self.codigo, self.nome)

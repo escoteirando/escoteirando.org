@@ -8,8 +8,11 @@ from escoteirando.ext.logging import get_logger
 from .cache.cache import Cache
 from .models.associado_response import Associado
 from .models.escotista_response import Escotista
+from .models.secao_response import Secao
 from .models.grupo_response import Grupo
+from .models.progressao_response import Progressao
 from .models.login import Login
+from .models.subsecao_response import Subsecao
 from .request import HTTP
 
 
@@ -35,6 +38,37 @@ class Mappa:
         self.linhaFormacao = None
         # Grupo
         self.nomeGrupo = None
+        # Seção
+        self.codigoSecao = None
+        self.nomeSecao = None
+        self.codigoTipoSecao = None
+        self.subsecoes = []
+        self.progressoes = []
+
+    def __dict__(self):
+        return {
+            "authorization": self.authorization,
+            "userId": self.userId,
+            "userName": self.userName,
+            "codigoAssociado": self.codigoAssociado,
+            # Escotista
+            "codigoGrupo": self.codigoGrupo,
+            "nomeGrupo": self.nomeGrupo,
+            "codigoRegiao": self.codigoRegiao,
+            "codigoFoto": self.codigoFoto,
+            # Associado
+            "codigoEquipe": self.codigoEquipe,
+            "dataNascimento": self.dataNascimento,
+            "sexo": self.sexo,
+            "codigoRamo": self.codigoRamo,
+            "linhaFormacao": self.linhaFormacao,
+            # Seção
+            "codigoSecao": self.codigoSecao,
+            "nomeSecao": self.nomeSecao,
+            "codigoTipoSecao": self.codigoTipoSecao,
+            "subsecoes": self.subsecoes,
+            "progressoes": self.progressoes
+        }
 
     def login(self, username, password) -> bool:
         response = self.cache.get('login', username)
@@ -65,7 +99,12 @@ class Mappa:
 
         if self.get_escotista(self.userId):
             if self.get_associado(self.codigoAssociado):
-                self.get_grupo(self.codigoGrupo, self.codigoRegiao)
+                if self.get_grupo(self.codigoGrupo, self.codigoRegiao):
+                    if self.get_secao(self.userId):
+                        self.get_subsecoes(self.userId, self.codigoSecao)
+
+        self.get_progressoes()
+
         return True
 
     def get_escotista(self, userId) -> Escotista:
@@ -84,8 +123,8 @@ class Mappa:
 
         return ret
 
-    def get_associado(self, codigoAssociado) -> Associado:
-        code, response = self.http.get(f"/api/associados/{codigoAssociado}")
+    def get_associado(self, userId) -> Associado:
+        code, response = self.http.get(f"/api/associados/{userId}")
         ret: Associado = None if code >= 300 else Associado(response)
         if ret:
             self.codigoEquipe = ret.codigoEquipe
@@ -111,3 +150,52 @@ class Mappa:
             self.nomeGrupo = ret.nome
 
         return ret
+
+    def get_secao(self, userId) -> Secao:
+        http_code, response = self.http.get(
+            f'/api/escotistas/{userId}/secoes')
+        ret: Secao = None if http_code >= 300 else Secao(response)
+        if ret:
+            self.codigoSecao = ret.codigo
+            self.nomeSecao = ret.nome
+            self.codigoTipoSecao = ret.codigoTipoSecao
+
+        return ret
+
+    def get_subsecoes(self, userId, codigoSecao) -> list:
+        filter = {"filter": {"include": "associados"}}
+        http_code, response = self.http.get(
+            f'/api/escotistas/{userId}/secoes/{codigoSecao}/equipes', params=filter)
+
+        ret = None if http_code >= 300 else response
+
+        subsecoes = []
+
+        if isinstance(ret, list):
+            for subsec in ret:
+                subsecoes.append(Subsecao(subsec))
+
+            self.subsecoes = subsecoes
+
+        return subsecoes
+
+    def get_progressoes(self):
+        filter = {"filter":
+                  {"where":        {
+                      "numeroGrupo": None,
+                      "codigoRegiao": None,
+                      "codigoCaminho": {"inq": [1, 2, 3, 4, 5, 6, 11, 12, 15, 16]}
+                  }}}
+        http_code, result = self.http.get(
+            '/api/progressao-atividades', params=filter)
+
+        ret = None if http_code >= 300 else result
+
+        progressoes = []
+        if ret and isinstance(ret, list):
+            for progressao in result:
+                progressoes.append(Progressao(progressao))
+
+        self.progressoes = progressoes
+
+        return progressoes
