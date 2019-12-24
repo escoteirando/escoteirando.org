@@ -1,7 +1,7 @@
 from flask_simplelogin import SimpleLogin
 from werkzeug.security import check_password_hash, generate_password_hash
 from escoteirando.ext.database import db
-from escoteirando.models import User
+from escoteirando.models.user import User
 
 
 def verify_login(user):

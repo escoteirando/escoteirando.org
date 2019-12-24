@@ -1,10 +1,13 @@
 from flask import Flask
 from escoteirando.ext import configuration
+import escoteirando.ext.logging
+
 
 def minimal_app(**config):
     app = Flask(__name__)
     configuration.init_app(app, **config)
     return app
+
 
 def create_app(**config):
     app = minimal_app(**config)

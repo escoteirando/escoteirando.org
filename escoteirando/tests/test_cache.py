@@ -15,9 +15,9 @@ def test_cache_item():
 def test_cache():
     cache = Cache('.cache', logger)
     value = {'id': 1, 'name': 'Guionardo', 'today': datetime.now()}
-    #cache.set('teste', value, time()+30)
+    cache.set('teste', value, time()+30)
 
-    #v2 = cache.get('teste')
-    #assert value == v2
+    v2 = cache.get('teste')
+    assert value == v2
 
     cache.purge()

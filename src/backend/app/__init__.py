@@ -1,3 +1,3 @@
-from infra.log import getLogger
+from infra.log import get_logger
 
-logger = getLogger("app")
+logger = get_logger("app")

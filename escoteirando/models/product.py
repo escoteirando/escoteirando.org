@@ -9,7 +9,3 @@ class Product(db.Model, SerializerMixin):
     description = db.Column(db.Text)
 
 
-class User(db.Model, SerializerMixin):
-    id = db.Column(db.Integer, primary_key=True)
-    username = db.Column(db.String(140))
-    password = db.Column(db.String(512))

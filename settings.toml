@@ -1,21 +1,22 @@
 [default]
 DEBUG = false
 
-FLASK_ADMIN_NAME = "Pydaria Admin"
+FLASK_ADMIN_NAME = "Escoteirando Admin"
 FLASK_ADMIN_TEMPLATE_MODE = "bootstrap3"
 FLASK_ADMIN_SWATCH = 'cerulean'
 SQLALCHEMY_DATABASE_URI = 'sqlite:///development.db'
-TITLE = "Pydaria"
-SECRET_KEY = "jadkfbsdkjbfbh"
+TITLE = "Escoteirando"
+SECRET_KEY = "gmjb05053007"
 PASSWORD_SCHEMES = ['pbkdf2_sha512', 'md5_crypt']
 EXTENSIONS = [
-    "pydaria.ext.appearance:init_app",
-    "pydaria.ext.database:init_app",
-    "pydaria.ext.auth:init_app",
-    "pydaria.ext.admin:init_app",
-    "pydaria.ext.commands:init_app",
-    "pydaria.blueprints.webui:init_app",
-    "pydaria.blueprints.restapi:init_app",
+    "escoteirando.ext.logging:init_app",
+    "escoteirando.ext.appearance:init_app",
+    "escoteirando.ext.database:init_app",
+    "escoteirando.ext.auth:init_app",
+    "escoteirando.ext.admin:init_app",
+    "escoteirando.ext.commands:init_app",
+    "escoteirando.blueprints.webui:init_app",
+    "escoteirando.blueprints.restapi:init_app",
 ]
 
 

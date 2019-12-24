@@ -1,7 +1,7 @@
 import click
 from escoteirando.ext.database import db
 from escoteirando.ext.auth import create_user
-from escoteirando.models import Product
+from escoteirando.models.product import Product
 
 
 def create_db():

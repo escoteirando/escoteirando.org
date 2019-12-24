@@ -10,7 +10,7 @@ from .cache_item import CacheItem
 class Cache:
     """ Cache control of objects with age """
 
-    def __init__(self, path, logger: logging.Logger, purge_interval: int = 60):
+    def __init__(self, path, logger: logging.Logger, purge_interval: int = 3600):
         """ Initialize cache.
 
         :param: path of cache str
@@ -42,16 +42,28 @@ class Cache:
         self.purge_interval = purge_interval
         self.last_purge = 0
 
-    def get(self, key: str, default_value=None):
-        filename = self._key_file(key)
+    def get(self, key: str, options=None):
+        ''' Get item from cache.
+
+        :param key: Base key
+        :param options: Extra option for key
+        :return: object or None if not found or expired
+        '''
+        filename = self._key_file(key, options)
         if os.path.isfile(filename):
             ci = CacheItem(filename)
             if ci.valid:
                 return ci.payload
-        return default_value
+        return None
 
-    def set(self, key: str, value, max_age: int = 0):
-        filename = self._key_file(key)
+    def set(self, key: str, value, max_age: int = 0, options=None):
+        ''' Set item in cache.
+
+        :param key: Base key
+        :param max_age: age in timestamp
+        :param options: Extra option for key
+        '''
+        filename = self._key_file(key, options)
         if not os.path.isdir(os.path.dirname(filename)):
             os.makedirs(os.path.dirname(filename))
 
@@ -103,7 +115,7 @@ class Cache:
 
         return not has_files
 
-    def _key_file(self, key: str):
-        hash = hashlib.md5(key.encode()).hexdigest()
+    def _key_file(self, key: str, options):
+        hash = hashlib.md5((key+str(options)).encode()).hexdigest()
         path = os.path.join(self.path, hash[:2], hash[2:4], hash+'.cache')
         return path
