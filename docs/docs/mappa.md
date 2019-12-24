@@ -1,4 +1,4 @@
-# mAppa
+# mAppa Login
 
 API de acesso aos dados do escotista e da seção
 
@@ -89,3 +89,19 @@ API de acesso aos dados do escotista e da seção
     "codigoModalidade":1
 }]
 ```
+
+## Seção: GET /api/escotistas/{userId}/secoes
+
+### Response
+
+``` json
+[{
+    "codigo": 1424,
+    "nome": "ALCATÉIA 1",
+    "codigoTipoSecao": 1,
+    "codigoGrupo": 32,
+    "codigoRegiao": "SC"
+}]
+```
+
+## Associados: GET / api/escotistas/{userId}/secoes/{codigoSecao}/equipes?filter={"include":"associados"}
