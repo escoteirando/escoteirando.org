@@ -13,11 +13,17 @@ body {
   background-color: #f5f5f5;
 }
 
-.form-signin {
-  width: 100%;
+.login-content {
+  width:100%;
   max-width: 330px;
   padding: 15px;
-  margin: auto;
+  margin:auto;
+  height: 80%;
+}
+.form-signin {
+  width: 100%;
+  padding-top:10px;  
+  min-height: 8em;
 }
 .form-signin .checkbox {
   font-weight: 400;
