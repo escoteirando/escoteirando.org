@@ -1,6 +1,7 @@
-from infra import BaseConnection
-from domain.models.user import User
 from domain.models.ue.associado import Associado
+from domain.models.user import User
+from infra.data.baseconnection import BaseConnection
+
 from .ue_repository import UERepository
 
 
@@ -10,7 +11,7 @@ class UserRepository(BaseConnection):
     def get(self, user_name) -> User:
         dbu = User.objects(user_name=user_name)
         dbu = None if len(dbu) == 0 else dbu[0]
-        self.logger.info(f'User.get({user_name}) = {str(dbu)}')
+        self.logger.info('User.get(%s) = %s', user_name, dbu)
         return dbu
 
     def delete(self, user: User) -> bool:

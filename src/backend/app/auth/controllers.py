@@ -5,13 +5,17 @@ from flask_api import status
 
 from app.tools import request_values, response
 from domain.services.user_service import userService as UserService
+from infra.log import getLogger
+from domain.services.mappa.mappa_login_service import MappaLoginService
 
 auth = Blueprint('auth', __name__)
+logger = getLogger('AUTH')
 
 S_USERNAME_REQUIRED = 'Usuário não foi informado'
 S_PASSWORD_REQUIRED = 'Senha não foi informada'
-S_INVALID_CREDENTIALS =  'Usuário ou senha inválido(s)'
+S_INVALID_CREDENTIALS = 'Usuário ou senha inválido(s)'
 S_USER_LOGGED_IN = 'Usuário logado'
+
 
 @auth.route('/')
 def index():
@@ -27,7 +31,7 @@ def logout():
 @auth.route('/login', methods=['POST'])
 def login():
     [username, password] = request_values('username', 'password')
-
+    logger.info('LOGIN USERNAME: %s', username)
     if not username:
         return response(S_USERNAME_REQUIRED,
                         status=status.HTTP_401_UNAUTHORIZED)
@@ -42,6 +46,18 @@ def login():
         user_error = not UserService().check_password(user, password)
 
     if user_error:
+        mappa = MappaLoginService()
+        if mappa.login(username, password):
+            escotista = mappa.get_escotista(mappa.auth_data.userId)
+            associado = mappa.get_associado(escotista.codigoAssociado)
+            success, msg = UserService().create_user(username, password)
+            if success:
+                user = UserService().get_logged_user(username)
+                user.associado = associado
+                user.save()
+                UserService().set_logged_user(user)
+                return response(S_USER_LOGGED_IN)
+
         return response(S_INVALID_CREDENTIALS,
                         status=status.HTTP_401_UNAUTHORIZED)
 

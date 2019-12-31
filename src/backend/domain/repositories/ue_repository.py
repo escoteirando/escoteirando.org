@@ -1,4 +1,4 @@
-from infra import BaseConnection
+from infra.data.baseconnection import BaseConnection
 from domain.models.ue.associado import Associado
 
 

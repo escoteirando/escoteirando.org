@@ -5,6 +5,7 @@ FLASK_ADMIN_NAME = "Escoteirando Admin"
 FLASK_ADMIN_TEMPLATE_MODE = "bootstrap3"
 FLASK_ADMIN_SWATCH = 'cerulean'
 SQLALCHEMY_DATABASE_URI = 'sqlite:///development.db'
+SQLALCHEMY_TRACK_MODIFICATIONS = "False"
 TITLE = "Escoteirando"
 SECRET_KEY = "gmjb05053007"
 PASSWORD_SCHEMES = ['pbkdf2_sha512', 'md5_crypt']

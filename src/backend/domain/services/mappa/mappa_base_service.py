@@ -23,12 +23,12 @@ class MappaService:
 
     def __init__(self):
         global _auth_data
-        self.auth_data = _auth_data
+        self.auth_data: Authentication = _auth_data
         self.logger: Logger = _logger
         self.cache: CacheRepository = _cache
 
     def authorization(self) -> str:
-        return self.auth_data.id
+        return self.auth_data.userId
 
     @property
     def auth_data(self) -> Authentication:

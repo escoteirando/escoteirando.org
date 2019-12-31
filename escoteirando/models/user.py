@@ -8,7 +8,7 @@ class User(db.Model, SerializerMixin):
     password = db.Column(db.String(512))
     ''' Email of user '''
     email = db.Column(db.String(140))
-    verified = db.Column(db.Bool)
+    verified = db.Column(db.Boolean)
 
     # MAPPA fields
     user_id = db.Column(db.Integer, primary_key=True)

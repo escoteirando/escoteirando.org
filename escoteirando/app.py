@@ -1,6 +1,5 @@
 from flask import Flask
 from escoteirando.ext import configuration
-import escoteirando.ext.logging
 
 
 def minimal_app(**config):
