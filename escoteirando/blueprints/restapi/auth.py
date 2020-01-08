@@ -1,5 +1,5 @@
 from flask import Blueprint, request, make_response
-
+from escoteirando.ext.auth import verify_login
 
 auth = Blueprint('auth', __name__, url_prefix='/api/v1')
 

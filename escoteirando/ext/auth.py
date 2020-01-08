@@ -1,4 +1,4 @@
-from flask_simplelogin import SimpleLogin
+from flask_login import LoginManager
 from werkzeug.security import check_password_hash, generate_password_hash
 from flask_sqlalchemy import SQLAlchemy
 from escoteirando.ext.database import db
@@ -6,11 +6,15 @@ from escoteirando.models.user import User
 
 from enum import Enum
 
+_login_manager = LoginManager()
+
 
 class AuthStatus(Enum):
     NOT_FOUND = 0
     PASSWORD_ERROR = 1
     NOT_VERIFIED = 2
+    NOT_MAPPA = 3
+    OK = 9
 
 
 class UserAuth:
@@ -23,7 +27,7 @@ class UserAuth:
     def verify_user(self, username, password) -> AuthStatus:
         if not username or not password:
             return AuthStatus.NOT_FOUND
-        existing_user:User = User.query.filter(
+        existing_user: User = User.query.filter(
             User.username == username or User.email == username).first()
 
         if not existing_user:
@@ -34,11 +38,13 @@ class UserAuth:
 
         if not existing_user.verified:
             return AuthStatus.NOT_VERIFIED
-        existing_user.email
+        
         if not existing_user.codigo_associado:
             return AuthStatus.NOT_MAPPA
-
         
+        return AuthStatus.OK
+
+
 
 
 def verify_login(user):
@@ -65,5 +71,13 @@ def create_user(username, password):
     return user
 
 
+@_login_manager.user_loader
+def load_user(user_id):
+    user = User.query.filter(
+        User.email == user_id or User.user_id == user_id).first()
+
+    return user
+
+
 def init_app(app):
-    SimpleLogin(app, login_checker=verify_login)
+    _login_manager.init_app(app)

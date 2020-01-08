@@ -1,15 +1,15 @@
 from flask_admin import Admin
 from flask_admin.base import AdminIndexView
 from flask_admin.contrib import sqla
-from flask_simplelogin import login_required
+#from flask_simplelogin import login_required
 from werkzeug.security import generate_password_hash
 
 from escoteirando.ext.database import db
 from escoteirando.models import Product, User
 
 # Proteger o admin com login via Monkey Patch
-AdminIndexView._handle_view = login_required(AdminIndexView._handle_view)
-sqla.ModelView._handle_view = login_required(sqla.ModelView._handle_view)
+#AdminIndexView._handle_view = login_required(AdminIndexView._handle_view)
+#sqla.ModelView._handle_view = login_required(sqla.ModelView._handle_view)
 admin = Admin()
 
 
@@ -27,4 +27,3 @@ def init_app(app):
     admin.init_app(app)
     admin.add_view(sqla.ModelView(Product, db.session))
     admin.add_view(UserAdmin(User, db.session))
-
