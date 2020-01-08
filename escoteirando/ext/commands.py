@@ -2,11 +2,13 @@ import click
 from escoteirando.ext.database import db
 from escoteirando.ext.auth import create_user
 from escoteirando.models.product import Product
+from flask_migrate import Migrate, MigrateCommand
 
 
 def create_db():
     """Creates database"""
     db.create_all()
+    create_user('admin', 'admin')
 
 
 def drop_db():
@@ -33,6 +35,8 @@ def init_app(app):
     for command in [create_db, drop_db, populate_db]:
         app.cli.add_command(app.cli.command()(command))
 
+    # Migrations
+    app.cli.add_command('db', MigrateCommand)
     # add a single command
     @app.cli.command()
     @click.option('--username', '-u')
