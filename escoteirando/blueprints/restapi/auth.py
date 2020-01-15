@@ -1,7 +1,5 @@
-from flask import Blueprint, make_response, request
-
-from escoteirando.ext.auth import AuthStatus, UserAuth
-from escoteirando.ext.logging import getLogger
+from flask import Blueprint, request, make_response
+from escoteirando.ext.auth import verify_login
 
 auth = Blueprint('auth', __name__, url_prefix='/api/v1')
 logger = getLogger()

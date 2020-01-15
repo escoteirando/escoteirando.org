@@ -1,7 +1,4 @@
-from enum import Enum
-
-from flask_simplelogin import SimpleLogin
-from flask_sqlalchemy import SQLAlchemy
+from flask_login import LoginManager
 from werkzeug.security import check_password_hash, generate_password_hash
 
 from escoteirando.ext.database import db as db
@@ -10,11 +7,15 @@ from flask_login import LoginManager, login_user, logout_user, current_user
 
 login_manager = LoginManager()
 
+_login_manager = LoginManager()
+
 
 class AuthStatus(Enum):
     NOT_FOUND = 0
     PASSWORD_ERROR = 1
     NOT_VERIFIED = 2
+    NOT_MAPPA = 3
+    OK = 9
 
 
 class UserAuth:
@@ -26,11 +27,11 @@ class UserAuth:
             raise ValueError('db is not SQLAlchemy')
         self.db: SQLAlchemy = _db
 
-    def get_user(self, user_id) -> User:
-        ''' Get a user from DB using username or email '''
-        return User.query.filter(
-            (User.username == user_id) |
-            (User.email == user_id)).first()
+    def verify_user(self, username, password) -> AuthStatus:
+        if not username or not password:
+            return AuthStatus.NOT_FOUND
+        existing_user: User = User.query.filter(
+            User.username == username or User.email == username).first()
 
     def verify_user(self, user: User, password) -> AuthStatus:
         ''' Verify if a password authenticates a user '''
@@ -42,19 +43,14 @@ class UserAuth:
 
         if not user.verified:
             return AuthStatus.NOT_VERIFIED
-
-        if not user.codigo_associado:
+        
+        if not existing_user.codigo_associado:
             return AuthStatus.NOT_MAPPA
-
-    def do_login(self, user: User) -> bool:
-        if isinstance(user, User):
-            login_user(user)
+        
+        return AuthStatus.OK
 
     def do_logout(self):
         logout_user()
-
-    def logged_user(self):
-        return current_user
 
 
 
@@ -83,15 +79,16 @@ def create_user(username, password):
     return user
 
 
-@login_manager.user_loader
+@_login_manager.user_loader
 def load_user(user_id):
-    return User.query.filter(
-        (User.id==int(user_id)) |
-        (User.email == user_id)).first()
+    user = User.query.filter(
+        User.email == user_id or User.user_id == user_id).first()
+
+    return user
 
 
 def init_app(app):
-    login_manager.init_app(app)
+    _login_manager.init_app(app)
 
     # TODO: Remover SimpleLogin
     # SimpleLogin(app, login_checker=verify_login)

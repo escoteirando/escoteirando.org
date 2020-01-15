@@ -1,7 +1,11 @@
 {
     "_meta": {
         "hash": {
+<<<<<<< HEAD
             "sha256": "154451af78d896e20661d6269c66be4c4069623b83170d391720abbe582882bd"
+=======
+            "sha256": "559727e8248f2f46cf5e05792619fab3cda540af1478fddda451c4c3da9a38a1"
+>>>>>>> archicteture
         },
         "pipfile-spec": 6,
         "requires": {},
@@ -121,6 +125,7 @@
             "index": "pypi",
             "version": "==0.4.1"
         },
+<<<<<<< HEAD
         "flask-migrate": {
             "hashes": [
                 "sha256:6fb038be63d4c60727d5dfa5f581a6189af5b4e2925bc378697b4f0a40cfb4e1",
@@ -129,6 +134,8 @@
             "index": "pypi",
             "version": "==2.5.2"
         },
+=======
+>>>>>>> archicteture
         "flask-restful": {
             "hashes": [
                 "sha256:ecd620c5cc29f663627f99e04f17d1f16d095c83dc1d618426e2ad68b03092f8",
@@ -144,14 +151,6 @@
             ],
             "index": "pypi",
             "version": "==0.4.1"
-        },
-        "flask-simplelogin": {
-            "hashes": [
-                "sha256:338d6d54cc00a7df043979e3a362a05fef427855a57ad609707ef8b4eec91b9d",
-                "sha256:35f4f62ad8d88ab0dabf667a696f931ebc89213775b87753179c7d944702cf9c"
-            ],
-            "index": "pypi",
-            "version": "==0.0.7"
         },
         "flask-sqlalchemy": {
             "hashes": [
