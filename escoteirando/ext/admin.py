@@ -5,7 +5,8 @@ from flask_admin.contrib import sqla
 from werkzeug.security import generate_password_hash
 
 from escoteirando.ext.database import db
-from escoteirando.models import Product, User
+from escoteirando.models import Product 
+from escoteirando.domain.models.user import User
 
 # Proteger o admin com login via Monkey Patch
 #AdminIndexView._handle_view = login_required(AdminIndexView._handle_view)

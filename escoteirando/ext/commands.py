@@ -2,6 +2,11 @@ import click
 from escoteirando.ext.database import db
 from escoteirando.ext.auth import create_user
 from escoteirando.models.product import Product
+from escoteirando.domain.models.mappa import MAPPA_Progressao
+from escoteirando.domain.models.atividade import Atividade
+from escoteirando.domain.models.encontro import Encontro
+from escoteirando.domain.models.grupo_escoteiro import GrupoEscoteiro
+
 from flask_migrate import Migrate, MigrateCommand
 
 
@@ -35,6 +40,7 @@ def init_app(app):
     for command in [create_db, drop_db, populate_db]:
         app.cli.add_command(app.cli.command()(command))
 
+    migrate = Migrate(app, db)
     # Migrations
     app.cli.add_command('db', MigrateCommand)
     # add a single command
@@ -44,3 +50,5 @@ def init_app(app):
     def add_user(username, password):
         """Adds a new user to the database"""
         return create_user(username, password)
+
+    print('Commands added')

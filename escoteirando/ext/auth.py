@@ -1,9 +1,11 @@
-from flask_login import LoginManager
+from enum import Enum
+
+from flask_login import LoginManager, current_user, login_user, logout_user
+from flask_sqlalchemy import SQLAlchemy
 from werkzeug.security import check_password_hash, generate_password_hash
 
+from escoteirando.domain.models.user import User
 from escoteirando.ext.database import db as db
-from escoteirando.models.user import User
-from flask_login import LoginManager, login_user, logout_user, current_user
 
 login_manager = LoginManager()
 
