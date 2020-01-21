@@ -29,31 +29,37 @@ class UserAuth:
             raise ValueError('db is not SQLAlchemy')
         self.db: SQLAlchemy = _db
 
-    def verify_user(self, username, password) -> AuthStatus:
-        if not username or not password:
-            return AuthStatus.NOT_FOUND
+    def load_user(self, user_id) -> User:
+        if not user_id:
+            return None
         existing_user: User = User.query.filter(
-            User.username == username or User.email == username).first()
+            (User.username == user_id) | (User.email == user_id)).first()
+        return existing_user
 
     def verify_user(self, user: User, password) -> AuthStatus:
         ''' Verify if a password authenticates a user '''
-        if not user or not password:
+        if not user:
             return AuthStatus.NOT_FOUND
 
-        if not check_password_hash(user.password, password):
+        if not check_password_hash(str(user.password), password):
             return AuthStatus.PASSWORD_ERROR
 
         if not user.verified:
             return AuthStatus.NOT_VERIFIED
-        
-        if not existing_user.codigo_associado:
+
+        if not user.codigo_associado:
             return AuthStatus.NOT_MAPPA
-        
+
         return AuthStatus.OK
+
+    def do_login(self, user: User, remember: bool) -> bool:
+        login_user(user, remember)
 
     def do_logout(self):
         logout_user()
 
+    def logged_user(self):
+        return current_user
 
 
 def verify_login(user):
@@ -72,9 +78,9 @@ def verify_login(user):
 
 def create_user(username, password):
     """Registra um novo usuario caso nao esteja cadastrado"""
-    if User.query.filter_by(username=username).first():
+    if UserAuth().load_user(username):
         raise RuntimeError(f'{username} ja esta cadastrado')
-    user = User(id=0, username=username,
+    user = User(username=username,
                 password=generate_password_hash(password))
     db.session.add(user)
     db.session.commit()
@@ -83,8 +89,7 @@ def create_user(username, password):
 
 @_login_manager.user_loader
 def load_user(user_id):
-    user = User.query.filter(
-        User.email == user_id or User.user_id == user_id).first()
+    user = User.query.filter(User.id == user_id).first()
 
     return user
 

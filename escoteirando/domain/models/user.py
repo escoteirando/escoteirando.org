@@ -20,3 +20,7 @@ class User(db.Model, SerializerMixin, UserMixin):
     codigo_associado = db.Column(db.Integer)
     codigo_grupo = db.Column(db.Integer)
     codigo_regiao = db.Column(db.String(2))
+
+    @property
+    def is_active(self):
+        return self.verified

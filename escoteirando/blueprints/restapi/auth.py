@@ -1,7 +1,8 @@
 from flask import Blueprint, make_response, request
 
-from escoteirando.ext.auth import verify_login
+from escoteirando.ext.auth import verify_login, UserAuth, AuthStatus
 from escoteirando.ext.logging import getLogger
+from escoteirando.domain.models.user import User
 
 auth = Blueprint('auth', __name__, url_prefix='/api/v1')
 logger = getLogger()
@@ -16,23 +17,30 @@ def login():
     remember_me = False if 'remember' not in request.form else (
         request.form['remember'].upper() == 'TRUE')
     user_auth = UserAuth()
-    existing_user = user_auth.get_user(username)
+    existing_user = user_auth.load_user(username)
     auth_status = user_auth.verify_user(existing_user, password)
     if auth_status is AuthStatus.NOT_FOUND:
         return {"msg": "User not found"}, 403
     if auth_status is AuthStatus.PASSWORD_ERROR:
         return {"msg": "Password error"}, 403
-    user_auth.do_login(existing_user)
+    user_auth.do_login(existing_user, remember_me)
     return {"msg": f"Username:{username} | Password:{password}"}, 200
 
 
 @auth.route('/user', methods=['GET'])
 def user():
-    lu = UserAuth().logged_user()
+    lu: User = UserAuth().logged_user()
     if not lu.is_authenticated:
         return {"msg": "User is not authenticated"}, 203
 
-    return {"msg": lu}, 200
+    return {
+        "msg":
+            {
+                "id": lu.id,
+                "username": lu.username,
+                "email": lu.email
+            }
+    }, 200
 
 
 @auth.route('/logout', methods=['GET'])

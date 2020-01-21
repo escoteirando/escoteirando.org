@@ -1,7 +1,6 @@
 from sqlalchemy_serializer import SerializerMixin
 
-from escoteirando.domain.enums import (AreaDesenvolvimento, TipoAtividade,
-                                       TipoSecao)
+from escoteirando.domain.enums import TipoSecao
 from escoteirando.ext.database import db
 
 

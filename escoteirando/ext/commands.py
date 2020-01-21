@@ -6,6 +6,7 @@ from escoteirando.domain.models.mappa import MAPPA_Progressao
 from escoteirando.domain.models.atividade import Atividade
 from escoteirando.domain.models.encontro import Encontro
 from escoteirando.domain.models.grupo_escoteiro import GrupoEscoteiro
+from escoteirando.domain.models.user import User
 
 from flask_migrate import Migrate, MigrateCommand
 
@@ -35,9 +36,14 @@ def populate_db():
     return Product.query.all()
 
 
+def add_admin():
+    """Adds a new user to the database"""
+    return create_user('admin', 'admin')
+
+
 def init_app(app):
     # add multiple commands in a bulk
-    for command in [create_db, drop_db, populate_db]:
+    for command in [create_db, drop_db, populate_db, add_admin]:
         app.cli.add_command(app.cli.command()(command))
 
     migrate = Migrate(app, db)
