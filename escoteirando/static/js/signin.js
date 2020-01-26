@@ -2,6 +2,10 @@ $(function() {
     console.log('escoteirando.org:signin.js init')
     loginClick('login');
 
+    $(".btn_registrar").on('click', () => loginClick('register'))
+    $(".btn_esqueci").on('click', () => loginClick('perdi'))
+    $(".btn_login").on('click', () => loginClick('login'))
+
     let sp = document.getElementById("show-pass");
     sp.onchange = ev => {
         document.getElementById('registerPassword').type = ev.srcElement.checked ? "password" : "text";

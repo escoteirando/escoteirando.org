@@ -1,16 +1,23 @@
 from flask import abort, render_template
-from escoteirando.models import Product
-from flask_simplelogin import is_logged_in
-from flask_login import current_user, AnonymousUserMixin, UserMixin
+from flask_login import current_user
+
+from escoteirando.domain.models.user import User
+from escoteirando.ext.jinja_tools import get_login_navbar, get_navbar
 from escoteirando.ext.logging import get_logger
-from escoteirando.ext.jinja_tools import get_navbar, get_login_navbar
+from escoteirando.models import Product
+
 logger = get_logger()
 
 
 def index():
     if current_user.is_anonymous:
         return _render_login()
-    
+
+    user: User = current_user
+    if not user.codigo_associado:
+        logger.info(user)
+        # return _render_login_mappa('')
+
     # TODO: Verificar o estado do usuario e apresentar a view correspondente
     return _render_index()
 
@@ -35,9 +42,14 @@ def _render_index():
                            panels=panels)
 
 
+def _render_login_mappa():
+    # TODO: render_login_mappa
+    pass
+
+
 def _render_login():
     return render_template("login_page.html",
-                           navbar=get_login_navbar(),
+                           # navbar=get_login_navbar(),
                            page_title='Login')
 
 

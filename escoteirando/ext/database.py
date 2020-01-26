@@ -10,6 +10,7 @@ migrate: Migrate = Migrate()
 
 def init_app(app):
     db.init_app(app)
+    app.db = db
     migrate.init_app(app, db)
     logging.basicConfig()   # log messages to stdout
     logging.getLogger('sqlalchemy.dialects.postgresql').setLevel(logging.INFO)

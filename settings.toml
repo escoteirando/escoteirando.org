@@ -16,6 +16,8 @@ EXTENSIONS = [
     "escoteirando.ext.auth:init_app",
     "escoteirando.ext.admin:init_app",
     "escoteirando.ext.commands:init_app",
+    "escoteirando.ext.mail:init_app",
+    "escoteirando.ext.mappa:init_app",
     "escoteirando.ext.jinja_tools:init_app",
     "escoteirando.blueprints.webui:init_app",
     "escoteirando.blueprints.restapi:init_app"    

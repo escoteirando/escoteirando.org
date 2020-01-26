@@ -10,7 +10,8 @@ class ServiceProgressoes:
         self.DB: SQLAlchemy = db
 
     def get_progressoes(self, ramo: TipoSecao):
-        return self.DB.session.query(MAPPA_Progressao).filter(MAPPA_Progressao.ramo == ramo).all()
+        return self.DB.session.query(MAPPA_Progressao).\
+            filter(MAPPA_Progressao.ramo == ramo).all()
 
     def update_progressoes(self, progressoes: list):
         for progressao in progressoes:

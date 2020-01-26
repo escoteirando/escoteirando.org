@@ -44,7 +44,7 @@ class UserAuth:
         if not check_password_hash(str(user.password), password):
             return AuthStatus.PASSWORD_ERROR
 
-        if not user.verified:
+        if not user.verified_email:
             return AuthStatus.NOT_VERIFIED
 
         if not user.codigo_associado:

@@ -8,7 +8,7 @@ class MAPPA_Progressao(db.Model, SerializerMixin):
 
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     codigo: int = db.Column(db.Integer, unique=True)
-    descricao: str = db.Column(db.String(180))
+    descricao: str = db.Column(db.Text)
     codigoUeb: str = db.Column(db.String(4))
     ordenacao: int = db.Column(db.Integer)
     codigoCaminho: int = db.Column(db.Integer)

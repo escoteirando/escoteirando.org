@@ -10,6 +10,7 @@ class MenuItem:
         self.href = '#' if 'href' not in args else args['href']
         self.onclick = None if 'onclick' not in args else args['onclick']
         self.subitens = [] if 'subitens' not in args else args['subitens']
+        self.right_align = 'right-align' in args
 
     def to_tag(self, first: bool = False):
         if len(self.subitens) == 0:

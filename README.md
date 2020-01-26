@@ -32,6 +32,7 @@ O objetivo geral deste trabalho √© desenvolver um software web seguindo os padr√
 * https://lucassimon.com.br/2018/06/serie-api-em-flask---parte-1---introducao-configuracao-e-hello-world/
 * https://www.freecodecamp.org/news/inserting-uml-in-markdown-using-vscode/
 * https://github.com/plantuml/plantuml-server
+* https://pythonhosted.org/Flask-Mail/
 
 ## Brainstorm
 

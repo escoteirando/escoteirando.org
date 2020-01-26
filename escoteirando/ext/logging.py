@@ -22,13 +22,14 @@ dictConfig({
 
 _logger = None
 
+
 def get_logger() -> Logger:
     global _logger
-    if not _logger:        
+    if not _logger:
         _logger = getLogger('escoteirando')
-        
-    return _logger
-    
 
-def init_app(app:Flask):
+    return _logger
+
+
+def init_app(app: Flask):
     app.logger.addHandler(getLogger().handlers[0])

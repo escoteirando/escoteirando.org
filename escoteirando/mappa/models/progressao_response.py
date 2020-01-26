@@ -30,5 +30,5 @@ class Progressao(BaseModel):
         self.segmento = None
         super().__init__(fromDict)
 
-    def __repr__(self):        
+    def __repr__(self):
         return "Progressao {0}:{1}".format(self.codigoUeb, self.descricao)

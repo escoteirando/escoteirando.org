@@ -1,17 +1,16 @@
 import time
 
-import requests
 from dateutil.parser import parse
-
+from datetime import timedelta
 from escoteirando.ext.logging import get_logger
 
 from .cache.cache import Cache
 from .models.associado_response import Associado
 from .models.escotista_response import Escotista
-from .models.secao_response import Secao
 from .models.grupo_response import Grupo
-from .models.progressao_response import Progressao
 from .models.login import Login
+from .models.progressao_response import Progressao
+from .models.secao_response import Secao
 from .models.subsecao_response import Subsecao
 from .request import HTTP
 
@@ -23,6 +22,7 @@ class Mappa:
         self.cache = Cache(cache_path, logger=self.logger)
         self.http = HTTP(cache=self.cache)
         self.authorization = None
+        self.auth_valid_until = 0
         self.userId = None
         self.userName = None
         self.codigoAssociado = None
@@ -36,6 +36,8 @@ class Mappa:
         self.sexo = None
         self.codigoRamo = None
         self.linhaFormacao = None
+        self.nomeAssociado = None
+        self.nomeAbreviado = None
         # Grupo
         self.nomeGrupo = None
         # Seção
@@ -94,16 +96,21 @@ class Mappa:
                 self.logger.warning('login user (%s) failed: TTL unidentified')
                 return False
         self.authorization = login.id
+        self.auth_valid_until = (
+            parse(login.created) + timedelta(seconds=login.ttl)).timestamp()
         self.userId = login.userId
+
         self.http.setAuthorization(login.id)
 
-        if self.get_escotista(self.userId):
-            if self.get_associado(self.codigoAssociado):
-                if self.get_grupo(self.codigoGrupo, self.codigoRegiao):
-                    if self.get_secao(self.userId):
-                        self.get_subsecoes(self.userId, self.codigoSecao)
+        return self.get_escotista(self.userId) and \
+            self.get_associado(self.codigoAssociado)
 
-        self.get_progressoes()
+        if self.get_grupo(self.codigoGrupo, self.codigoRegiao):
+            if self.get_secao(self.userId):
+                self.get_subsecoes(self.userId, self.codigoSecao)
+                return True
+
+        # self.get_progressoes()
 
         return True
 
@@ -116,6 +123,7 @@ class Mappa:
         code, response = self.http.get(f'/api/escotistas/{userId}')
         ret: Escotista = None if code >= 300 else Escotista(response)
         if ret:
+            self.userName = ret.username
             self.codigoAssociado = ret.codigoAssociado
             self.codigoFoto = ret.codigoFoto
             self.codigoGrupo = ret.codigoGrupo
@@ -132,6 +140,8 @@ class Mappa:
             self.sexo = ret.sexo
             self.codigoRamo = ret.codigoRamo
             self.linhaFormacao = ret.linhaFormacao
+            self.nomeAssociado = ret.nome
+            self.nomeAbreviado = ret.nomeAbreviado
 
         return ret
 
@@ -144,8 +154,12 @@ class Mappa:
                 }
             }
         }
-        http_code, response = self.http.get('/api/grupos', params=filter)
-        ret: Grupo = None if http_code >= 300 else Grupo(response)
+        response = self.cache.get('get_Grupo', {codigo, codigoRegiao})
+        if not response:
+            http_code, response = self.http.get('/api/grupos', params=filter)
+            ret: Grupo = None if http_code >= 300 else Grupo(response)
+        else:
+            ret = Grupo(response)
         if ret:
             self.nomeGrupo = ret.nome
 
@@ -184,7 +198,7 @@ class Mappa:
                   {"where":        {
                       "numeroGrupo": None,
                       "codigoRegiao": None,
-                      "codigoCaminho": {"inq": [1, 2, 3, 4, 5, 6, 11, 12, 15, 16]}
+                      "codigoCaminho": {"inq": [1, 2, 3, 4, 5, 6, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]}
                   }}}
         http_code, result = self.http.get(
             '/api/progressao-atividades', params=filter)
