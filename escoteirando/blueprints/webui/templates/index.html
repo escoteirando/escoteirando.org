@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+<!-- extends "bootstrap/base.html" -->
+{% block title %}{{config.get('TITLE')}}{% endblock %} {% block navbar %} {{ navbar|safe }} {% endblock %} {% block content %}
+<div class="container">
+    <h1>{{config.get('TITLE')}}</h1>
+
+    <div class="jumbotron">
+        <div class="container">
+            <h1 class="display-3">Bem vind{{'o' if user.sexo!='F' else 'a'}}, {{user.username}}</h1>
+            <p>Este é um portal colaborativo para escotistas.</p>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row row-cols-1 row-cols-md-2">
+            {% for panel in panels %}
+            <div class="col mb-4">
+                <div class="card">
+                    <div class="card-header bg-transparent border-success">{{panel.title}}</div>
+                    <div class="card-body" id="pnl-{{panel.id}}" data-url="{{panel.url}}">
+                        <p class="card-text">wait until data is transfered...</p>
+                    </div>
+                    <div class="card-footer">
+                        <small class="text-muted">loading...</small>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+{% endblock %}

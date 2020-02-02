@@ -1,0 +1,49 @@
+{
+    "dataHora": "2019-11-12T03:45:14-00:00",
+    "values": [
+        {
+            "codigoAtividade": 526,
+            "codigoAssociado": 850829,
+            "dataAtividade": "2019-10-02T00:00:00.000Z",
+            "dataStatusJovem": null,
+            "dataStatusEscotista": "2019-10-02T10:35:41.000Z",
+            "statusJovem": null,
+            "statusEscotista": "confirmadoEscotista",
+            "dataHoraAtualizacao": "2019-10-02T10:36:14.000Z",
+            "codigoUltimoEscotista": 50443
+        },
+        {
+            "codigoAtividade": 538,
+            "codigoAssociado": 850829,
+            "dataAtividade": "2019-10-02T00:00:00.000Z",
+            "dataStatusJovem": null,
+            "dataStatusEscotista": "2019-10-02T10:36:03.000Z",
+            "statusJovem": null,
+            "statusEscotista": "confirmadoEscotista",
+            "dataHoraAtualizacao": "2019-10-02T10:36:14.000Z",
+            "codigoUltimoEscotista": 50443
+        },
+        {
+            "codigoAtividade": 548,
+            "codigoAssociado": 850829,
+            "dataAtividade": "2019-10-02T00:00:00.000Z",
+            "dataStatusJovem": null,
+            "dataStatusEscotista": "2019-10-02T10:36:13.000Z",
+            "statusJovem": null,
+            "statusEscotista": "confirmadoEscotista",
+            "dataHoraAtualizacao": "2019-10-02T10:36:14.000Z",
+            "codigoUltimoEscotista": 50443
+        },
+        {
+            "codigoAtividade": 511,
+            "codigoAssociado": 850829,
+            "dataAtividade": "2019-10-02T00:00:00.000Z",
+            "dataStatusJovem": null,
+            "dataStatusEscotista": "2019-10-02T10:35:33.000Z",
+            "statusJovem": null,
+            "statusEscotista": "confirmadoEscotista",
+            "dataHoraAtualizacao": "2019-10-02T10:36:14.000Z",
+            "codigoUltimoEscotista": 50443
+        }
+    ]
+}

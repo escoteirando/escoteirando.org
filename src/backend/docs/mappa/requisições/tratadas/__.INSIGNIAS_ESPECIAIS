@@ -1,0 +1,609 @@
+# /api/insignias-especiais?filter[include]=itens
+[
+    {
+        "nome": "Cone Sul",
+        "codigoRamo": 2,
+        "id": 1,
+        "segmento": "CONE_SUL_LOBINHO",
+        "itens": [
+            {
+                "codigoInsigniaEspecial": 1,
+                "area": "Geografia",
+                "descricao": "Realizar TODAS as atividades abaixo:\n\n a) Indicar, no mapa mundi, onde estão localizados os demais países do Cone Sul, sabendo reconhecer suas bandeiras e explicar o significado das cores de cada uma delas.\n \n b) Pesquisar a história de algo importante por sua utilidade que tenha sido inventado em um dos países do Cone Sul.",
+                "id": 1
+            },
+            {
+                "codigoInsigniaEspecial": 1,
+                "area": "Cultura",
+                "descricao": "Realizar pelo menos duas, dentre as opções abaixo:\n\n a) Degustar pelo menos um prato típico de outro país do Cone Sul, conhecendo sua história e origem.\n \n b) Visitar exposições ou feiras culturais referentes a outros países do Cone Sul.\n \n c) Conhecer uma lenda ou conto de outro país do Cone Sul e contá-la para Alcateia.\n \n d) Conhecer a principal dança típica de pelo menos dois países do Cone Sul.\n \n e) Ir a uma peça de teatro cujo roteiro seja de outro país do Cone Sul e não esteja adaptado.",
+                "id": 2
+            },
+            {
+                "codigoInsigniaEspecial": 1,
+                "area": "Linguagem e Comunicação",
+                "descricao": "Realizar pelo menos duas, dentre as opções abaixo:\n\n a) Assistir uma animação ou filme nacional de outro país do Cone Sul.\n \n b) Enviar e receber uma correspondência, ou e-mail, contendo uma foto de sua Alcateia, para um lobinho de outro país do Cone Sul.\n \n c) Entrevistar alguém que esteja morando, ou tenha morado em algum país do Cone Sul.",
+                "id": 3
+            },
+            {
+                "codigoInsigniaEspecial": 1,
+                "area": "Escotismo",
+                "descricao": "Realizar pelo menos duas, dentre as opções abaixo:\n\n a) Descobrir quais distintivos poderia conquistar se fosse de outro país do Cone Sul.\n \n b) Ensinar a Alcateia a cantar uma canção escoteira de outro país do Cone Sul.\n \n c) Conhecer as principais terminologias do Ramo Lobinho (Alcateia, Matilha, acampamento, etc) em castelhano ou em outro idioma falado em países do Cone Sul, como o guarani\n \n d) Conhecer os nomes e os símbolos das Associações Escoteiras dos países que integram o Cone Sul.",
+                "id": 4
+            }
+        ]
+    },
+    {
+        "nome": "IMMA",
+        "codigoRamo": 2,
+        "id": 2,
+        "segmento": "IMMA_LOBINHO",
+        "itens": [
+            {
+                "codigoInsigniaEspecial": 2,
+                "area": null,
+                "descricao": "a) Explorar as fontes de água potável e ar puro no ambiente local. Compreender de que formas a água e o ar são limpos.",
+                "id": 5
+            },
+            {
+                "codigoInsigniaEspecial": 2,
+                "area": null,
+                "descricao": "b) Explorar uma área natural local. \n \n Descobrir algumas espécies naturais de animais e plantas e as suas necessidades de habitat. \n \n Demonstrar conhecimento sobre os contrastes de habitats.",
+                "id": 6
+            },
+            {
+                "codigoInsigniaEspecial": 2,
+                "area": null,
+                "descricao": "c) Ter consciência das substâncias perigosas que afetam o ambiente local. \n \n Explicar formas de reduzir os riscos das substâncias perigosas para as pessoas, animais e plantas.",
+                "id": 7
+            },
+            {
+                "codigoInsigniaEspecial": 2,
+                "area": null,
+                "descricao": "d) Mostrar consciência de como as ações individuais afetam o meio ambiente e mostrar formas alternativas de  provocar menos impacto",
+                "id": 8
+            },
+            {
+                "codigoInsigniaEspecial": 2,
+                "area": null,
+                "descricao": "e) Ser capaz de identificar diferentes tipos de desastres ambientais e catástrofes naturais. \n\n Demonstrar como estar preparado e como reagir em desastres ambientais e catástrofes naturais na sua cidade.",
+                "id": 9
+            },
+            {
+                "codigoInsigniaEspecial": 2,
+                "area": null,
+                "descricao": "f) Participar de um projeto ambiental local. Compreender os benefícios do projeto para o ambiente local. \n\n Ter consciência das ligações locais e globais do projeto.",
+                "id": 10
+            }
+        ]
+    },
+    {
+        "nome": "Lusofonia",
+        "codigoRamo": 2,
+        "id": 3,
+        "segmento": "LUSOFONIA_LOBINHO",
+        "itens": [
+            {
+                "codigoInsigniaEspecial": 3,
+                "area": "Geografia",
+                "descricao": "Realizar pelo menos duas das opções abaixo:\n\na) Pesquisar os temperos e especiarias típicos dos países lusófonos, também presentes no Brasil.\n\nb) Pesquisar a fauna e flora típicos dos países lusófonos, também presentes no Brasil.\n\nc) Pesquisar utensílios e invenções utilizadas no Brasil, criados em algum país lusófonos.\n\nd) Indicar, no mapa mundi, onde estão localizados os países lusófonos e reconhecer suas respectivas bandeiras.",
+                "id": 11
+            },
+            {
+                "codigoInsigniaEspecial": 3,
+                "area": "Cultura",
+                "descricao": "Realizar pelo menos três das opções abaixo:\n\na) Visitar exposições ou feiras culturais referentes a outros países lusófonos.\n\nb) Degustar pelo menos uma refeição típica de outro país lusófono, conhecendo sua história e origem.\n\nc) Ir a uma peça de teatro cujo roteiro seja de outro país lusófono e não esteja adaptado.\n\nd) Assistir um espetáculo (circo, show musical etc) que seja originário de outro país lusófono.\n\ne) Conhecer uma lenda ou conto de um outro país lusófono, e contá-la para sua Alcateia.",
+                "id": 12
+            },
+            {
+                "codigoInsigniaEspecial": 3,
+                "area": "Linguagem e Comunicação",
+                "descricao": "Realizar pelo menos duas, dentre as opções abaixo:\n\na) Entrevistar alguém que tenha morado, ou esteja morando, em um país lusófono;\n\nb) Ver um filme nacional ou animação de outro país Lusófono;\n\nc) Enviar e receber uma correspondência, ou e-mail, contendo uma foto de sua Alcateia, para um lobinho de outro país Lusófono",
+                "id": 13
+            },
+            {
+                "codigoInsigniaEspecial": 3,
+                "area": "Escotismo",
+                "descricao": "Realizar pelo menos duas das opções abaixo:\n\na) Descobrir quais distintivos o Lobinho poderia conquistar se fosse de outro país lusófono.\n\nb) Fazer uma lista de termos escoteiros utilizados em outro país lusófono.\n\nc) Conhecer o símbolo das Associações Escoteiras dos países lusófonos.",
+                "id": 14
+            }
+        ]
+    },
+    {
+        "nome": "Boa Ação",
+        "codigoRamo": 2,
+        "id": 4,
+        "segmento": "BOA_ACAO",
+        "itens": [
+            {
+                "codigoInsigniaEspecial": 4,
+                "area": null,
+                "descricao": "a) Conhecer os principais problemas sociais de sua rua ou bairro e conversar com seus pais ou velhos lobos sobre como você poderia contribuir para resolvê-los.",
+                "id": 15
+            },
+            {
+                "codigoInsigniaEspecial": 4,
+                "area": null,
+                "descricao": "b) Conhecer instituições de sua comunidade que realizam ações assistenciais a pessoas necessitadas ou orientação para a melhoria da vida das pessoas, procurando saber de que forma sua Alcateia poderia ajudá-las.",
+                "id": 16
+            },
+            {
+                "codigoInsigniaEspecial": 4,
+                "area": null,
+                "descricao": "c) Participar de pelo menos uma edição do Mutirão Nacional Escoteiro de Ação Comunitária com sua Alcateia ou de outra atividade de ação comunitária realizada pela sua Alcateia ou por seu Grupo Escoteiro.",
+                "id": 17
+            },
+            {
+                "codigoInsigniaEspecial": 4,
+                "area": null,
+                "descricao": "d) Perceber os eventuais perigos a que estão expostos os lobinhos em uma excursão ou acampamento/acantonamento e ajudar a aplicar as regras de segurança para evitá-los.",
+                "id": 18
+            },
+            {
+                "codigoInsigniaEspecial": 4,
+                "area": null,
+                "descricao": "e) Participar de pelo menos três boas ações coletivas com sua Alcateia, contribuindo com ideias e ações para o planejamento e execução das atividades.",
+                "id": 19
+            },
+            {
+                "codigoInsigniaEspecial": 4,
+                "area": null,
+                "descricao": "f) Participar de uma ação comunitária promovida por alguma instituição de sua comunidade: igreja, clube, escola, posto de saúde, polícia, bombeiros, casa comercial, etc. e fazer um relatório sobre essa participação.",
+                "id": 20
+            },
+            {
+                "codigoInsigniaEspecial": 4,
+                "area": null,
+                "descricao": "g) Planejar e executar uma boa ação, diferente das realizadas anteriormente, que seja útil em sua Alcateia, casa, escola ou comunidade, com duração mínima de um mês, apresentando posteriormente os resultados para sua Alcateia.",
+                "id": 21
+            }
+        ]
+    },
+    {
+        "nome": "Cone Sul",
+        "codigoRamo": 1,
+        "id": 5,
+        "segmento": "CONE_SUL_ESCOTEIRO",
+        "itens": [
+            {
+                "codigoInsigniaEspecial": 5,
+                "area": "Geografia",
+                "descricao": "Realizar pelo menos duas, dentre as opções abaixo:\n\na) Organizar um mural sobre os países do Cone Sul e divulgar para a seção ou para o Grupo Escoteiro;\n\nb) Pesquisar locais em outro país do Cone Sul, indicando onde poderiam ser realizadas atividades como: trilhas, acampamentos, escaladas, travessias, etc e divulgar no site da seção ou do Grupo Escoteiro;\n\nc) Pesquisar os principais pontos turísticos de pelo menos dois países do Cone Sul. \n\nd) Montar um quadro comparativo contendo as principais diferenças de clima, flora, fauna e relevo de pelo menos 3 países do Cone Sul.",
+                "id": 22
+            },
+            {
+                "codigoInsigniaEspecial": 5,
+                "area": "Cultura",
+                "descricao": "Realizar pelo menos três, dentre as opções abaixo:\n\na) Explorar a música e a dança em pelo menos 3 países do Cone Sul, destacando quais os principais ritmos, cantores e instrumentos.\n\nb) Fazer uma esquete baseada em uma lenda ou conto de um outro país do Cone Sul.\n\nc) Elaborar um jantar completo (prato principal, acompanhamento, bebida e sobremesa) para sua Patrulha.\n\nd) Ler um livro originário de outro país do Cone Sul e apresentar um resumo para sua Seção.\n\ne) Participar de uma festa típica relativa à cultura de outro país do Cone Sul.",
+                "id": 23
+            },
+            {
+                "codigoInsigniaEspecial": 5,
+                "area": "Linguagem e Comunicação",
+                "descricao": "Realizar pelo menos duas das atividades abaixo:\n\na) Acompanhar as principais notícias de um site de notícias ou jornal de outro país do Cone Sul, por pelo menos duas semanas, e apresentar uma coletânea para a sua Seção.\n\nb) Entrar em contato com um jovem (escoteiro ou escoteira) de um outro país do Cone Sul, e produzir uma notícia sobre uma atividade realizada por ele.\n\nc) Participar de uma atividade de radioescotismo e entrar em contato com um jovem (escoteiro ou escoteira) de outro país do Cone Sul, via radioamador ou Echolink, documentando o contato com os dados pessoais obtidos para troca de eventual correspondência, formal ou eletrônica.\n\nd) Participar de um Home-Hospitality, recebendo por pelo menos dois dias em sua casa, um escoteiro de outro país do Cone Sul, relatando posteriormente a sua seção sua experiência com relação aos costumes do convidado e as dificuldades/facilidades de comunicação, bem como as características que temos em comum.",
+                "id": 24
+            },
+            {
+                "codigoInsigniaEspecial": 5,
+                "area": "Escotismo",
+                "descricao": "Realizar pelo menos duas, dentre as opções abaixo:\n\na) Apresentar para sua Tropa como é o Escotismo em pelo menos 3 países do Cone Sul (vestuário/uniforme, distintivos, idades para ingresso, símbolo da associação, estrutura, etc).\n\nb) Participar de um Jamboree Panamericano ou outra atividade com escoteiros de outros países do Cone Sul.\n\nc) Participar de um JOTA – Jamboree on the Air, comprovando os contatos realizados com outros escoteiros do Cone Sul, por meio do “cartão QSL da estação” recebido.\n\nd) Preparar um prato típico da culinária mateira, que seja popular em outro país do Cone Sul, e não usual dos Escoteiros do Brasil. \n\ne) Aprender uma técnica de campo (pioneiria, amarra, confecção de forno, etc) que seja diferente ou não usual dos Escoteiros do Brasil, e aplica-la em uma atividade.",
+                "id": 25
+            }
+        ]
+    },
+    {
+        "nome": "IMMA",
+        "codigoRamo": 1,
+        "id": 6,
+        "segmento": "IMMA_ESCOTEIRO",
+        "itens": [
+            {
+                "codigoInsigniaEspecial": 6,
+                "area": null,
+                "descricao": "a) Explorar as fontes de água potável e ar puro no ambiente local. \n\nIdentificar ameaças à água potável e ao ar puro no ambiente local e global, sugerindo soluções.",
+                "id": 26
+            },
+            {
+                "codigoInsigniaEspecial": 6,
+                "area": null,
+                "descricao": "b) Explorar uma área natural local. Compreender o que são ecossistemas e biodiversidade. \n\nCompreender as ligações entre os ecossistemas das espécies nativas de plantas e animais e as suas necessidades de habitat. \n\nDemonstrar a relação entre as atitudes individuais e a existência de habitats suficientes para a sobrevivência das espécies nativas",
+                "id": 27
+            },
+            {
+                "codigoInsigniaEspecial": 6,
+                "area": null,
+                "descricao": "c) Ter consciência das substâncias perigosas que afetam o ambiente local e identificar a causa. \n\nDemonstrar que ações pessoais podem ser tomadas para reduzir o risco de substâncias perigosas para as pessoas e para o ambiente.",
+                "id": 28
+            },
+            {
+                "codigoInsigniaEspecial": 6,
+                "area": null,
+                "descricao": "d) Reconhecer a forma como estamos ligados ao meio ambiente e de como podemos ter escolhas certas sobre as nossas ações, de forma a minimizar o impacto no ambiente. \n\nCompreender como podemos mudar de atitude para melhorar nosso impacto no ambiente.",
+                "id": 29
+            },
+            {
+                "codigoInsigniaEspecial": 6,
+                "area": null,
+                "descricao": "e) Ser capaz de identificar diferentes tipos de desastres ambientais e catástrofes naturais e explicar porque ocorrem. \n\nDemonstrar como se pode ajudar os outros a estar preparado para responder a desastres ambientais e catástrofes naturais na sua cidade.",
+                "id": 30
+            },
+            {
+                "codigoInsigniaEspecial": 6,
+                "area": null,
+                "descricao": "f) Identificar problemas ambientais locais e suas soluções potenciais. \n\nPlanejar e executar um projeto ambiental. Compreender a ligação do projeto aos níveis local e global.",
+                "id": 31
+            }
+        ]
+    },
+    {
+        "nome": "Lusofonia",
+        "codigoRamo": 1,
+        "id": 7,
+        "segmento": "LUSOFONIA_ESCOTEIRO",
+        "itens": [
+            {
+                "codigoInsigniaEspecial": 7,
+                "area": "Geografia",
+                "descricao": "Realizar pelo menos duas, dentre as opções abaixo:\n\na) Organizar um mural sobre os países lusófonos e divulgar para a seção ou para o Grupo Escoteiro;\n\nb) Pesquisar locais em outro país lusófono onde poderiam fazer trilhas, acampamentos, escaladas, travessias, etc e divulgar no site da seção ou do Grupo Escoteiro;\n\nc) Pesquisar pontos turísticos em outro país lusófono e apresentar à seção;\n\nd) Montar um quadro comparativo contendo as principais diferenças de clima, flora, fauna e relevo de pelo menos 3 países lusófonos.",
+                "id": 32
+            },
+            {
+                "codigoInsigniaEspecial": 7,
+                "area": "Cultura",
+                "descricao": "Realizar pelo menos três, dentre as opções abaixo:\n\na) Fazer uma peça de artesanato de outro país lusófono;\n\nb) Fazer um jantar completo para a sua patrulha com comidas típicas de outro país lusófono;\n\nc) Fazer uma esquete baseada em uma lenda ou conto de um outro país lusófono.\n\nd) Fazer um recital de poemas, poesias e declamações de outro país lusófono na seção;\n\ne) Promover um sarau com músicas de bandas e artistas de outros países lusófonos que sejam cantadas em português;\n\nf) Editar um vídeo com canções ou danças populares de outro país e divulgar para o Grupo Escoteiro.",
+                "id": 33
+            },
+            {
+                "codigoInsigniaEspecial": 7,
+                "area": "Linguagem e Comunicação",
+                "descricao": "Realizar pelo menos duas, dentre as opções abaixo:\n\na) Acompanhar as principais notícias de um site de notícias ou jornal de outro país Lusófono, por pelo menos duas semanas, e apresentar uma coletânea para a sua Seção.\n\nb) Ler um livro originário de outro país Lusófono e apresentar um resumo para sua Seção.\n\nc) Entrar em contato com um jovem escoteiro ou escoteira de outro país da CEL (através da escrita) para produzir uma notícia de uma atividade que ele tenha realizado.\n\nd) Entrar em contato com um jovem escoteiro, ou escoteira, de outro país da CEL, por meio de contato via radioamador, comprovando o contato com apresentação de cartão QSL ou correspondência, formal ou eletrônica, que contenha os dados do contato: data/hora, faixa/frequência e nomes/indicativos das estações envolvidas.\n\ne) Participar de um Home-Hospitality, recebendo por pelo menos dois dias em sua casa, um escoteiro de outro país lusófono, relatando posteriormente a sua seção sua experiência com relação aos costumes do convidado e as dificuldades/facilidades de comunicação, bem como as características que temos em comum.",
+                "id": 34
+            },
+            {
+                "codigoInsigniaEspecial": 7,
+                "area": "Escotismo",
+                "descricao": "Realizar pelo menos duas, dentre as opções abaixo:\n\na) Aprender uma canção e ensiná-la à seção (via internet ou pessoalmente);\n\nb) Preparar um prato típico da culinária mateira, que seja popular em outro país Lusófono, e que seja desconhecido dos Escoteiros do Brasil.\n\nc) Participar de um Encontro Lusófono em um Jamboree.\n\nd) Apresentar para sua Tropa como é o Escotismo em pelo menos 3 países Lusófonos (uniforme, distintivos, idades para ingresso, símbolo da associação, estrutura, etc).\n\ne) Participar de um JOTA – Jamboree on the Air, comprovando os contatos realizados com outros escoteiros da CEL, por meio do “cartão QSL da estação” recebido.",
+                "id": 35
+            }
+        ]
+    },
+    {
+        "nome": "Ação Comunitária",
+        "codigoRamo": 1,
+        "id": 8,
+        "segmento": "ACAO_COMUNITARIA",
+        "itens": [
+            {
+                "codigoInsigniaEspecial": 8,
+                "area": null,
+                "descricao": "a) Participar, como Escoteiro, de um Mutirão Nacional Escoteiro de Ação Comunitária ou de outra atividade de ação comunitária realizada pela sua Patrulha, Tropa ou pelo seu Grupo Escoteiro.",
+                "id": 36
+            },
+            {
+                "codigoInsigniaEspecial": 8,
+                "area": null,
+                "descricao": "b) Participar de um PROJETO, no Ramo Escoteiro, que pode ser realizado sozinho, com outro companheiro ou companheiros de patrulha, ou com sua patrulha, nas seguintes condições:\n\nQue seja idealizado e concebido pelo próprio jovem, companheiro(s) ou Patrulha;\n\nCujo conteúdo seja resultado de uma necessidade apresentada por sua comunidade próxima (ex: Tropa, grupo ou bairro.);\n\nQue seja desenvolvido seguindo todas as etapas de diagnóstico, organização, execução e avaliação; com acompanhamento de um adulto aprovado pela Chefia de Tropa;\n\nCuja execução ocupe um período mínimo de 3 meses de duração;\n\nCujo conteúdo esteja relacionado a uma das áreas seguintes: Ciência e Tecnologia, Saúde e Meio Ambiente, Cultura e Artes, e Paz e Compreensão; e\n\nQue seja apresentado relatório final com todos os dados e resultados do projeto.",
+                "id": 37
+            }
+        ]
+    },
+    {
+        "nome": "Cone Sul",
+        "codigoRamo": 3,
+        "id": 9,
+        "segmento": "CONE_SUL_SENIOR",
+        "itens": [
+            {
+                "codigoInsigniaEspecial": 9,
+                "area": "Geografia",
+                "descricao": "Realizar pelo menos duas, dentre as opções abaixo:\n\na) Preparar um roteiro de viagem para outro país do Cone Sul, considerando os pontos turísticos a serem visitados, transporte, orçamento e campanha financeira, segurança e cronograma de ações.\n\nb) Visitar um outro país do Cone Sul, fazendo uma apresentação posterior a sua seção, mostrando fotos e vídeos dos locais visitados, principais traços culturais, gastronomia, curiosidades, etc.\n\nc) Fazer uma apresentação áudio visual sobre o Mercosul para sua Tropa, explicando os principais objetivos, países que o integram e seu ponto de vista quanto a sua importância. \n\nd) Elaborar um projeto de atividade aventureira em outro país do Cone Sul.",
+                "id": 38
+            },
+            {
+                "codigoInsigniaEspecial": 9,
+                "area": "Cultura",
+                "descricao": "Realizar pelo menos duas, dentre as opções abaixo:\n\na) Participar de um evento cultural em conjunto com outros cidadãos de países do Cone Sul.\n\nb) Organizar um Jantar típico para sua Seção, de um país do Cone Sul, a sua livre escolha. O jantar poderá ser organizado pela Patrulha ou Equipe de Interesse. Neste jantar deverá ser servido um menú típico (bebida típica, prato principal, acompanhamentos e sobremesa), os participantes deverão estar usando trajes típicos, música típica e deverá ser realizada uma apresentação artística. O jantar poderá ser organizado pela Patrulha ou Equipe de Interesse.\n\nc) Escrever uma peça com um escoteiro de outro país do Cone Sul e apresenta-la para a seção, considerando cenário e caracterização dos personagens.",
+                "id": 39
+            },
+            {
+                "codigoInsigniaEspecial": 9,
+                "area": "Linguagem e Comunicação",
+                "descricao": "Realizar pelo menos duas, sendo obrigatória a primeira:\n\na) Participar ativamente de um debate (pessoal, via internet ou radioamador) com, pelo menos, mais duas pessoas de outro país do Cone Sul; sobre um tema de abrangência global da atualidade.\n\nb) Criar uma comunidade, ou grupo, em alguma rede social, com jovens e adultos de outros países do Cone Sul e mantê-la atualizada com notícias e informações úteis por pelo menos quatro meses.\n\nc) Criar um “Jornal Mural” na Sede de seu Grupo Escoteiro e mantê-lo atualizado com notícias úteis do Cone Sul por pelo menos quatro meses.\n\nd) Participar de um Home-Hospitality, recebendo por pelo menos quatro dias em sua casa, um escoteiro de outro país do Cone Sul, apresentando posteriormente para sua seção um relato das atividades desenvolvidas (pontos turísticos visitados), bem como as impressões do convidado em relação ao nosso país.",
+                "id": 40
+            },
+            {
+                "codigoInsigniaEspecial": 9,
+                "area": "Escotismo",
+                "descricao": "Realizar pelo menos duas, dentre as opções abaixo:\n\na) Participar de um Jamboree Panamericano ou outra atividade com escoteiros de outros países do Cone Sul.\n\nb) Participar de um JOTA – Jamboree on the Air, comprovando os contatos realizados com outros escoteiros do Cone Sul, por meio do “cartão QSL da estação” recebido.\n\nc) Organizar uma coleção de distintivos, com pelo menos 30 peças, contendo distintivos de pelo menos 3 países diferentes do seu. \n\nd) Entrar em contato com um escoteiro de outro país do Cone Sul (pessoalmente, via internet ou radioamador), programar uma atividade, com duração mínima de 2 horas, que seja totalmente típica naquele país e aplicá-las em sua ou em outra seção do grupo.",
+                "id": 41
+            }
+        ]
+    },
+    {
+        "nome": "IMMA",
+        "codigoRamo": 3,
+        "id": 10,
+        "segmento": "IMMA_SENIOR",
+        "itens": [
+            {
+                "codigoInsigniaEspecial": 10,
+                "area": null,
+                "descricao": "a) Explorar as fontes de água potável e ar puro no ambiente local. \n\nDemonstrar a relação entre as atitudes individuais  e a disponibilidade de água potável e ar puro no ambiente local e global.",
+                "id": 42
+            },
+            {
+                "codigoInsigniaEspecial": 10,
+                "area": null,
+                "descricao": "b) Explorar uma área natural local. Compreender o que são ecossistemas e biodiversidade.\n\nCompreender as ligações entre os ecossistema das espécies nativas de plantas e animais e as suas necessidades de habitat. \n\nDemonstrar a relação entre as atitudes individuais e a existência de habitats suficientes para a sobrevivência das espécies nativas. \n\nTer consciência das ações globais que afetam a biodiversidade.",
+                "id": 43
+            },
+            {
+                "codigoInsigniaEspecial": 10,
+                "area": null,
+                "descricao": "c) Explicar o impacto local que têm as substâncias perigosas para as pessoas e para o ambiente e o que se pode fazer individualmente, em grupo ou na comunidade para reduzir estes riscos. \n\nCompreender o impacto global das substâncias perigosas e como as ações locais podem alterar o ambiente global.",
+                "id": 44
+            },
+            {
+                "codigoInsigniaEspecial": 10,
+                "area": null,
+                "descricao": "d) Explicar como a escolha das nossas ações e  nossa responsabilidade pessoal, de grupo, em comunidade e no país pode afetar o meio ambiente. \n\nCompreender como podemos mudar de atitude para melhorar nosso impacto no ambiente.  \n\nDemonstrar de que forma as soluções locais têm impacto no ambiente global.",
+                "id": 45
+            },
+            {
+                "codigoInsigniaEspecial": 10,
+                "area": null,
+                "descricao": "e) Ser capaz de identificar diferentes tipos de desastres ambientais e catástrofes naturais e explicar porque ocorrem. \n\nDemonstrar como se pode ajudar os outros a estar preparado para responder a desastres ambientais e catástrofes naturais na sua cidade.\n\nExplicar que mudanças no ambiente podem influenciar a ocorrência de desastres ambientais e catástrofes naturais.",
+                "id": 46
+            },
+            {
+                "codigoInsigniaEspecial": 10,
+                "area": null,
+                "descricao": "f) Identificar problemas ambientais locais e suas soluções potenciais. \n\nPlanejar e executar um projeto ambiental. Compreender a ligação do projeto aos níveis local e global. \n\nAvaliar os resultados do projeto para os escoteiros, a comunidade e o meio ambiente.",
+                "id": 47
+            }
+        ]
+    },
+    {
+        "nome": "Lusofonia",
+        "codigoRamo": 3,
+        "id": 11,
+        "segmento": "LUSOFONIA_SENIOR",
+        "itens": [
+            {
+                "codigoInsigniaEspecial": 11,
+                "area": "Geografia",
+                "descricao": "Realizar pelo menos duas, dentre as opções abaixo:\n\na) Preparar um roteiro de viagem para outro país lusófono, considerando os pontos turísticos a serem visitados, transporte, orçamento e campanha financeira, segurança e cronograma de ações.\n\nb) Visitar outro país lusófono, fazendo uma apresentação posterior a sua seção, mostrando fotos e vídeos dos locais visitados, principais traços culturais, gastronomia, curiosidades, etc.\n\nc) Elaborar um projeto de atividade aventureira em outro país lusófono.",
+                "id": 48
+            },
+            {
+                "codigoInsigniaEspecial": 11,
+                "area": "Cultura",
+                "descricao": "Realizar pelo menos duas, dentre as opções abaixo:\n\na) Participar de um evento cultural em conjunto com outros cidadãos de países lusófonos.\n\nb) Organizar um Jantar típico para sua Seção, de um país lusófono, a sua livre escolha. Neste jantar deverá ser servido um cardápio típico (bebida típica, prato principal, acompanhamentos e sobremesa), os participantes deverão estar usando trajes típicos, música típica e deverá ser realizada uma apresentação artística.\n\nc) Escrever uma peça com um escoteiro de outro país lusófono e apresentá-la para a seção, considerando cenário e caracterização dos personagens.",
+                "id": 49
+            },
+            {
+                "codigoInsigniaEspecial": 11,
+                "area": "Linguagem e Comunicação",
+                "descricao": "Realizar pelo menos duas, sendo obrigatória à primeira:\n \n a) Participar ativamente de um debate (pessoal, via internet ou radioamador) com, pelo menos, mais duas pessoas de outro país lusófono; sobre um tema de abrangência global da atualidade.\n \n b) Criar uma comunidade em alguma rede social, com jovens e adultos de outros países lusófonos e mantê-la atualizada com notícias e informações úteis por pelo menos quatro meses.\n \n c) Criar um “Jornal Mural” na Sede de seu Grupo Escoteiro e mantê-lo atualizado com informações úteis (notícias, dicas, etc.) por pelo menos quatro meses.\n \n d) Criar e divulgar uma Rodada de Radioamadores periódica (semanal ou mensal), em HF ou Echolink, com participação de membros do Movimento Escoteiro de outros países lusófonos por, no mínimo, 8 encontros comprovados por meio de LOGs (registro de comunicados), chancelados pela Equipe Regional ou Nacional de Radioescotismo.\n \n e) Participar de um Home-Hospitality, recebendo por pelo menos quatro dias em sua casa, um escoteiro de outro país, Lusófono, apresentando posteriormente para sua seção um relato das atividades desenvolvidas (pontos turísticos visitados), bem como as impressões do convidado em relação ao nosso país.",
+                "id": 50
+            },
+            {
+                "codigoInsigniaEspecial": 11,
+                "area": "Escotismo",
+                "descricao": "Realizar pelo menos duas, dentre as opções abaixo:\n\na) Participar de um Encontro Lusófono em alguma atividade internacional.\n\nb) Organizar uma coleção de distintivos, com pelo menos 50 peças, contendo distintivos lusófonos de pelo menos 3 países diferentes do seu.\n\nc) Entrar em contato com um escoteiro de outro país lusófono, em conjunto com ele programar uma atividade que seja totalmente típica naquele país, com duração mínima de duas horas, e aplicá-la em sua ou em outra seção do grupo escoteiro.",
+                "id": 51
+            }
+        ]
+    },
+    {
+        "nome": "Desafio Comunitário",
+        "codigoRamo": 3,
+        "id": 12,
+        "segmento": "DESAFIO_COMUNITARIO",
+        "itens": [
+            {
+                "codigoInsigniaEspecial": 12,
+                "area": null,
+                "descricao": "a) Participar, como Sênior, de um Mutirão Nacional Escoteiro de Ação Comunitária, ou de outra atividade de ação comunitária realizada pela sua Patrulha, Tropa ou pelo seu Grupo Escoteiro.",
+                "id": 52
+            },
+            {
+                "codigoInsigniaEspecial": 12,
+                "area": null,
+                "descricao": "Participar de um PROJETO, no Ramo Sênior, que pode ser realizado sozinho, com sua Patrulha ou equipe de interesse, nas seguintes condições:\n\nQue seja idealizado e concebido pelo próprio jovem, Patrulha ou Equipe de Interesse.\n\nCujo conteúdo seja resultado de uma necessidade apresentada por uma comunidade diferente daquela em que reside, estuda, trabalha ou está localizado seu Grupo Escoteiro.\n\nQue seja desenvolvido seguindo todas as etapas de diagnóstico, organização, execução e avaliação; com acompanhamento de um adulto designado pelo Chefe de Tropa;\n\nCuja execução ocupe um período mínimo de 4 meses de duração;\n\nCujo conteúdo esteja relacionado a uma das Prioridades do Milênio definidas pela Organização das Nações Unidas; e\n\nQue seja apresentado relatório final com todos os dados e resultados do projeto.",
+                "id": 53
+            }
+        ]
+    },
+    {
+        "nome": "Cone Sul",
+        "codigoRamo": 4,
+        "id": 13,
+        "segmento": "CONE_SUL_PIONEIRO",
+        "itens": [
+            {
+                "codigoInsigniaEspecial": 13,
+                "area": null,
+                "descricao": "Elaborar e executar um projeto de viagem para outro país do Cone Sul, considerando todos os aspectos operacionais, tais como:\n\n• Roteiro;\n• Transporte;\n• Documentos e vacinas necessárias;\n• Pontos a serem visitados;\n• Segurança;\n• Locais de hospedagem;\n• Contato com outros escoteiros;\n• Entre outros;\n\nApós a viagem, deverá ser apresentado por meio audiovisual todos os detalhes da aventura, indicando os principais aspectos culturais e geográficos do local visitado.",
+                "id": 54
+            }
+        ]
+    },
+    {
+        "nome": "Lusofonia",
+        "codigoRamo": 4,
+        "id": 14,
+        "segmento": "LUSOFONIA_PIONEIRO",
+        "itens": [
+            {
+                "codigoInsigniaEspecial": 14,
+                "area": null,
+                "descricao": "Elaborar e executar um projeto de viagem para outro país lusófono, considerando todos os aspectos operacionais, tais como:\n\n •\tRoteiro;\n •\tTransporte;\n •\tDocumentos e vacinas necessárias;\n •\tPontos a serem visitados;\n •\tSegurança;\n •\tLocais de hospedagem;\n •\tContato com outros escoteiros;\n •\tEntre outros;\n\nApós a viagem, deverá ser apresentado por meio audiovisual todos os detalhes da aventura, indicando os principais aspectos culturais e geográficos do local visitado.",
+                "id": 55
+            }
+        ]
+    },
+    {
+        "nome": "Aprender",
+        "codigoRamo": 2,
+        "id": 15,
+        "segmento": "APRENDER_LOBINHO",
+        "itens": [
+            {
+                "codigoInsigniaEspecial": 15,
+                "area": "Aprendendo a Aprender",
+                "descricao": "a) Organizar o espaço de estudo adequadamente, observando a sua iluminação, local para acondicionamento dos materiais e ambiente.",
+                "id": 56
+            },
+            {
+                "codigoInsigniaEspecial": 15,
+                "area": "Aprendendo a Aprender",
+                "descricao": "b) Ter o seu material escolar devidamente organizado, demonstrado cuidados com os livros, cadernos e demais materiais.",
+                "id": 57
+            },
+            {
+                "codigoInsigniaEspecial": 15,
+                "area": "Aprendendo a Aprender",
+                "descricao": "c) Destinar o tempo adequado para seu estudo e tarefas de casa, relatando aos pais, a Akela ou outro Velho Lobo quanto tempo utiliza para essas atividades.",
+                "id": 58
+            },
+            {
+                "codigoInsigniaEspecial": 15,
+                "area": "Aprendendo com os outros",
+                "descricao": "a) Participar, como Lobinho, de pelo menos uma edição do Projeto Educação Escoteira com sua Alcateia, ou de outra atividade em conjunto com escolas realizada pela sua Alcateia ou pelo seu Grupo Escoteiro/Seção Autônoma.",
+                "id": 59
+            },
+            {
+                "codigoInsigniaEspecial": 15,
+                "area": "Aprendendo com os outros",
+                "descricao": "b) Participar ativamente de pelo menos duas atividades especiais em sua escola (Ex.: Festa Junina, Feira de Ciências, Excursão, etc.) e mostrar fotos ou relatório para a Alcateia.",
+                "id": 60
+            },
+            {
+                "codigoInsigniaEspecial": 15,
+                "area": "Atitude para aprender e ensinar",
+                "descricao": "a) Apoiar um colega de classe em alguma tarefa ou ajudá-lo a aprender algum conteúdo que tenha dificuldade.",
+                "id": 61
+            },
+            {
+                "codigoInsigniaEspecial": 15,
+                "area": "Atitude para aprender e ensinar",
+                "descricao": "b) Conversar com seus pais , Akela ou outro Velho Lobo sobre sua participação na escola, seu interesse pelos estudos e sobre os pontos que podem ser melhorados para ser um melhor aluno.",
+                "id": 62
+            }
+        ]
+    },
+    {
+        "nome": "Aprender",
+        "codigoRamo": 1,
+        "id": 16,
+        "segmento": "APRENDER_ESCOTEIRO",
+        "itens": [
+            {
+                "codigoInsigniaEspecial": 16,
+                "area": "Aprendendo a Aprender",
+                "descricao": "a) Manter seu local e materiais de estudo organizados e possuir uma agenda semanal para estudar, realizar as tarefas escolares e leitura de livros.",
+                "id": 63
+            },
+            {
+                "codigoInsigniaEspecial": 16,
+                "area": "Aprendendo a Aprender",
+                "descricao": "b) Elaborar um calendário contendo as atividades escolares, como eventos, provas, atividades extraclasses, etc., bem como os eventos de sua atividade escoteira.",
+                "id": 64
+            },
+            {
+                "codigoInsigniaEspecial": 16,
+                "area": "Aprendendo a Aprender",
+                "descricao": "c) Saber fazer anotações e resumos das aulas, apresentando as anotações, destaques de texto ou resumos existentes em seus livros e/ou cadernos escolares. Utilizando suas anotações, explicar ao escotista pelo menos dois conteúdos aprendidos em sala de aula.",
+                "id": 65
+            },
+            {
+                "codigoInsigniaEspecial": 16,
+                "area": "Aprendendo com os outros",
+                "descricao": "a) Participar, como escoteiro, de pelo menos uma edição do Projeto Educação Escoteira ou de outra atividade em conjunto com escolas realizada pela sua patrulha, tropa ou grupo escoteiro.",
+                "id": 66
+            },
+            {
+                "codigoInsigniaEspecial": 16,
+                "area": "Aprendendo com os outros",
+                "descricao": "b) Preparar um cartaz, folder ou outro material similar sobre um dos seguintes temas: bullying, organização de local de estudo, bons hábitos de estudo ou outro tema relacionado a educação.",
+                "id": 67
+            },
+            {
+                "codigoInsigniaEspecial": 16,
+                "area": "Aprendendo com os outros",
+                "descricao": "c) Preparar e aplicar para sua patrulha ou tropa um jogo ou técnica escoteira relacionando-o a uma das matérias estudadas na escola.",
+                "id": 68
+            },
+            {
+                "codigoInsigniaEspecial": 16,
+                "area": "Atitude para aprender e ensinar",
+                "descricao": "a) Participar de um grupo de estudo ou trabalho em grupo sobre determinada matéria.",
+                "id": 69
+            },
+            {
+                "codigoInsigniaEspecial": 16,
+                "area": "Atitude para aprender e ensinar",
+                "descricao": "b) Realizar uma reflexão pessoal sobre seu ambiente escolar, analisando os pontos positivos e pontos que podem ser melhorados. A reflexão deverá ser compartilhada com pelo menos um de seus professores.",
+                "id": 70
+            }
+        ]
+    },
+    {
+        "nome": "Aprender",
+        "codigoRamo": 3,
+        "id": 17,
+        "segmento": "APRENDER_SENIOR",
+        "itens": [
+            {
+                "codigoInsigniaEspecial": 17,
+                "area": "Aprendendo a Aprender",
+                "descricao": "a) Saber o que é um mapa mental, qual sua utilidade e desenvolver um mapa mental sobre um tema ou conteúdo a sua escolha.",
+                "id": 71
+            },
+            {
+                "codigoInsigniaEspecial": 17,
+                "area": "Aprendendo a Aprender",
+                "descricao": "b) Discutir com o escotista as vantagens e desvantagens de diferentes métodos de pesquisa que são utilizados na escola, tais como biblioteca, internet, jornais, etc.",
+                "id": 72
+            },
+            {
+                "codigoInsigniaEspecial": 17,
+                "area": "Aprendendo com os outros",
+                "descricao": "Realizar duas das opções abaixo, sendo obrigatória a primeira:\n\na) Participar, como sênior, de pelo menos uma edição do Projeto Educação Escoteira ou de outra atividade em conjunto com escolas realizada pela sua patrulha, tropa ou grupo escoteiro.\n\nb) Participar de um teste vocacional, feira de profissões ou outra experiência similar. A partir dessa experiência conversar com seus pais sobre as profissões que mais lhe despertaram interesse para exercer no futuro.\n\nc) Entrevistar dois profissionais com carreiras estabelecidas, cuja profissão seja de seu interesse. Procurar descobrir como eles foram educados, qual a formação necessária para a profissão e como continuam a se formar e se aperfeiçoar na profissão. A entrevista pode ser feita por vídeo e disponibilizada nas redes sociais.\n\nd) Realizar, em conjunto com sua patrulha ou grupo de interesse, uma visita a instituição de ensino (faculdade, universidade, educação profissionalizante, etc.) promovendo debate posterior. ",
+                "id": 73
+            },
+            {
+                "codigoInsigniaEspecial": 17,
+                "area": "Atitude para aprender e ensinar",
+                "descricao": "Realizar pelo menos duas das atividades abaixo:\n\na) Participar de algum projeto ou atividade extracurricular oferecido pela sua escola. Relatar sua experiência ao escotista.\n\nb) Selecionar uma notícia sobre um assunto relevante na atualidade, realizando pesquisa sobre o tema em diferentes fontes e meios de comunicação. Escrever uma crítica sobre o tema, citando as fontes pesquisadas e seu ponto de vista sobre o tema.\n\nc) Participar ativamente do Grêmio Estudantil de sua escola.",
+                "id": 74
+            }
+        ]
+    },
+    {
+        "nome": "Aprender",
+        "codigoRamo": 4,
+        "id": 18,
+        "segmento": "APRENDER_PIONEIRO",
+        "itens": [
+            {
+                "codigoInsigniaEspecial": 18,
+                "area": "Atitude para aprender e ensinar",
+                "descricao": "Realizar as três atividades abaixo:\n\na) Participar de pelo menos dois cursos ou seminários de sua preferência, cujos temas sejam relevantes para sua vida acadêmica ou carreira profissional. Deverá ser apresentado um resumo de sua participação ao Clã Pioneiro ou algum tipo de produção que descreva sua participação e os assuntos abordados.\n\nb) Montar seu currículo profissional, relacionando suas aptidões, iniciativas de formação pessoas e outras experiências relevantes.\n\nc) Redigir um trabalho acadêmico, com tema de sua livre escolha, utilizando as normas de Metodologia Científica.",
+                "id": 75
+            },
+            {
+                "codigoInsigniaEspecial": 18,
+                "area": "Aprendendocom os outros",
+                "descricao": "Realizar as duas atividades abaixo:\n\na) Participar, como pioneiro, de pelo menos uma edição do Projeto Educação Escoteira ou de outra atividade em conjunto com escolas realizada pela sua equipe de interesse ou clã pioneiro.\n\nb) Organizar e conduzir um debate com os membros de seu Clã Pioneiro, contando com a participação de um profissional da área de educação, sobre os principais desafios da educação em nosso país e como poderia melhorá-la.",
+                "id": 76
+            },
+            {
+                "codigoInsigniaEspecial": 18,
+                "area": "Atitude para aprender e ensinar",
+                "descricao": "Realizar todas as atividades abaixo:\n\na) Propor, planejar e executar uma atividade educativa para alunos de uma escola pública, com duração mínima de 3 horas. Os objetivos educativos da atividade devem ser convergente com as necessidades da faixa etária que será beneficiada.\n\nb) Realizar uma reflexão e incluir no seu Plano de Desenvolvimento Pessoal (Projeto de Vida) as fases e estratégias para o desenvolvimento acadêmico e/ou profissional. ",
+                "id": 77
+            }
+        ]
+    }
+]

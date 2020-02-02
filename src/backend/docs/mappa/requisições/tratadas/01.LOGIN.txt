@@ -1,0 +1,26 @@
+POST /api/escotistas/login 
+HTTP/1.1
+accept: application/json
+cache-control: no-cache
+Content-Type: application/json; charset=utf-8
+Content-Length: 65
+Host: mappa.escoteiros.org.br
+Connection: Keep-Alive
+Accept-Encoding: gzip
+User-Agent: okhttp/3.4.1
+
+{"type":"LOGIN_REQUEST","username":"guionardo","password":"A1GU"}
+
+HTTP/1.1 200 OK
+Vary: Origin, Accept-Encoding
+Access-Control-Allow-Credentials: true
+X-XSS-Protection: 1; mode=block
+X-Frame-Options: DENY
+X-Download-Options: noopen
+X-Content-Type-Options: nosniff
+Content-Type: application/json; charset=utf-8
+Content-Length: 139
+ETag: W/"8b-OSUzkiRB6bHyF5lW2z2Lp6179oM"
+Date: Sat, 26 Oct 2019 02:19:09 GMT
+
+{"id":"904QVxCGR0mLG6uDqWt7EOZLZZyfbaBRatKnoMefohwfkpPjc5jeuyUNAWED5t7H","ttl":1209600,"created":"2019-10-26T02:19:09.146Z","userId":50442}

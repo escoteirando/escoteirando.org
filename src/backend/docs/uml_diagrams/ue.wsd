@@ -1,0 +1,36 @@
+@startuml Unidade Escoteira
+class Associado {
+    int codigo
+    String ds_nome
+    int nr_registro
+    datetime dt_nascimento
+    String tp_sexo
+    Equipe equipe
+}
+
+class Equipe {
+    int codigo_equipe
+}
+
+class Grupo {
+    int nr_grupo
+    String ds_nome
+    String cd_regiao
+    Sessao[] sessoes
+}
+
+class Sessao {
+    Grupo grupo
+    int id_sessao
+    int tp_sessao
+    String ds_nome
+}
+
+class Subsessao {
+    Sessao sessao
+    String ds_nome
+    Associado as_lider
+    Associado as_vicelider
+    Associado[] associados
+}
+@enduml

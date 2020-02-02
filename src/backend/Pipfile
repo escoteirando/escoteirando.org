@@ -1,0 +1,24 @@
+[[source]]
+name = "pypi"
+url = "https://pypi.org/simple"
+verify_ssl = true
+
+[dev-packages]
+setuptools = "*"
+autopep8 = "*"
+pylint = "*"
+flake8 = "*"
+rope = "*"
+coverage = "*"
+mock = "*"
+
+[packages]
+flask = "*"
+pymongo = "*"
+python-dotenv = "*"
+simplejson = "*"
+python-dateutil = "*"
+flask-api = "*"
+requests = "*"
+mongoengine = "*"
+flask-mongoengine = "*"

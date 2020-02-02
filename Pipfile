@@ -1,0 +1,30 @@
+[[source]]
+name = "pypi"
+url = "https://pypi.org/simple"
+verify_ssl = true
+
+[dev-packages]
+autopep8 = "*"
+flake8 = "*"
+pytest = "*"
+mkdocs = "*"
+pylint = "*"
+
+[packages]
+dynaconf = "*"
+flask-shell-ipython = "*"
+Flask-Admin = "*"
+Flask-Bootstrap4 = "*"
+Flask-RESTful = "*"
+Flask-SQLAlchemy = "*"
+Flask = "*"
+SQLAlchemy-serializer = "*"
+requests = "*"
+python-dateutil = "*"
+flask-debugtoolbar = "*"
+flask-wtf = "*"
+flask-login = "*"
+flask-migrate = "*"
+psycopg2-binary = "*"
+flask-mail = "*"
+flask-assets = "*"

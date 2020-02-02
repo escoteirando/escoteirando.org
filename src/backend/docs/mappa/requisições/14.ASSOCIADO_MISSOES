@@ -1,0 +1,22 @@
+GET /api/associados-missoes?filter={%22where%22:%20{%22codigoAssociado%22:%20850829},%20%22include%22:%20%22missao%22,%20%22order%22:%20%22dataPlano%20DESC%22,%20%22limit%22:%2010,%20%22skip%22:%200%20} HTTP/1.1
+accept: application/json
+cache-control: no-cache
+authorization: q9yAbpHAjAsqsf7J8U9dhmuva8p7asafG3nqygYF9PBWi2d3B2OCLMoCXds2wgfg
+Host: mappa.escoteiros.org.br
+Connection: Keep-Alive
+Accept-Encoding: gzip
+User-Agent: okhttp/3.4.1
+
+HTTP/1.1 200 OK
+Vary: Origin, Accept-Encoding
+Access-Control-Allow-Credentials: true
+X-XSS-Protection: 1; mode=block
+X-Frame-Options: DENY
+X-Download-Options: noopen
+X-Content-Type-Options: nosniff
+Content-Type: application/json; charset=utf-8
+Content-Length: 2
+ETag: W/"2-l9Fw4VUO7kr8CvBlt4zaMCqXZ0w"
+Date: Sat, 26 Oct 2019 02:19:15 GMT
+
+[]

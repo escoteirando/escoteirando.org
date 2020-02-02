@@ -1,0 +1,6 @@
+[run]
+omit =
+    *\test_*
+    unit_tests.py
+    run.py
+    setup.py

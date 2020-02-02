@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block css %}
+<link href="{{ url_for('static',filename='signin.css') }}" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+<form class="form-signin" id="signin">
+    <img class="mb-4" src="Signin%20Template%20%C2%B7%20Bootstrap_arquivos/bootstrap-solid.svg" alt="" width="72"
+        height="72">
+    <h1 class="h3 mb-3 font-weight-normal">Login no escoteirando.org</h1>
+    <label for="inputUser" class="sr-only">Usuário Paxtu</label>
+    <input type="text" name="username" id="inputUser" class="form-control" placeholder="Usuário Paxtu" required=""
+        autofocus="">
+    <label for="inputPass" class="sr-only">Senha</label>
+    <input type="password" name="password" id="inputPass" class="form-control" placeholder="Senha" required="">
+    <div class="checkbox mb-3">
+        <label>
+            <input id="inputRem" type="checkbox" value="remember-me"> Manter conectado
+        </label>
+    </div>
+    <button class="btn btn-lg btn-primary btn-block" type="submit">Entre</button>
+    <p class="mt-5 mb-3 text-muted">© 2019</p>
+</form>
+{% endblock %}
+
+{% block javascript %}
+<script src="{{ url_for('static',filename='signin.js') }}"></script>
+{% endblock %}

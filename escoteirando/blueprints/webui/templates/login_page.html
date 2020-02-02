@@ -1,0 +1,70 @@
+{% extends "base.html" %} {% block content %}
+<h1 class="mb-3 font-weight-normal"><img alt="Brand" src="{{ url_for('static', filename='img/flor_de_lis.svg') }}" height=80> Escoteirando.org</h1>
+<p>Um portal colaborativo para escotistas.</p>
+<p>Entre e fique a vontade</p>
+<div id="alert_placeholder"></div>
+<div class="row justify-content-md-center">
+    <div class="card w-50" id="card-login">
+        <div class="card-header">
+            <i class="fas fa-sign-in-alt"></i> Login
+        </div>
+        <div class="card-body">
+            <form class="form-signin">
+                <label for="signinEmail" class="sr-only">Email</label>
+                <input type="email" id="signinEmail" name="email" class="form-control" placeholder="Email" required=True autofocus="">
+                <label for="signinPassword" class="sr-only">Senha</label>
+                <input type="password" id="signinPassword" name="password" class="form-control" placeholder="Senha" required=True>
+                <div class="checkbox mb-3">
+                    <label>
+                <input type="checkbox" id='signinRemember' name="remember" value="remember-me"> Lembrar meu
+                login
+            </label>
+                </div>
+                <button class="btn btn-lg btn-primary btn-block" id='btn_login' type="button">Entrar</button>
+                <hr>
+                <button class="btn btn-sm btn-secondary btn_registrar" type="button">Registrar</button>
+                <button class="btn btn-sm btn-secondary btn_esqueci" type="button">Esqueci minha senha</button>
+            </form>
+        </div>
+    </div>
+    <div class="card w-50" id="card-register" style="display:none">
+        <div class="card-header">
+            <i class="far fa-user-circle"></i> Registrar
+        </div>
+        <div class="card-body">
+            <form class="form-signin">
+                <label for="registerEmail" class="sr-only">Email</label>
+                <input type="email" id="registerEmail" name="email" class="form-control" placeholder="Email" required=True autofocus="">
+
+                <label for="registerPassword" class="sr-only">Senha</label>
+                <input type="password" id="registerPassword" name="password" class="form-control" placeholder="Senha" required=True>
+                <div class="checkbox mb-3">
+                    <label>
+            <input type="checkbox" id="show-pass" value="show"> Mostrar
+        </label>
+                </div>
+                <button class="btn btn-lg btn-primary btn-block" id='btn_registrar' type="button">Registrar</button>
+                <hr>
+                <button class="btn btn-sm btn-secondary btn_login" type="button">Login</button>
+                <button class="btn btn-sm btn-secondary btn_esqueci" type="button">Esqueci minha senha</button>
+            </form>
+        </div>
+    </div>
+    <div class="card w-50" id="card-perdi" style="display:none">
+        <div class="card-header"> <i class="fas fa-key"></i> Recuperar a senha</div>
+        <div class="card-body">
+            <form class="form-signin">
+                <label for="perdiEmail" class="sr-only">Email</label>
+                <input type="email" id="perdiEmail" class="form-control" placeholder="Email" name="email" required=True autofocus="">
+                <p>&nbsp;</p>
+                <button class="btn btn-lg btn-primary btn-block" id='btn_recuperar' type="button">Enviar link</button>
+                <hr>
+                <button class="btn btn-sm btn-secondary btn_login" type="button">Login</button>
+                <button class="btn btn-sm btn-secondary btn_registrar" type="button">Registrar</button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %} {% block footer_scripts %}
+<script src="{{ url_for('static',filename='js/signin.js') }}"></script>
+{% endblock %}
