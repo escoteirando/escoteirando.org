@@ -28,7 +28,7 @@ $(function() {
         e.preventDefault();
         values = getFieldValues('signinEmail', 'signinPassword', 'signinRemember');
 
-        if (await login(values.signinEmail, values.signinPassword, values.signinRemember)) {
+        if (login(values.signinEmail, values.signinPassword, values.signinRemember)) {
             createAlert('Login OK', 'success');
             location.reload(true);
         } else {
@@ -39,8 +39,11 @@ $(function() {
     })
     $('#btn_registrar').on('click', e => {
         e.preventDefault();
-        [registerEmail, registerPassword] = getValue('registerEmail', 'registerPassword')
-        alert('REGISTRAR ' + registerEmail + ' ' + registerPassword)
+        values = getFieldValues('registerEmail', 'registerPassword');
+        success = signup(values.registerEmail, values.registerPassword);
+        if (success) {
+            createAlert('Usuário registrado com sucesso', 'success', 5000, () => location.reload(true));
+        }
     })
     $('#btn_recuperar').on('click', e => {
         e.preventDefault();

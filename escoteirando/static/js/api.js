@@ -10,10 +10,23 @@ async function logout() {
     }
 }
 
-function fetch_post(route, values) {
-    fd = new FormData()
-    for (let name in values) {
-        fd.append(name, values[name])
+function fetch_post(route, values = null) {
+    options = {
+        method: 'POST',
+        cache: 'no-cache'
+    }
+    if (values) {
+        fd = new FormData()
+        for (let name in values) {
+            fd.append(name, values[name])
+        }
+        options['body'] = fd
+    }
+    // https://javascript.info/fetch
+    // TODO: Continuar a desenvolver o fetch_post
+    let response = await fetch(api_bu + route, options)
+    if (!response.ok) {
+        return
     }
     let success = false;
     let result = null;
@@ -33,27 +46,33 @@ function fetch_post(route, values) {
     return result;
 }
 
-async function login(username, password, remember) {
+function login(username, password, remember) {
     fd = new FormData()
     fd.append('username', username);
     fd.append('password', password);
     fd.append('remember', remember);
     let success = false;
-    // fetch(api_bu + 'login', {
-    //         method: 'POST',
-    //         cache: 'no-cache',
-    //         body: fd
-    //     })
-    //     .then(json => {
-    //         console.log('Login: ', response);
-    //         success = response.ok;
-    //     })
     let response = await fetch(api_bu + 'login', {
         method: 'POST',
         cache: 'no-cache',
         body: fd
     });
     console.log('Login:', response)
+    success = response.ok;
+    return success;
+}
+
+function signup(username, password) {
+    fd = new FormData()
+    fd.append('username', username);
+    fd.append('password', password);
+    let success = false;
+    let response = await fetch(api_bu + 'signup', {
+        method: 'POST',
+        cache: 'no-cache',
+        body: fd
+    });
+    console.log('Signup:', response)
     success = response.ok;
     return success;
 }

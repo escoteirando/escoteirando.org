@@ -34,7 +34,7 @@ function createElement(name, classes = null, id = null, attributes = null) {
     return elm;
 }
 
-function createAlert(alert_content, class_name = "default", timeout = 0) {
+function createAlert(alert_content, class_name = "default", timeout = 0, on_close = null) {
     let alert_placeholder = document.getElementById('alert_placeholder');
     if (alert_placeholder == null) {
         log.error("createAlert: #alert_placeholder does not exists!");
@@ -53,8 +53,17 @@ function createAlert(alert_content, class_name = "default", timeout = 0) {
     alert_placeholder.innerHTML = '<div class="alert alert-' + class_name + ' alert-dismissible show" id="div_alert" role="alert">' +
         alert_content + '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span>' +
         '</button></div>';
+    if (on_close) {
+        $('#div_alert').on('closed.bs.alert', on_close);
+    }
     $('#div_alert').alert()
+
     if (timeout > 0) {
-        setTimeout(() => $('#div_alert').remove(), timeout * 1000);
+        setTimeout(() => {
+            $('#div_alert').remove();
+            if (on_close) {
+                on_close();
+            }
+        }, timeout * 1000);
     }
 }

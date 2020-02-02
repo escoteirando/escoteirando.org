@@ -15,8 +15,8 @@ def index():
 
     user: User = current_user
     if not user.codigo_associado:
-        logger.info(user)
-        # return _render_login_mappa('')
+        logger.info('ASSOCIADO NÃO DEFINIDO')
+        #return _render_login_mappa('')
 
     # TODO: Verificar o estado do usuario e apresentar a view correspondente
     return _render_index()
@@ -44,14 +44,13 @@ def _render_index():
 
 def _render_login_mappa():
     # TODO: render_login_mappa
-    return render_template("mappa_login.html",
-                           navbar=get_login_navbar(),
-                           user=current_user)
+    return render_template("login_mappa.html",
+                           user=current_user,
+                           page_title="Login MAPPA")
 
 
 def _render_login():
     return render_template("login_page.html",
-                           # navbar=get_login_navbar(),
                            page_title='Login')
 
 
