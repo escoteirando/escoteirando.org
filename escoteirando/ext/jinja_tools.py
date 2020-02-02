@@ -5,10 +5,13 @@ _default_itens = [
     MenuItem('Minha seção', subitens=[
         MenuItem('Mapa de progressões')
     ]),
-    MenuItem('Usuário', subitens=[
-        MenuItem('Perfil', disabled=True),
-        MenuItem('Informações UEB')
-    ])
+    MenuItem('Usuário',
+             right_align=True,
+             subitens=[
+                 MenuItem('Perfil', disabled=True),
+                 MenuItem('Informações UEB'),
+                 MenuItem('Sair', onclick="logout()")
+             ])
 ]
 
 

@@ -5,6 +5,14 @@ from random import randint
 class MenuItem:
 
     def __init__(self, text: str, **args):
+        """ MenuItem
+
+        :param disabled:
+        :param href:
+        :param onclick:
+        :param subitens:
+        :param right_align:
+        """
         self._text = text
         self.enabled = 'disabled' not in args
         self.href = '#' if 'href' not in args else args['href']
@@ -14,7 +22,8 @@ class MenuItem:
 
     def to_tag(self, first: bool = False):
         if len(self.subitens) == 0:
-            a = Tag('a', _class='nav-link'+('' if self.enabled else ' disabled'),
+            a = Tag('a', _class='nav-link' +
+                    ('' if self.enabled else ' disabled'),
                     href=self.href, _innertext=self._text +
                     ('' if not first else '<span class="sr-only">(current)</span>'))
             if not self.enabled:

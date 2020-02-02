@@ -1,11 +1,6 @@
-{% extends "bootstrap/base.html" %}
-{% block title %}{{config.get('TITLE')}}{% endblock %}
-
-{% block navbar %}
-{{ navbar|safe }}
-{% endblock %}
-
-{% block content %}
+{% extends "base.html" %}
+<!-- extends "bootstrap/base.html" -->
+{% block title %}{{config.get('TITLE')}}{% endblock %} {% block navbar %} {{ navbar|safe }} {% endblock %} {% block content %}
 <div class="container">
     <h1>{{config.get('TITLE')}}</h1>
 

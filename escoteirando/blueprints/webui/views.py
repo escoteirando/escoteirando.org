@@ -44,7 +44,9 @@ def _render_index():
 
 def _render_login_mappa():
     # TODO: render_login_mappa
-    pass
+    return render_template("mappa_login.html",
+                           navbar=get_login_navbar(),
+                           user=current_user)
 
 
 def _render_login():

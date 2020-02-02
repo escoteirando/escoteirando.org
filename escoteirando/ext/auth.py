@@ -9,8 +9,6 @@ from escoteirando.ext.database import db as db
 
 login_manager = LoginManager()
 
-_login_manager = LoginManager()
-
 
 class AuthStatus(Enum):
     NOT_FOUND = 0
@@ -87,7 +85,7 @@ def create_user(username, password):
     return user
 
 
-@_login_manager.user_loader
+@login_manager.user_loader
 def load_user(user_id):
     user = User.query.filter(User.id == user_id).first()
 
@@ -95,7 +93,7 @@ def load_user(user_id):
 
 
 def init_app(app):
-    _login_manager.init_app(app)
+    login_manager.init_app(app)
 
     # TODO: Remover SimpleLogin
     # SimpleLogin(app, login_checker=verify_login)

@@ -24,32 +24,11 @@ $(function() {
     }
 
 
-    function createAlert(text, class_name = 'default', timeout = 0) {
-        $("#alert_placeholder").html('<div class="alert alert-' + class_name + ' alert-dismissible show" id="div_alert" role="alert">' +
-            text + '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span>' +
-            '</button></div>');
-        $('#div_alert').alert()
-        if (timeout > 0) {
-            setTimeout(() => $('#div_alert').remove(), timeout * 1000);
-        }
-    }
-
     $('#btn_login').on('click', async e => {
         e.preventDefault();
-        [signinEmail, signingPassword, signinRemember] = getValue('signinEmail', 'signinPassword', 'signinRemember')
-        fd = new FormData()
-        fd.append('username', signinEmail);
-        fd.append('password', signingPassword);
-        fd.append('remember', signinRemember);
-        let response = await fetch('/api/v1/login', {
-            method: 'POST',
-            cache: 'no-cache',
-            body: fd
-        });
+        values = getFieldValues('signinEmail', 'signinPassword', 'signinRemember');
 
-        console.log(response)
-
-        if (response.ok) {
+        if (await login(values.signinEmail, values.signinPassword, values.signinRemember)) {
             createAlert('Login OK', 'success');
             location.reload(true);
         } else {

@@ -33,6 +33,7 @@ O objetivo geral deste trabalho √© desenvolver um software web seguindo os padr√
 * https://www.freecodecamp.org/news/inserting-uml-in-markdown-using-vscode/
 * https://github.com/plantuml/plantuml-server
 * https://pythonhosted.org/Flask-Mail/
+* https://flask-assets.readthedocs.io/en/latest/
 
 ## Brainstorm
 
