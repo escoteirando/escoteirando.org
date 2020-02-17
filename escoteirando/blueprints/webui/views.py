@@ -1,7 +1,12 @@
+import time
+
 from flask import abort, render_template
 from flask_login import current_user
 
-from escoteirando.domain.models.user import User
+from escoteirando.domain.models.mappa.secao import tipo_secao_str
+from escoteirando.domain.models.user import User, db
+from escoteirando.domain.services.mappa.service_grupo import ServiceGrupo
+from escoteirando.domain.services.mappa.service_secao import ServiceSecao
 from escoteirando.ext.jinja_tools import get_login_navbar, get_navbar
 from escoteirando.ext.logging import get_logger
 from escoteirando.models import Product
@@ -14,9 +19,8 @@ def index():
         return _render_login()
 
     user: User = current_user
-    if not user.codigo_associado:
-        logger.info('ASSOCIADO NÃO DEFINIDO')
-        #return _render_login_mappa('')
+    if not user.codigo_associado or user.auth_valid_until < time.time():
+        return _render_login_mappa()
 
     # TODO: Verificar o estado do usuario e apresentar a view correspondente
     return _render_index()
@@ -28,6 +32,14 @@ def view_test():
                            page_title='Login')
 
 
+def view_test_json():
+    import datetime
+    return {
+        'testing': True,
+        'when': datetime.datetime.now()
+    }
+
+
 def _render_index():
     panels = [
         {"title": "Estatísticas", "url": "#", "id": "stats"},
@@ -35,11 +47,20 @@ def _render_index():
         {"title": "Estatísticas 2 ", "url": "#", "id": "stats"},
         {"title": "Últimas atividades 2", "url": "#", "id": "ult_atv"}
     ]
+    service_grupo = ServiceGrupo(db)
+    _grupo = service_grupo.get_grupo(current_user.codigo_grupo)
+    grupo = _grupo.nome+' '+_grupo.codigoRegiao+'/'+str(_grupo.codigo)
+
+    service_secao = ServiceSecao(db)
+    _secao = service_secao.get_secao(current_user.codigo_secao)
+    secao = tipo_secao_str(_secao.codigoTipoSecao)+': '+_secao.nome
 
     return render_template("index.html",
                            navbar=get_navbar(),
                            user=current_user,
-                           panels=panels)
+                           panels=panels,
+                           grupo=grupo,
+                           secao=secao)
 
 
 def _render_login_mappa():

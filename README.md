@@ -34,6 +34,7 @@ O objetivo geral deste trabalho √© desenvolver um software web seguindo os padr√
 * https://github.com/plantuml/plantuml-server
 * https://pythonhosted.org/Flask-Mail/
 * https://flask-assets.readthedocs.io/en/latest/
+* https://www.wikihow.com/Create-a-Website-Privacy-Policy
 
 ## Brainstorm
 

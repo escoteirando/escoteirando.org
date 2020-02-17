@@ -2,9 +2,7 @@ from flask_login import UserMixin
 from sqlalchemy import Column
 from sqlalchemy.types import Boolean, Date, Integer, String
 from sqlalchemy_serializer import SerializerMixin
-from werkzeug.security import check_password_hash
 
-from escoteirando.domain.enums import TipoSexo
 from escoteirando.ext.database import db
 
 
@@ -29,7 +27,8 @@ class User(db.Model, SerializerMixin, UserMixin):
     authorization = Column(String(64))
     auth_valid_until = Column(Integer, default=0)
     data_nascimento = Column(Date)
+    ativo = Column(Boolean(), default=True)
 
     @property
     def is_active(self):
-        return self.verified_email
+        return self.ativo

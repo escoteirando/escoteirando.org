@@ -12,3 +12,10 @@ class MAPPA_Secao(db.Model, SerializerMixin):
     codigoTipoSecao: TipoSecao = db.Column(db.Enum(TipoSecao))
     codigoGrupo: int = db.Column(db.Integer)
     codigoRegiao: str = db.Column(db.String(2))
+
+
+def tipo_secao_str(tipo: TipoSecao):
+    return {TipoSecao.ALCATEIA: "Alcatéia",
+            TipoSecao.TROPA_ESCOTEIRA: "Tropa Escoteira",
+            TipoSecao.TROPA_SENIOR: "Tropa Sênior",
+            TipoSecao.CLA_PIONEIRO: "Clã Pioneiro"}[tipo]
