@@ -53,4 +53,5 @@ DEBUG_TB_PANELS = [
 SQLALCHEMY_DATABASE_URI = 'sqlite:///testing.db'
 
 [production]
-SQLALCHEMY_DATABASE_URI = 'postgresql://postgres@localhost/escoteirando'
+SQLALCHEMY_DATABASE_URI = 'sqlite:///production.db'
+_SQLALCHEMY_DATABASE_URI = 'postgresql://postgres@localhost/escoteirando'

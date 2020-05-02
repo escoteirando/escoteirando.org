@@ -1,7 +1,8 @@
+from datetime import datetime
+
 from flask_sqlalchemy import SQLAlchemy
 
 from escoteirando.domain.models.infra.params import Param
-from datetime import datetime
 from escoteirando.ext.logging import get_logger
 
 
@@ -18,8 +19,9 @@ class ServiceInfra:
                   default_value: str = None) -> str:
         user_id = max(0, user_id)
         param = Param()
-        param = param.query.filter(Param.param_name ==
-                                   param_name and Param.user_id == user_id).first()
+        param = param.query.filter(
+            Param.param_name ==
+            param_name and Param.user_id == user_id).first()
         return default_value if param is None else param.param_value
 
     def set_param(self,

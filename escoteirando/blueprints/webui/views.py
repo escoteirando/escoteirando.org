@@ -3,10 +3,8 @@ import time
 from flask import abort, render_template
 from flask_login import current_user
 
-from escoteirando.domain.models.mappa.secao import tipo_secao_str
 from escoteirando.domain.models.user import User, db
-from escoteirando.domain.services.mappa.service_grupo import ServiceGrupo
-from escoteirando.domain.services.mappa.service_secao import ServiceSecao
+from escoteirando.domain.services.infra.service_user import ServiceUser
 from escoteirando.ext.jinja_tools import get_login_navbar, get_navbar
 from escoteirando.ext.logging import get_logger
 from escoteirando.models import Product
@@ -47,13 +45,22 @@ def _render_index():
         {"title": "Estatísticas 2 ", "url": "#", "id": "stats"},
         {"title": "Últimas atividades 2", "url": "#", "id": "ult_atv"}
     ]
-    service_grupo = ServiceGrupo(db)
-    _grupo = service_grupo.get_grupo(current_user.codigo_grupo)
-    grupo = _grupo.nome+' '+_grupo.codigoRegiao+'/'+str(_grupo.codigo)
+    service_user = ServiceUser(db)
+    user = service_user.current_user()
+    grupo = "Grupo não identificado"
+    secao = "Seção não identificada"
 
-    service_secao = ServiceSecao(db)
-    _secao = service_secao.get_secao(current_user.codigo_secao)
-    secao = tipo_secao_str(_secao.codigoTipoSecao)+': '+_secao.nome
+    if user:
+        grupo = "{0} {1}/{2}".format(
+            user.nom_grupo,
+            user.cod_regiao,
+            user.cod_grupo)
+
+        secoes = service_user.get_secoes()
+        if len(secoes) > 0:
+            secao = "{0}: {1}".format(
+                secoes[0].tipo_secao_str,
+                secoes[0].nome)
 
     return render_template("index.html",
                            navbar=get_navbar(),

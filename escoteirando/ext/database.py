@@ -1,4 +1,3 @@
-
 import logging
 
 from flask_migrate import Migrate

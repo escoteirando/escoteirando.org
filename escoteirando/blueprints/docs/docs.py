@@ -1,10 +1,10 @@
 import os
-import time
 
-from escoteirando.mappa.cache.cache import Cache
-from escoteirando.ext.logging import get_logger
+from cache_gs import CacheGS
 
-cache = Cache('.cache', get_logger())
+from escoteirando.ext.configs import Configs
+
+cache = CacheGS(Configs.Instance().CACHE_STRING_CONNECTION)
 
 
 def get_privacidade():
@@ -17,11 +17,11 @@ def get_termos():
 
 def md_to_html(file):
     global cache
-    html = cache.get(file)
+    html = cache.get_value('docs', file)
     if not html:
         html = {"html": process_md(file)}
         if html:
-            cache.set(file, html, time.time()+(60*60*24*7))
+            cache.set_value('docs', file, html, 60*60*24*7)
 
     return html['html']
 

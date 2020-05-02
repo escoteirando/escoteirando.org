@@ -22,6 +22,7 @@ class User(db.Model, SerializerMixin, UserMixin):
     codigo_associado = Column(Integer)
     nome = Column(String(140))
     codigo_grupo = Column(Integer)
+    nome_grupo = Column(String(140))
     codigo_regiao = Column(String(2))
     codigo_secao = Column(Integer)
     authorization = Column(String(64))
