@@ -1,13 +1,6 @@
-from flask_sqlalchemy import SQLAlchemy
-from .service_infra import ServiceInfra
+from ..base_service import BaseService
 
 
-class ServiceAdmin:
+class ServiceAdmin(BaseService):
 
-    def __init__(self, db: SQLAlchemy):
-        self.DB: SQLAlchemy = db
-        self.service_infra = ServiceInfra(db)
-
-    def send_email(self, to: str, subject: str, content: str):
-        # TODO: Enviar email
-        pass
+    pass

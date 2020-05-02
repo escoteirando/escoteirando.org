@@ -1,59 +1,107 @@
-let api_bu = '/api/v1/';
+class API {
+    constructor() {}
 
-async function logout() {
-    let response = await fetch(api_bu + 'logout', {
-        method: 'GET',
-        cache: 'no-cache'
-    })
-    if (response.ok) {
-        location.replace("/");
+    async login(username, password, remember) {
+        return await api.post('login', { 'username': username, 'password': password, 'remember': remember });
+    }
+
+    async logout() {
+        if (await api.get('logout')) {
+            location.replace('/');
+        }
+    }
+
+    async signup(username, password) {
+        return await api.post('signup', {
+            "username": username,
+            "password": password
+        });
     }
 }
 
-function fetch_post(route, values) {
-    fd = new FormData()
-    for (let name in values) {
-        fd.append(name, values[name])
+
+class APIFetch {
+    constructor() {
+        this.api_bu = '/api/v1/';
+        this.last_message = '';
+        this.last_success = false;
+        this.last_data = null;
+        this.last_request = null;
+        this.last_timing = 0;
     }
-    let success = false;
-    let result = null;
-    fetch(api_bu + route, {
-            method: 'POST',
-            cache: 'no-cache',
-            body: fd
-        })
-        .then(response => {
+
+    async api_fetch(route, options) {
+        let t0 = performance.now();
+        let success = false;
+        try {
+            let response = await fetch(this.api_bu + route, options);
+            let json = null;
+            if (response.ok) {
+                json = await response.json();
+            }
+            this.last_success = response.ok;
+            this.last_data = json;
+            this.last_message = response.statusText
+            this.last_request = options.method + ' ' + route;
+            this.last_timing = performance.now() - t0;
+            Base.debug(this);
             success = response.ok;
-            return response.json()
-        })
-        .then(data => {
-            success = true;
-            result = data;
-        })
-    return result;
+
+        } catch (error) {
+            console.error(error);
+        }
+        return success;
+
+
+
+
+    }
+
+    async get(route, values = null) {
+        let options = {
+            method: 'GET',
+            cache: 'no-cache'
+        }
+        if (values) {
+            options['body'] = values;
+        }
+        return await this.api_fetch(route, options)
+    }
+
+    async post(route, values = null) {
+        var options = {
+            method: 'POST',
+            cache: 'no-cache'
+        }
+        if (values) {
+            let fd = new FormData()
+            for (let name in values) {
+                fd.append(name, values[name])
+            }
+            options['body'] = fd
+        }
+        return await this.api_fetch(route, options)
+    }
+
+    post_async(route, values = null, on_success, on_fail) {
+        var options = {
+            method: 'POST',
+            cache: 'no-cache'
+        }
+        if (values) {
+            let fd = new FormData()
+            for (let name in values) {
+                fd.append(name, values[name])
+            }
+            options['body'] = fd
+        }
+        fetch(this.api_bu + route, options)
+            .then(response => response.json())
+            .then(json => {
+                on_success(json);
+            })
+            .catch()
+    }
 }
 
-async function login(username, password, remember) {
-    fd = new FormData()
-    fd.append('username', username);
-    fd.append('password', password);
-    fd.append('remember', remember);
-    let success = false;
-    // fetch(api_bu + 'login', {
-    //         method: 'POST',
-    //         cache: 'no-cache',
-    //         body: fd
-    //     })
-    //     .then(json => {
-    //         console.log('Login: ', response);
-    //         success = response.ok;
-    //     })
-    let response = await fetch(api_bu + 'login', {
-        method: 'POST',
-        cache: 'no-cache',
-        body: fd
-    });
-    console.log('Login:', response)
-    success = response.ok;
-    return success;
-}
+const api = new APIFetch()

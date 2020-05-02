@@ -3,14 +3,20 @@ from escoteirando.ext.bootstrap import bootstrap_nav, MenuItem
 _default_itens = [
     MenuItem('Home'),
     MenuItem('Minha seção', subitens=[
-        MenuItem('Mapa de progressões')
+        MenuItem('Mapa de progressões'),
+        MenuItem('Lista de jovens'),
+    ]),
+    MenuItem('Atividades', subitens=[
+        MenuItem('Pesquisar'),
+        MenuItem('Atividades da seção'),
+        MenuItem('Agenda de encontros')
     ]),
     MenuItem('Usuário',
              right_align=True,
              subitens=[
                  MenuItem('Perfil', disabled=True),
                  MenuItem('Informações UEB'),
-                 MenuItem('Sair', onclick="logout()")
+                 MenuItem('Sair', onclick="Base.logout()")
              ])
 ]
 

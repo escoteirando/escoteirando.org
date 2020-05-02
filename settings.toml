@@ -20,7 +20,8 @@ EXTENSIONS = [
     "escoteirando.ext.mappa:init_app",
     "escoteirando.ext.jinja_tools:init_app",
     "escoteirando.blueprints.webui:init_app",
-    "escoteirando.blueprints.restapi:init_app"  
+    "escoteirando.blueprints.restapi:init_app",
+    "escoteirando.blueprints.docs:init_app" 
 ]
 
 
@@ -52,4 +53,5 @@ DEBUG_TB_PANELS = [
 SQLALCHEMY_DATABASE_URI = 'sqlite:///testing.db'
 
 [production]
-SQLALCHEMY_DATABASE_URI = 'postgresql://postgres@localhost/escoteirando'
+SQLALCHEMY_DATABASE_URI = 'sqlite:///production.db'
+_SQLALCHEMY_DATABASE_URI = 'postgresql://postgres@localhost/escoteirando'

@@ -2,15 +2,13 @@ import click
 from flask_migrate import Migrate, MigrateCommand
 
 from escoteirando.domain.models.atividade import Atividade
+from escoteirando.domain.models.db.associado import Associado
+from escoteirando.domain.models.db.secao import Secao
 from escoteirando.domain.models.encontro import Encontro
 from escoteirando.domain.models.encontro_atividade import EncontroAtividade
 from escoteirando.domain.models.encontro_escotistas import EncontroEscotista
 from escoteirando.domain.models.grupo_escoteiro import GrupoEscoteiro
 from escoteirando.domain.models.infra.params import Param
-from escoteirando.domain.models.mappa.grupo import MAPPA_Grupo
-from escoteirando.domain.models.mappa.progressao import MAPPA_Progressao
-from escoteirando.domain.models.mappa.secao import MAPPA_Secao
-from escoteirando.domain.models.mappa.subsecao import MAPPA_SubSecao
 from escoteirando.domain.models.user import User
 from escoteirando.ext.auth import create_user
 from escoteirando.ext.database import db

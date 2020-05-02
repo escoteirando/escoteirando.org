@@ -1,11 +1,20 @@
+import datetime
 from flask import Blueprint, request
 
 from escoteirando.domain.models.user import User
-from escoteirando.ext.auth import AuthStatus, UserAuth
+from escoteirando.ext.auth import AuthStatus, UserAuth, create_user
 from escoteirando.ext.logging import get_logger
 
 auth = Blueprint('auth', __name__, url_prefix='/api/v1')
 logger = get_logger()
+
+
+@auth.route('/test', methods=['GET', 'POST'])
+def test():
+    return {
+        "msg": "TESTING",
+        "when": datetime.datetime.now()
+    }
 
 
 @auth.route('/login', methods=['POST'])
@@ -66,9 +75,20 @@ def logout():
     return res, 200
 
 
-@auth.route('/signup')
+@auth.route('/signup', methods=['POST'])
 def signup():
-    return 'signup'
+    if not ('username' in request.form and 'password' in request.form):
+        logger.error('LOGIN = %s', 'INVALID REQUEST')
+        return {"msg": "Invalid request arguments"}, 400
+    username = request.form['username']
+    password = request.form['password']
+
+    try:
+        create_user(username, password)
+    except Exception as exc:
+        return {"msg": str(exc)}, 400
+
+    return {"msg": "OK"}
 
 
 @auth.route('/lostpass')

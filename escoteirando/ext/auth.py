@@ -42,8 +42,8 @@ class UserAuth:
         if not check_password_hash(str(user.password), password):
             return AuthStatus.PASSWORD_ERROR
 
-        if not user.verified_email:
-            return AuthStatus.NOT_VERIFIED
+        # if not user.verified_email:
+        #     return AuthStatus.NOT_VERIFIED
 
         if not user.codigo_associado:
             return AuthStatus.NOT_MAPPA
@@ -78,7 +78,7 @@ def create_user(username, password):
     """Registra um novo usuario caso nao esteja cadastrado"""
     if UserAuth().load_user(username):
         raise RuntimeError(f'{username} ja esta cadastrado')
-    user = User(username=username,
+    user = User(email=username,
                 password=generate_password_hash(password))
     db.session.add(user)
     db.session.commit()
