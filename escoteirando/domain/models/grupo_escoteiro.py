@@ -1,4 +1,5 @@
 from sqlalchemy_serializer import SerializerMixin
+
 from escoteirando.domain.enums import CodigoModalidade
 from escoteirando.ext.database import db
 

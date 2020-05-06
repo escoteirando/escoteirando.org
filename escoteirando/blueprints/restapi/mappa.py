@@ -43,7 +43,7 @@ def get_secao():
     mappa: MAPPAService = app.mappa
     if not validate_mappa_user_auth():
         return {'msg': 'UNAUTHORIZED MAPPA API'}, 401
-    
+
     secoes = mappa.get_secoes(mappa.user_id)
     if secoes:
         return {
