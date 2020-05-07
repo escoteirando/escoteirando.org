@@ -1,0 +1,83 @@
+body {
+    font-family: 'Slabo 27px', serif;
+    display: flex;
+    flex-direction: column;
+    margin:0;
+    height: 100%;
+    overflow: hidden;
+}
+
+header, footer {
+    height: 3em;
+    padding: 0.2em;
+    flex: 0 0 auto;
+    width: 100%;
+}
+
+header {
+    background-color: #663366;
+    color: white;
+}
+
+#content {
+    padding: 0.2em;
+    flex: 1 1 auto;
+    position: relative;
+    overflow-y:auto;
+    display: flex;
+    flex-direction: column;
+}
+
+footer {
+    background-color: #442244;
+    color: lightgray;
+}
+
+nav {
+    height: 100%;
+    float: right;
+}
+
+img.logo_scouts {
+    height: 100%;
+    float: left;
+}
+img.logo_user{
+    height: 100%;
+    float: right;
+    margin-right: 0.4em;
+}
+
+span.logo_title {
+    vertical-align: middle;
+    font-size: 2.5em;
+    text-shadow: 0.1em 0.1em #442244;
+    font-weight: bold;
+}
+
+nav a {
+    text-decoration: none;
+    font-size: 1.7em;
+    color: lightgray;
+    margin-right: 1em;
+}
+
+nav a:hover {
+    color: lightgray;
+    text-shadow: 0.1em 0.1em #442244;
+}
+
+#content section{
+    flex: 1 1 auto;
+    width: 80%;
+    margin: 1em;
+    border: 1px solid darkgray;
+    padding: 0 1em 1em 1em;
+    left:auto;
+    background: lightgray;
+    box-shadow: 0.3em 0.3em 0.5em 0.1em lightblue;
+}
+
+#content section h1{
+
+}

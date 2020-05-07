@@ -1,8 +1,8 @@
 """empty message
 
-Revision ID: 1dc73e27327c
+Revision ID: b5c18ec97dbd
 Revises: 
-Create Date: 2020-05-02 17:22:40.733804
+Create Date: 2020-05-07 09:04:00.930228
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = '1dc73e27327c'
+revision = 'b5c18ec97dbd'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -58,6 +58,15 @@ def upgrade():
     sa.Column('modalidade', sa.Enum('BASICO', 'MAR', 'AR', name='codigomodalidade'), nullable=True),
     sa.PrimaryKeyConstraint('id'),
     sa.UniqueConstraint('codigo')
+    )
+    op.create_table('notificacao',
+    sa.Column('id', sa.Integer(), autoincrement=True, nullable=False),
+    sa.Column('id_usuario', sa.Integer(), nullable=True),
+    sa.Column('data_notificacao', sa.DateTime(timezone=True), nullable=True),
+    sa.Column('mensagem', sa.String(length=180), nullable=True),
+    sa.Column('valida_ate', sa.DateTime(timezone=True), nullable=True),
+    sa.Column('link', sa.String(length=240), nullable=True),
+    sa.PrimaryKeyConstraint('id')
     )
     op.create_table('param',
     sa.Column('id', sa.Integer(), autoincrement=True, nullable=False),
@@ -147,6 +156,7 @@ def downgrade():
     op.drop_table('secao')
     op.drop_table('product')
     op.drop_table('param')
+    op.drop_table('notificacao')
     op.drop_table('grupo_escoteiro')
     op.drop_table('atividade')
     op.drop_table('associado')

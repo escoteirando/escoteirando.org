@@ -1,5 +1,7 @@
 import datetime
-from flask import Blueprint, request
+
+from flask import Blueprint, Response, abort, request
+from flask_login import current_user
 
 from escoteirando.domain.models.user import User
 from escoteirando.ext.auth import AuthStatus, UserAuth, create_user
@@ -7,6 +9,15 @@ from escoteirando.ext.logging import get_logger
 
 auth = Blueprint('auth', __name__, url_prefix='/api/v1')
 logger = get_logger()
+
+
+def should_be_logged(with_this_user_id: int = None):
+    """ Valida se o usuário está logado    """
+    user: User = current_user
+    if not user or not user.is_authenticated:
+        abort(401, 'Unauthorized')
+    if with_this_user_id and user.id != with_this_user_id:
+        abort(403, 'Forbidden')
 
 
 @auth.route('/test', methods=['GET', 'POST'])
