@@ -9,6 +9,7 @@ from escoteirando.domain.models.encontro_atividade import EncontroAtividade
 from escoteirando.domain.models.encontro_escotistas import EncontroEscotista
 from escoteirando.domain.models.grupo_escoteiro import GrupoEscoteiro
 from escoteirando.domain.models.infra.params import Param
+from escoteirando.domain.models.notificacao import Notificacao
 from escoteirando.domain.models.user import User
 from escoteirando.ext.auth import create_user
 from escoteirando.ext.database import db
